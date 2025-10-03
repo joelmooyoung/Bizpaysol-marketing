@@ -22,7 +22,9 @@ export default function About() {
             <div>
               <h2 className="text-lg font-semibold">Contact</h2>
               <div className="mt-3 text-sm text-muted-foreground">
-                <p>Email: info@clearach.com</p>
+                <p>Email: <a href="mailto:info@bizpaysol.com" className="underline decoration-dotted">info@bizpaysol.com</a></p>
+                <p>Sales: <a href="mailto:sales@bizpaysol.com" className="underline decoration-dotted">sales@bizpaysol.com</a></p>
+                <p>Support: <a href="mailto:support@bizpaysol.com" className="underline decoration-dotted">support@bizpaysol.com</a></p>
                 <p>Phone: (555) 123-4567</p>
                 <p>Address: 1234 Market Street, Suite 500, Atlanta, GA</p>
               </div>
