@@ -32,12 +32,19 @@ export function Header() {
       )}
     >
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-extrabold text-lg tracking-tight">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
+        <Link to="/" className="flex items-center gap-2">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground font-bold">
             B
           </span>
-          <span className="text-foreground">BizPaySol</span>
-          <span className="ml-2 hidden text-sm font-semibold text-muted-foreground md:inline">ClearACH</span>
+          <div className="leading-tight">
+            <div className="flex items-baseline gap-2">
+              <span className="font-extrabold text-lg tracking-tight text-foreground">BizPaySol</span>
+              <span className="hidden text-sm font-semibold text-muted-foreground md:inline">ClearACH</span>
+            </div>
+            <span className="hidden text-[11px] text-muted-foreground md:block">
+              Powered by Enterprise Payment Solutions
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

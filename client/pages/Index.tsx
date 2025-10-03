@@ -34,9 +34,10 @@ export default function Index() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white" />
         <div className="container grid items-center gap-8 py-20 md:grid-cols-2 md:py-28">
           <div>
-            <p className="mb-4 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
+            <p className="mb-2 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
               BizPaySol · ClearACH
             </p>
+            <p className="mb-4 text-xs text-muted-foreground">Powered by Enterprise Payment Solutions</p>
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
               Smarter, Safer ACH Processor in the Cloud.
             </h1>
