@@ -23,7 +23,7 @@ export default function Support() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">Support email</p>
-                  <p>support@clearach.com</p>
+                  <p><a href="mailto:support@bizpaysol.com" className="underline decoration-dotted">support@bizpaysol.com</a></p>
                 </div>
               </div>
             </div>
