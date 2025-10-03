@@ -35,14 +35,14 @@ export default function Index() {
         <div className="container grid items-center gap-8 py-20 md:grid-cols-2 md:py-28">
           <div>
             <p className="mb-2 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
-              BizPaySol · ClearACH
+              BizPaySol · Enterprise ACH
             </p>
             <p className="mb-4 text-xs text-muted-foreground">Powered by Enterprise Payment Solutions</p>
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
               Smarter, Safer ACH Processor in the Cloud.
             </h1>
             <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-              ClearACH helps enterprises securely automate and manage ACH project closures with compliance-ready APIs.
+              Enterprise ACH helps enterprises securely automate and manage ACH transactions with compliance-ready APIs.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="px-6">
@@ -94,7 +94,7 @@ export default function Index() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight">Purpose-built for compliance and scale</h2>
             <p className="mt-3 text-muted-foreground">
-              Everything you need to run ACH project cessation securely and efficiently.
+              Everything you need to run ACH transactions securely and efficiently.
             </p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
