@@ -7,7 +7,7 @@ export default function About() {
         <div className="container max-w-4xl">
           <h1 className="text-4xl font-extrabold tracking-tight">Our Mission.</h1>
           <p className="mt-4 text-muted-foreground">
-            At ClearACH, we believe project cessation shouldn’t be complex or risky. We provide fintechs and enterprises with the tools to close ACH projects safely, efficiently, and in full compliance.
+            At Enterprise ACH, we believe transactions shouldn’t be complex or risky. We provide fintechs and enterprises with the tools to manage ACH transactions safely, efficiently, and in full compliance.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <div>
