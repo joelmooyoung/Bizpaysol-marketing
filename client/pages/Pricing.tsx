@@ -12,7 +12,7 @@ export default function Pricing() {
           </p>
           <div className="mt-8 flex gap-3">
             <Button size="lg">Get Started</Button>
-            <Button size="lg" variant="outline">Contact Sales</Button>
+            <Button asChild size="lg" variant="outline"><a href="mailto:sales@bizpaysol.com">Contact Sales</a></Button>
           </div>
         </div>
       </section>
