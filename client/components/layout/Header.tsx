@@ -39,7 +39,7 @@ export function Header() {
           <div className="leading-tight">
             <div className="flex items-baseline gap-2">
               <span className="font-extrabold text-lg tracking-tight text-foreground">BizPaySol</span>
-              <span className="hidden text-sm font-semibold text-muted-foreground md:inline">ClearACH</span>
+              <span className="hidden text-sm font-semibold text-muted-foreground md:inline">Enterprise ACH</span>
             </div>
             <span className="hidden text-[11px] text-muted-foreground md:block">
               Powered by Enterprise Payment Solutions
