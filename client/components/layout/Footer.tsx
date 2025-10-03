@@ -12,7 +12,7 @@ export function Footer() {
           </div>
           <p className="text-xs font-medium text-muted-foreground">Powered by Enterprise Payment Solutions</p>
           <p className="text-sm text-muted-foreground max-w-xs">
-            ClearACH by BizPaySol — a cloud-based ACH platform and API for secure, compliant operations.
+            Enterprise ACH by BizPaySol — a cloud-based ACH platform and API for secure, compliant operations.
           </p>
         </div>
 
