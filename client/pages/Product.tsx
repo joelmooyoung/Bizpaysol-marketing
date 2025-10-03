@@ -32,7 +32,7 @@ export default function Product() {
         <div className="container">
           <h1 className="text-4xl font-extrabold tracking-tight">Product & Features</h1>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            ClearACH is built to simplify the complex process of ACH project cessation, reducing risk while accelerating operational efficiency.
+            Enterprise ACH is built to simplify the complex process of ACH transactions, reducing risk while accelerating operational efficiency.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -49,7 +49,7 @@ export default function Product() {
 
           <div className="mt-16">
             <h2 className="text-2xl font-bold">API Example</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Closing a project via REST:</p>
+            <p className="mt-2 text-sm text-muted-foreground">Example request via REST:</p>
             <div className="mt-4 overflow-hidden rounded-md border bg-slate-950">
               <pre className="overflow-x-auto p-5 text-sm leading-relaxed text-slate-100">
 {`POST /api/v1/projects/close
