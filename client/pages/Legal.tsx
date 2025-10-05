@@ -156,116 +156,108 @@ export function Privacy() {
       <section className="bg-white py-16">
         <div className="container prose prose-slate max-w-3xl">
           <h1 className="mb-2">Privacy Policy</h1>
-          <p className="text-sm text-muted-foreground">Effective date: {new Date().toLocaleDateString()}</p>
+          <p className="text-sm text-muted-foreground">Effective Date: October 5, 2025</p>
 
           <p>
-            This Privacy Policy explains how BizPaySol ("we", "us", "our") collects, uses, shares, and
-            protects personal information in connection with our Enterprise ACH platform, APIs, and
-            related services (the "Services").
+            This Privacy Policy describes how BizPaySol, a division of Enterprise Payment Solutions LLC ("BizPaySol," "we," "us," or "our") collects, uses, discloses, and safeguards personal information when you use our enterprise ACH processing platform, APIs, and related services (collectively, the "Services"). As a business-to-business (B2B) provider, our Services are intended for authorized business representatives and entities, and we process information primarily in a professional context. We are committed to protecting your privacy and complying with applicable laws, including but not limited to GDPR (for EEA/UK users) and CCPA/CPRA (for California residents where applicable).
+          </p>
+          <p>
+            By using the Services, you consent to the practices described in this Policy. If you do not agree, please do not use the Services.
           </p>
 
           <h2>Information We Collect</h2>
+          <p>We collect only the minimum personal information necessary to provide our Services (data minimization principle). This includes:</p>
           <ul>
-            <li>
-              <strong>Account and Profile Data</strong>: business contact details, login information, and
-              communications.
-            </li>
-            <li>
-              <strong>Transaction and Bank Data</strong>: ACH routing/account tokens, transaction amounts,
-              remittance data, return codes, and metadata necessary to process transactions (we avoid
-              storing raw bank account numbers where tokenization or vaulting is available).
-            </li>
-            <li>
-              <strong>Usage and Device Data</strong>: logs, diagnostics, IP address, browser, and device
-              identifiers.
-            </li>
-            <li>
-              <strong>Support and Communications</strong>: emails, tickets, and records of interactions.
-            </li>
-            <li>
-              <strong>Third‑Party Sources</strong>: information from bank partners, service providers, or
-              your authorized integrations.
-            </li>
+            <li><strong>Account and Profile Data:</strong> Business contact details (e.g., name, email, phone, company name), login credentials, and communication preferences.</li>
+            <li><strong>Transaction and Financial Data:</strong> Tokenized ACH routing and account numbers, transaction amounts, remittance information, return codes, and related metadata required for processing. We do not store raw bank account numbers; instead, we use tokenization, vaulting, or other secure methods to pseudonymize sensitive data where feasible.</li>
+            <li><strong>Usage and Technical Data:</strong> Service logs, error diagnostics, IP addresses, browser types, device identifiers, and usage analytics to monitor performance.</li>
+            <li><strong>Support and Communications Data:</strong> Records of emails, support tickets, chat interactions, and feedback.</li>
+            <li><strong>Third-Party Data:</strong> Information obtained from authorized integrations, bank partners, payment networks (e.g., NACHA), or service providers you connect with us.</li>
           </ul>
+          <p>We do not collect sensitive personal information (e.g., health or biometric data) unless explicitly required for fraud prevention and only with your consent.</p>
 
-          <h2>How We Use Information</h2>
+          <h2>How We Use Your Information</h2>
+          <p>We use personal information for legitimate business purposes, including:</p>
           <ul>
-            <li>Provide, secure, and operate the Services, including processing ACH transactions.</li>
-            <li>Authenticate, prevent fraud and abuse, monitor performance, and ensure compliance.</li>
-            <li>Improve the Services, develop new features, and conduct analytics.</li>
-            <li>Communicate with you about updates, security, and support.</li>
-            <li>Comply with legal obligations and network rules (e.g., NACHA).</li>
+            <li>Delivering, maintaining, and improving the Services, such as processing ACH transactions and generating reports.</li>
+            <li>Authenticating users, detecting and preventing fraud, abuse, or security incidents, and ensuring compliance with financial regulations (e.g., NACHA rules, anti-money laundering laws).</li>
+            <li>Conducting internal analytics, research, and development to enhance features and user experience (using aggregated or de-identified data where possible).</li>
+            <li>Communicating with you about Service updates, billing, security alerts, or support requests. We may send marketing communications about new features only if you opt in.</li>
+            <li>Meeting legal, regulatory, or contractual obligations, including audits and dispute resolution.</li>
           </ul>
+          <p>We do not use your information for automated decision-making that produces legal effects without human oversight, except where necessary for fraud detection (with opt-out options where required by law).</p>
 
-          <h2>Legal Bases (EEA/UK where applicable)</h2>
+          <h2>Legal Bases for Processing (EEA/UK and Applicable Jurisdictions)</h2>
+          <p>For users in the EEA, UK, or other regions with similar requirements, our processing is based on:</p>
           <ul>
-            <li>Performance of a contract (to provide the Services).</li>
-            <li>Legitimate interests (security, fraud prevention, improvement).</li>
-            <li>Consent (where required by law for specific processing).</li>
-            <li>Compliance with legal obligations.</li>
+            <li><strong>Contractual Necessity:</strong> To perform our agreement with you or your organization (e.g., providing ACH processing).</li>
+            <li><strong>Legitimate Interests:</strong> For security, fraud prevention, Service improvement, and internal operations, balanced against your rights.</li>
+            <li><strong>Consent:</strong> For non-essential processing, such as certain marketing or cookies, which you can withdraw at any time.</li>
+            <li><strong>Legal Obligations:</strong> To comply with laws like GDPR, CCPA, or NACHA rules.</li>
           </ul>
+          <p>For California residents under CCPA/CPRA, we do not “sell” or “share” personal information as defined therein, and you have additional rights (see “Your Rights” below).</p>
 
           <h2>Sharing of Information</h2>
+          <p>We share personal information only as necessary and with appropriate protections:</p>
           <ul>
-            <li>With bank partners, ACH networks, and service providers acting on our behalf.</li>
-            <li>To comply with law, regulation, or valid legal process, or to protect rights and safety.</li>
-            <li>In connection with a corporate transaction (e.g., merger or acquisition).</li>
+            <li><strong>Service Providers and Partners:</strong> With banks, ACH networks (e.g., Federal Reserve or The Clearing House), payment processors, and vendors who assist in delivering the Services (e.g., cloud hosting, analytics tools). These parties are contractually bound to use data only as instructed and maintain safeguards.</li>
+            <li><strong>Legal and Safety Purposes:</strong> To comply with laws, respond to lawful requests (e.g., subpoenas), or protect our rights, property, or safety (including yours or others’).</li>
+            <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, where data may be transferred as a business asset (with notice where required).</li>
+            <li><strong>Aggregated/De-Identified Data:</strong> Anonymized or aggregated data may be shared for research or industry benchmarking.</li>
           </ul>
-          <p>
-            We require service providers to implement appropriate safeguards and only process information
-            as instructed by us.
-          </p>
+          <p>We do not share data with third parties for their own marketing without your explicit opt-in consent.</p>
 
-          <h2>Data Retention</h2>
-          <p>
-            We retain personal information for as long as necessary to provide the Services, meet legal,
-            accounting, or reporting obligations, and enforce our agreements. ACH‑related records are
-            typically retained in accordance with NACHA and applicable banking requirements.
-          </p>
+          <h2>Data Retention and Deletion</h2>
+          <p>We retain personal information only as long as needed to fulfill the purposes outlined above, or as required by law:</p>
+          <ul>
+            <li><strong>Transaction data:</strong> Typically 7 years to comply with NACHA, banking regulations, and tax laws.</li>
+            <li><strong>Account data:</strong> Until your account is deleted, plus a reasonable period for backups or disputes.</li>
+            <li><strong>Usage logs:</strong> Up to 12 months for security and analytics.</li>
+          </ul>
+          <p>Upon request or account closure, we securely delete or anonymize data where possible, subject to legal retention requirements. For details on our deletion process, contact us.</p>
 
-          <h2>Security</h2>
-          <p>
-            We employ administrative, technical, and physical safeguards designed to protect personal
-            information, including encryption in transit and at rest, access controls, logging, and
-            monitoring. No system can be guaranteed 100% secure.
-          </p>
+          <h2>Security of Your Information</h2>
+          <p>We prioritize data security with industry-standard measures, including:</p>
+          <ul>
+            <li>Encryption of data in transit (TLS 1.3) and at rest (AES-256).</li>
+            <li>Role-based access controls, multi-factor authentication, and regular security audits.</li>
+            <li>Vulnerability monitoring, penetration testing, and incident response protocols.</li>
+          </ul>
+          <p>While we strive for robust protection, no online system is entirely risk-free. We notify affected users and regulators of breaches as required by law.</p>
 
-          <h2>International Transfers</h2>
-          <p>
-            Where personal information is transferred across borders, we rely on appropriate safeguards
-            (such as standard contractual clauses) as required by applicable law.
-          </p>
+          <h2>International Data Transfers</h2>
+          <p>As a U.S.-based company, we may transfer data to countries outside your jurisdiction (e.g., to affiliates or providers in the EEA or Asia). For EEA/UK transfers, we use approved safeguards like Standard Contractual Clauses (SCCs), adequacy decisions, or the EU-U.S. Data Privacy Framework (where applicable). You can request details on transfer mechanisms by contacting us.</p>
 
-          <h2>Your Rights</h2>
-          <p>
-            Depending on your jurisdiction, you may have rights to access, correct, delete, or port your
-            personal information, and to object to or restrict certain processing. To exercise rights,
-            contact us at <a href="mailto:support@bizpaysol.com">support@bizpaysol.com</a>. We may need
-            to verify your identity before responding.
-          </p>
+          <h2>Your Privacy Rights</h2>
+          <p>Your rights vary by jurisdiction. Generally, you (or your organization’s authorized representative) may:</p>
+          <ul>
+            <li><strong>Access:</strong> Request a copy of your personal information.</li>
+            <li><strong>Correction:</strong> Update inaccurate data.</li>
+            <li><strong>Deletion:</strong> Request removal (subject to legal exceptions).</li>
+            <li><strong>Portability:</strong> Receive data in a structured format (where applicable).</li>
+            <li><strong>Objection/Restriction:</strong> Object to processing based on legitimate interests or restrict it in certain cases.</li>
+            <li><strong>Withdraw Consent:</strong> At any time, without affecting prior processing.</li>
+          </ul>
+          <p><strong>CCPA-Specific Rights (for California residents):</strong> Opt out of “sales/sharing” (though we do not engage in these), limit sensitive data use, and non-discrimination for exercising rights.</p>
+          <p>To exercise these rights, submit a verifiable request to <a href="mailto:privacy@bizpaysol.com">privacy@bizpaysol.com</a>. We respond within 45 days (extendable if needed) and verify identity via secure methods (e.g., account login or documentation). For complaints, contact us or your local data protection authority (e.g., ICO in the UK).</p>
+
+          <h2>Cookies and Tracking Technologies</h2>
+          <p>We use essential cookies for Service functionality and optional analytics cookies for improvement. You can manage preferences via browser settings. We do not use third-party advertising trackers.</p>
+
+          <h2>Do Not Track Signals</h2>
+          <p>We do not currently alter our data practices based on browser “Do Not Track” signals, but honor opt-outs for analytics where available.</p>
 
           <h2>Children’s Privacy</h2>
-          <p>
-            The Services are not directed to individuals under the age of 16, and we do not knowingly
-            collect personal information from children.
-          </p>
+          <p>Our Services are not intended for children under 16 (or 13 in the U.S. under COPPA). We do not knowingly collect data from minors and will delete it if discovered. If you believe we have, contact us immediately.</p>
 
-          <h2>Do Not Track</h2>
-          <p>
-            We do not currently respond to browser “Do Not Track” signals.
-          </p>
-
-          <h2>Changes to this Policy</h2>
-          <p>
-            We may update this Privacy Policy from time to time. Material changes will be posted on this
-            page with an updated effective date.
-          </p>
+          <h2>Changes to This Policy</h2>
+          <p>We may revise this Policy to reflect legal, operational, or Service changes. Minor updates will be posted here with the new effective date; material changes will also be emailed to registered users at least 30 days in advance. Continued use after changes constitutes acceptance.</p>
 
           <h2>Contact Us</h2>
           <p>
-            Questions or requests: <a href="mailto:support@bizpaysol.com">support@bizpaysol.com</a> or
-            <a href="mailto:info@bizpaysol.com">info@bizpaysol.com</a>.
+            For questions, rights requests, or concerns: Email <a href="mailto:privacy@bizpaysol.com">privacy@bizpaysol.com</a> (preferred for privacy matters) or <a href="mailto:support@bizpaysol.com">support@bizpaysol.com</a>.
           </p>
+          <p>If you are in the EEA/UK, you may also contact your local data protection authority.</p>
         </div>
       </section>
     </Layout>
