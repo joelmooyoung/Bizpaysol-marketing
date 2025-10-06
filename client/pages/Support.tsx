@@ -1,9 +1,35 @@
+import { useCallback, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export default function Support() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const to = "support@bizpaysol.com";
+      const composedSubject = subject.trim() || "Support request";
+      const bodyLines = [
+        name ? `Name: ${name}` : null,
+        email ? `Email: ${email}` : null,
+        "",
+        message || "",
+      ].filter(Boolean);
+      const body = bodyLines.join("\n");
+      const mailto = `mailto:${to}?subject=${encodeURIComponent(
+        composedSubject
+      )}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    },
+    [name, email, subject, message]
+  );
+
   return (
     <Layout>
       <section className="bg-white py-16">
@@ -23,19 +49,44 @@ export default function Support() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">Support email</p>
-                  <p><a href="mailto:support@bizpaysol.com" className="underline decoration-dotted">support@bizpaysol.com</a></p>
+                  <p>
+                    <a
+                      href="mailto:support@bizpaysol.com"
+                      className="underline decoration-dotted"
+                    >
+                      support@bizpaysol.com
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
             <div id="contact">
               <h2 className="text-lg font-semibold">Contact Form</h2>
-              <form className="mt-4 space-y-3">
+              <form className="mt-4 space-y-3" onSubmit={handleSubmit}>
                 <div className="grid gap-3 md:grid-cols-2">
-                  <Input placeholder="Name" />
-                  <Input type="email" placeholder="Email" />
+                  <Input
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
-                <Input placeholder="Subject" />
-                <Textarea placeholder="Message" rows={6} />
+                <Input
+                  placeholder="Subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+                <Textarea
+                  placeholder="Message"
+                  rows={6}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
                 <Button type="submit">Send</Button>
               </form>
             </div>
