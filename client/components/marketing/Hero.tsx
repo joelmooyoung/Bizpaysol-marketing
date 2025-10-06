@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { EmailCaptureDialog } from "@/components/marketing/EmailCaptureDialog";
 import { InteractiveDemo } from "@/components/marketing/InteractiveDemo";
+import { VideoEmbed } from "@/components/marketing/VideoEmbed";
 
 export function Hero() {
   const [persona, setPersona] = useState<"solo" | "team" | "dev">("dev");
@@ -46,12 +47,9 @@ export function Hero() {
         </div>
         <div className="space-y-4">
           <InteractiveDemo />
-          {(() => {
-            const url = import.meta.env.VITE_FOUNDER_VIDEO_URL as string | undefined;
-            if (!url) return null;
-            const { VideoEmbed } = require("@/components/marketing/VideoEmbed");
-            return <VideoEmbed url={url} title="Founder walkthrough" />;
-          })()}
+          {(import.meta.env.VITE_FOUNDER_VIDEO_URL as string | undefined) ? (
+            <VideoEmbed url={import.meta.env.VITE_FOUNDER_VIDEO_URL as string} title="Founder walkthrough" />
+          ) : null}
         </div>
       </div>
     </section>
