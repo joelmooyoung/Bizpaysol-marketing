@@ -16,8 +16,8 @@ export function EmailCaptureDialog({
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const subject = "Free 14-Day Trial Request";
-      const body = `Please start my free trial.\n\nEmail: ${email}`;
+      const subject = "API Sandbox Access";
+      const body = `Please grant API sandbox access.\n\nEmail: ${email}`;
       const mailto = `mailto:sales@bizpaysol.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailto;
       setOpen(false);
@@ -28,13 +28,13 @@ export function EmailCaptureDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className={triggerClassName}>{children ?? "Start Free 14-Day Trial"}</Button>
+        <Button className={triggerClassName}>{children ?? "Start Free Sandbox"}</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Start your free trial</DialogTitle>
+          <DialogTitle>Get API sandbox access</DialogTitle>
           <DialogDescription>
-            Enter your work email to get set up. Well follow up with onboarding details.
+            Enter your work email to get set up. We'll follow up with onboarding details.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="mt-2 space-y-3">
@@ -47,7 +47,7 @@ export function EmailCaptureDialog({
             aria-label="Email address"
           />
           <div className="flex items-center gap-2">
-            <Button type="submit" className="w-full">Start Free 14-Day Trial</Button>
+            <Button type="submit" className="w-full">Request Access</Button>
           </div>
           <p className="text-xs text-muted-foreground">No credit card required.</p>
         </form>
