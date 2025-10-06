@@ -13,13 +13,13 @@ export function Hero() {
             BizPaySol · Enterprise ACH
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Run Payroll & Invoices in Under 5 Minutes—Without the Hassle.
+            Launch ACH Payments & Payouts in Minutes—Developer‑first API.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Speed-focused, no‑BS workflows for SMBs. Simple pricing. Fraud protection included.
+            ACH rails, webhooks, and onboarding out of the box. Simple pricing. Fraud protection included.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <EmailCaptureDialog triggerClassName="px-6" />
+            <EmailCaptureDialog triggerClassName="px-6">Start Free Sandbox</EmailCaptureDialog>
             <Button asChild variant="outline" className="px-6">
               <Link to="/support#contact">Request a Demo</Link>
             </Button>
