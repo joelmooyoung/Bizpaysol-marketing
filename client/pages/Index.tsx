@@ -6,6 +6,7 @@ import { TrustBar } from "@/components/marketing/TrustBar";
 import { TestimonialsCarousel } from "@/components/marketing/TestimonialsCarousel";
 import { ComparisonTable } from "@/components/marketing/ComparisonTable";
 import { IntegrationsTeaser } from "@/components/marketing/IntegrationsTeaser";
+import { AchNoCodeDemo } from "@/components/marketing/AchNoCodeDemo";
 
 export default function Index() {
   return (
