@@ -4,23 +4,23 @@ import { CheckCircle2, CreditCard, Users, Workflow } from "lucide-react";
 const steps = [
   {
     icon: Workflow,
-    title: "Connect Bank",
-    desc: "Securely link your account in seconds.",
+    title: "Create API Key",
+    desc: "Spin up in seconds with test credentials.",
   },
   {
     icon: Users,
-    title: "Add Team",
-    desc: "Import or invite teammates instantly.",
+    title: "Create Customer",
+    desc: "Tokenize bank accounts with Plaid/route & account.",
   },
   {
     icon: CreditCard,
-    title: "Run First Payroll",
-    desc: "Preview and approve with 1 click.",
+    title: "Send First ACH",
+    desc: "Initiate a debit/credit with one POST.",
   },
   {
     icon: CheckCircle2,
-    title: "Done in < 5 min",
-    desc: "Automated taxes and receipts included.",
+    title: "Live in < 5 min",
+    desc: "Webhooks & idempotency built‑in.",
   },
 ];
 
