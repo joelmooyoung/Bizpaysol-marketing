@@ -44,8 +44,14 @@ export function Hero() {
             Join 10K+ SMBs saving 100+ hours/year
           </div>
         </div>
-        <div>
+        <div className="space-y-4">
           <InteractiveDemo />
+          {(() => {
+            const url = import.meta.env.VITE_FOUNDER_VIDEO_URL as string | undefined;
+            if (!url) return null;
+            const { VideoEmbed } = require("@/components/marketing/VideoEmbed");
+            return <VideoEmbed url={url} title="Founder walkthrough" />;
+          })()}
         </div>
       </div>
     </section>

@@ -17,6 +17,7 @@ export default function Index() {
       <AchNoCodeDemo />
 
       <TestimonialsCarousel />
+      {(() => { const { VideoTestimonials } = require("@/components/marketing/VideoTestimonials"); return <VideoTestimonials />; })()}
       <ComparisonTable />
       <IntegrationsTeaser />
 

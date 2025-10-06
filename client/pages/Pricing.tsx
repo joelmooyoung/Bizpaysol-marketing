@@ -8,6 +8,21 @@ export default function Pricing() {
     <Layout>
       <section className="bg-white py-16">
         <div className="container">
+          {(() => {
+            const key = "pricing_promo_variant";
+            const saved = typeof window !== "undefined" ? localStorage.getItem(key) : null;
+            const variant = saved ?? (Math.random() < 0.5 ? "free-month" : "migration-help");
+            if (!saved && typeof window !== "undefined") localStorage.setItem(key, variant);
+            return (
+              <div className="mb-4 rounded-md border bg-slate-50 p-3 text-sm">
+                {variant === "free-month" ? (
+                  <span><strong>Promo:</strong> Get your first month free on annual plans.</span>
+                ) : (
+                  <span><strong>Promo:</strong> Free white-glove migration from Gusto/Stripe this month.</span>
+                )}
+              </div>
+            );
+          })()}
           <h1 className="text-4xl font-extrabold tracking-tight">Simple, Transparent Pricing.</h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
             ACH-first plans for builders. Estimate savings and migrate in minutes.

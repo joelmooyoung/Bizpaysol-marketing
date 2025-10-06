@@ -47,6 +47,15 @@ export default function Product() {
             ))}
           </div>
 
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold">Find your fit</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Personalized plan recommendation in seconds.</p>
+            {(() => {
+              const { FeaturesQuiz } = require("@/components/marketing/FeaturesQuiz");
+              return <FeaturesQuiz />;
+            })()}
+          </div>
+
           <div className="mt-16">
             <h2 className="text-2xl font-bold">API Example</h2>
             <p className="mt-2 text-sm text-muted-foreground">Example request via REST:</p>

@@ -1,13 +1,19 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { StickyFunnelBar } from "@/components/marketing/StickyFunnelBar";
+import { ExitSurveyModal } from "@/components/marketing/ExitSurveyModal";
+import { QuickDemoWidget } from "@/components/marketing/QuickDemoWidget";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <main className="pt-16">{children}</main>
+      <StickyFunnelBar />
+      <main className="pt-20">{children}</main>
       <Footer />
+      <ExitSurveyModal />
+      <QuickDemoWidget />
     </div>
   );
 }
