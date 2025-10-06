@@ -7,6 +7,7 @@ import { TestimonialsCarousel } from "@/components/marketing/TestimonialsCarouse
 import { ComparisonTable } from "@/components/marketing/ComparisonTable";
 import { IntegrationsTeaser } from "@/components/marketing/IntegrationsTeaser";
 import { AchNoCodeDemo } from "@/components/marketing/AchNoCodeDemo";
+import { VideoTestimonials } from "@/components/marketing/VideoTestimonials";
 
 export default function Index() {
   return (
@@ -17,7 +18,7 @@ export default function Index() {
       <AchNoCodeDemo />
 
       <TestimonialsCarousel />
-      {(() => { const { VideoTestimonials } = require("@/components/marketing/VideoTestimonials"); return <VideoTestimonials />; })()}
+      <VideoTestimonials />
       <ComparisonTable />
       <IntegrationsTeaser />
 
