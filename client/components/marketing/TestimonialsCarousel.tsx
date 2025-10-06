@@ -50,7 +50,7 @@ export function TestimonialsCarousel() {
         <div className="rounded-lg border bg-slate-50 p-6 text-sm text-muted-foreground">
           <ul className="space-y-3">
             <li><span className="font-semibold text-slate-700">70% faster</span> invoicing on average</li>
-            <li><span className="font-semibold text-slate-700">< 5 min</span> to first payroll run</li>
+            <li><span className="font-semibold text-slate-700">under 5 min</span> to first payroll run</li>
             <li><span className="font-semibold text-slate-700">24/7</span> human support for paid plans</li>
           </ul>
         </div>
