@@ -14,14 +14,7 @@ export default function Index() {
       <Hero />
       <TrustBar />
       {/* No-code ACH demo */}
-      {/**/}
-      {/* eslint-disable-next-line react/no-unknown-property */}
-      {/* The interactive builder shows sample request and curl */}
-      {/* Implemented as a section component */}
-      {(() => {
-        const { AchNoCodeDemo } = require("@/components/marketing/AchNoCodeDemo");
-        return <AchNoCodeDemo />;
-      })()}
+      <AchNoCodeDemo />
 
       <TestimonialsCarousel />
       <ComparisonTable />
