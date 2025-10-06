@@ -30,6 +30,26 @@ export default function About() {
               </div>
             </div>
           </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">2025 Vision</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Build the simplest, most reliable ACH platform for SMBs and developers. Human support, developer‑first APIs, and compliance without the bloat.
+              </p>
+              <ul className="mt-4 list-disc pl-5 text-sm text-muted-foreground">
+                <li>Helped 2,000+ businesses move money securely</li>
+                <li>50k+ ACH transfers processed</li>
+                <li>99.95% uptime over the last 12 months</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Meet the Founder</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                "We built BizPaySol to cut through complexity. Modern ACH should be fast, clear, and secure—period."
+              </p>
+              <p className="mt-4 text-xs text-muted-foreground">Want to add a 1‑minute vision video? Share a public video URL and we\'ll embed it here.</p>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
