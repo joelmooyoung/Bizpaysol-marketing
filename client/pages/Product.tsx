@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, FileCheck2, PlugZap, BarChart2 } from "lucide-react";
+import { FeaturesQuiz } from "@/components/marketing/FeaturesQuiz";
 
 const featureCards = [
   {
@@ -50,10 +51,7 @@ export default function Product() {
           <div className="mt-12">
             <h2 className="text-2xl font-bold">Find your fit</h2>
             <p className="mt-2 text-sm text-muted-foreground">Personalized plan recommendation in seconds.</p>
-            {(() => {
-              const { FeaturesQuiz } = require("@/components/marketing/FeaturesQuiz");
-              return <FeaturesQuiz />;
-            })()}
+            <FeaturesQuiz />
           </div>
 
           <div className="mt-16">
