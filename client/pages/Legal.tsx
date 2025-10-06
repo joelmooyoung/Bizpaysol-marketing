@@ -266,6 +266,9 @@ export function Privacy() {
             For questions, rights requests, or concerns: Email <a href="mailto:privacy@bizpaysol.com">privacy@bizpaysol.com</a> (preferred for privacy matters) or <a href="mailto:support@bizpaysol.com">support@bizpaysol.com</a>.
           </p>
           <p>If you are in the EEA/UK, you may also contact your local data protection authority.</p>
+
+          <h2>Governing Law</h2>
+          <p>This Privacy Policy is governed by the laws of the State of Tennessee, United States. Any disputes arising under or related to this Policy will be resolved exclusively in the state or federal courts located in Nashville, Tennessee.</p>
         </div>
       </section>
     </Layout>
