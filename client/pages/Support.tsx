@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,7 +11,7 @@ export default function Support() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const to = "support@bizpaysol.com";
       const composedSubject = subject.trim() || "Support request";
@@ -20,7 +20,7 @@ export default function Support() {
         email ? `Email: ${email}` : null,
         "",
         message || "",
-      ].filter(Boolean);
+      ].filter(Boolean) as string[];
       const body = bodyLines.join("\n");
       const mailto = `mailto:${to}?subject=${encodeURIComponent(
         composedSubject
