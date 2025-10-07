@@ -33,6 +33,55 @@ export default function Pricing() {
             <MigrationImport />
           </div>
 
+          <section className="mt-10 grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl border p-6">
+              <h3 className="text-lg font-semibold">Essential</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Pay‑as‑you‑grow</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li>$0.25 per ACH transaction</li>
+                <li>$0 monthly platform fee</li>
+                <li>Bank account tokenization</li>
+                <li>Standard webhooks, basic dashboard</li>
+                <li>Email support, 2 business‑day payouts</li>
+              </ul>
+              <div className="mt-4">
+                <Button asChild className="w-full"><a href="/pricing#start">Get Started</a></Button>
+              </div>
+            </div>
+            <div className="rounded-xl border p-6 ring-1 ring-primary/20">
+              <h3 className="text-lg font-semibold">Growth</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Scale with confidence</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li>$0.15 per ACH + volume discounts</li>
+                <li>$299/month platform fee</li>
+                <li>Same Day ACH, advanced webhooks</li>
+                <li>Retries, return code automation</li>
+                <li>Premium support, 1 business‑day payouts, SSO/SAML</li>
+              </ul>
+              <div className="mt-4">
+                <Button asChild variant="outline" className="w-full"><a href="mailto:sales@bizpaysol.com">Talk to Sales</a></Button>
+              </div>
+            </div>
+            <div className="rounded-xl border p-6">
+              <h3 className="text-lg font-semibold">Enterprise</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Custom pricing</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li>Dedicated VPC options</li>
+                <li>Custom limits and risk controls</li>
+                <li>Multi‑entity support</li>
+                <li>Priority SLA and solution architect</li>
+                <li>White‑glove onboarding</li>
+              </ul>
+              <div className="mt-4">
+                <Button asChild className="w-full"><a href="/support#contact">Request a Demo</a></Button>
+              </div>
+            </div>
+          </section>
+
+          <div className="mt-4 text-xs text-muted-foreground">
+            Interchange‑free ACH. Additional fees may apply for Same Day ACH, returns (R01–R10), and bank verification provider costs.
+          </div>
+
           <PricingCalculator />
         </div>
       </section>
