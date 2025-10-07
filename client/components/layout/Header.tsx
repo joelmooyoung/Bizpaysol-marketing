@@ -70,7 +70,7 @@ export function Header() {
             <Link to="/support#contact">Request a Demo</Link>
           </Button>
           <Button asChild className="bg-primary hover:bg-primary/90">
-            <Link to="/pricing">Get Started</Link>
+            <Link to="/pricing">Start Onboarding</Link>
           </Button>
         </div>
 
@@ -95,7 +95,7 @@ export function Header() {
               </Button>
               <Button asChild className="flex-1">
                 <Link to="/pricing" onClick={() => setOpen(false)}>
-                  Get Started
+                  Start Onboarding
                 </Link>
               </Button>
             </div>
