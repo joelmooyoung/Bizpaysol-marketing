@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    name: "Sarah Lin",
-    role: "Freelancer",
-    quote: "Cut my invoicing time by 70%. BizPaySol is the no-BS tool I needed.",
+    name: "CFO",
+    role: "Mid‑Market Logistics",
+    quote: "We cut payment costs by 68% and DSO by 7 days.",
   },
   {
-    name: "Omar Hassan",
-    role: "Agency Owner",
-    quote: "Payroll and payouts in minutes, not hours. My team loves it.",
+    name: "VP Engineering",
+    role: "B2B SaaS",
+    quote: "Fast, clean APIs; we went live in under two weeks.",
   },
   {
-    name: "Maya Patel",
-    role: "Shop Founder",
-    quote: "Setup took 5 minutes. The automation saves us every pay cycle.",
+    name: "Director of AR",
+    role: "Healthcare Group",
+    quote: "Automated return handling reduced manual exceptions by 80%.",
   },
 ];
 
@@ -49,9 +49,9 @@ export function TestimonialsCarousel() {
         </div>
         <div className="rounded-lg border bg-slate-50 p-6 text-sm text-muted-foreground">
           <ul className="space-y-3">
-            <li><span className="font-semibold text-slate-700">70% faster</span> invoicing on average</li>
-            <li><span className="font-semibold text-slate-700">under 5 min</span> to first ACH transfer</li>
-            <li><span className="font-semibold text-slate-700">24/7</span> human support for paid plans</li>
+            <li><span className="font-semibold text-slate-700">68% lower</span> payment processing costs</li>
+            <li><span className="font-semibold text-slate-700">7 days faster</span> DSO on average</li>
+            <li><span className="font-semibold text-slate-700">80% fewer</span> manual exceptions via automation</li>
           </ul>
         </div>
       </div>
