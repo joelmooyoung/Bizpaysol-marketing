@@ -31,7 +31,7 @@ export default function Index() {
           </div>
           <div className="flex gap-3">
             <Button asChild size="lg" className="bg-white text-slate-900 hover:bg-white/90">
-              <Link to="/pricing">Get Started</Link>
+              <Link to="/pricing">Start Onboarding</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Link to="/support#contact">Request a Demo</Link>
