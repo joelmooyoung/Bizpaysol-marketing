@@ -24,25 +24,27 @@ export function Hero() {
       <div className="container grid items-center gap-8 py-16 md:grid-cols-2 md:py-24">
         <div>
           <p className="mb-2 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
-            BizPaySol · Enterprise ACH
+            BizPay Solutions · NACHA‑Compliant ACH
           </p>
-          <div className="mb-3 inline-flex rounded-md border bg-white p-1 text-xs shadow-sm">
-            <button onClick={() => setPersona("solo")} className={`rounded px-3 py-1 ${persona === "solo" ? "bg-primary text-white" : "hover:bg-slate-100"}`}>Solopreneur</button>
-            <button onClick={() => setPersona("team")} className={`rounded px-3 py-1 ${persona === "team" ? "bg-primary text-white" : "hover:bg-slate-100"}`}>Team Lead</button>
-            <button onClick={() => setPersona("dev")} className={`rounded px-3 py-1 ${persona === "dev" ? "bg-primary text-white" : "hover:bg-slate-100"}`}>Developer</button>
-          </div>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Launch ACH Payments & Payouts in Minutes—Developer‑first API.
+            Move B2B Money Smarter with Bank‑to‑Bank ACH
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">{subline}</p>
+          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+            BizPay Solutions helps finance teams lower costs, accelerate cash flow, and de‑risk payments with NACHA‑compliant ACH rails, real‑time bank verification, and developer‑friendly APIs.
+          </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <EmailCaptureDialog triggerClassName="px-6">Start Free Sandbox</EmailCaptureDialog>
+            <Button asChild className="px-6">
+              <Link to="/support#contact">Request a Live Demo</Link>
+            </Button>
             <Button asChild variant="outline" className="px-6">
-              <Link to="/support#contact">Request a Demo</Link>
+              <a href="mailto:sales@bizpaysol.com">Talk to Sales</a>
+            </Button>
+            <Button asChild variant="ghost" className="px-6">
+              <Link to="/pricing">Start Onboarding</Link>
             </Button>
           </div>
           <div className="mt-4 text-xs text-muted-foreground">
-            Join 10K+ SMBs saving 100+ hours/year
+            SOC 2 Type II • ISO 27001 • GDPR • TLS 1.2+ • Encryption in transit and at rest
           </div>
         </div>
         <div className="space-y-4">
