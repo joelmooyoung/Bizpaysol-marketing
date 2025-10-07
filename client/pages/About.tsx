@@ -51,6 +51,47 @@ export default function About() {
             </div>
           </div>
         </div>
+
+        <div className="container max-w-4xl mt-12">
+          <h2 className="text-2xl font-bold tracking-tight">Blog Strategy</h2>
+          <p className="mt-2 text-sm text-muted-foreground">Educate CFOs, developers, and compliance leaders on ACH, risk, and industry use cases.</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Educational Deep Dives</h3>
+              <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+                <li>ACH 101 for CFOs: Costs, timing, returns, and risk vs cards/wires</li>
+                <li>NACHA Return Codes Explained (R01–R10, R29)</li>
+                <li>Same Day ACH: When it makes sense and how to price it</li>
+                <li>Bank Verification: Instant vs micro‑deposits—fraud, UX, ops trade‑offs</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Compliance & Risk</h3>
+              <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+                <li>SEC Codes (PPD, CCD, WEB, TEL): Choosing the right one</li>
+                <li>OFAC screening and sanctions workflows</li>
+                <li>Building a SOC 2 Type II‑ready payments stack</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Industry Use Cases</h3>
+              <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+                <li>Property Management: Rent collections and reconciliation</li>
+                <li>Healthcare: Co‑pays, refunds, and PHI considerations</li>
+                <li>Logistics: High‑ticket invoicing and DSO reduction</li>
+                <li>B2B SaaS: Subscription ACH and involuntary churn prevention</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Formats & SEO</h3>
+              <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
+                <li>Pillar pages, tactical playbooks, and a glossary (NACHA, SEC, ODFI/RDFI)</li>
+                <li>Comparison posts (ACH vs wires/cards)</li>
+                <li>Downloadable checklists and ROI calculators</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
     </Layout>
   );
