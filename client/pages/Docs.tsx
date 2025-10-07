@@ -49,7 +49,7 @@ export default function Docs() {
 SK=sk_test_1234567890abcdef1234567890abcd
 
 curl -s https://api.bizpaysol.com/v1/customers \
-  -H "Authorization: Bearer ${SK}" \
+  -H "Authorization: Bearer ${'${'}SK}" \
   -H "Content-Type: application/json"`}</code></pre>
 
             <h3>Create a Customer</h3>
