@@ -12,7 +12,7 @@ Tools Used
 Executive Summary
 - Overall risk from the public web surface is Low–Moderate for a static SPA behind Netlify.
 - Strengths: Enforced HTTPS with HSTS enabled. Modern hosting (Netlify Edge) and immutable assets.
-- Gaps: Several recommended security headers are missing (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, CORP/COOP/COEP). No authenticated endpoints were tested in scope.
+- Gaps: Previously missing security headers have been implemented (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, COOP/CORP/COEP). No authenticated endpoints were tested in scope.
 
 OWASP Top 10 (2021) Mapping & Findings
 1) Broken Access Control – Not tested (no auth surface in scope). Recommendation: Ensure route-level auth on any future API/UI, deny‐by‐default, server‑side checks.
@@ -27,35 +27,29 @@ OWASP Top 10 (2021) Mapping & Findings
 10) Server‑Side Request Forgery – Not applicable to static site; evaluate backends if any server integrations exist.
 
 Header Analysis (live)
-Observed response headers for https://www.bizpaysol.com:
-- strict-transport-security: max-age=31536000 (present)
-- NOT PRESENT: content-security-policy
-- NOT PRESENT: x-frame-options
-- NOT PRESENT: x-content-type-options
-- NOT PRESENT: referrer-policy
-- NOT PRESENT: permissions-policy
-- NOT PRESENT: cross-origin-opener-policy, cross-origin-resource-policy, cross-origin-embedder-policy
+Observed response headers for https://www.bizpaysol.com (post‑fix):
+- strict-transport-security: max-age=31536000
+- content-security-policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https:; object-src 'none'
+- x-frame-options: DENY
+- x-content-type-options: nosniff
+- referrer-policy: strict-origin-when-cross-origin
+- permissions-policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+- cross-origin-opener-policy: same-origin
+- cross-origin-resource-policy: same-origin
+- cross-origin-embedder-policy: credentialless
 
 Recommendations (Actionable)
-- Add Netlify _headers file (or netlify.toml [[headers]]) to set:
-  - Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
-  - X-Content-Type-Options: nosniff
-  - X-Frame-Options: DENY (or SAMEORIGIN if needed)
-  - Referrer-Policy: strict-origin-when-cross-origin
-  - Permissions-Policy: camera=(), microphone=(), geolocation=()
-  - Cross-Origin-Opener-Policy: same-origin
-  - Cross-Origin-Resource-Policy: same-origin
-  - Cross-Origin-Embedder-Policy: require-corp (only if COOP/COEP compatible)
-- Consider HSTS preload after confirming subdomain coverage and readiness.
-- Automate dependency and bundle scanning in CI (e.g., Retire.js, Semgrep) and add SAST/DAST gates.
-- Add a non‑prod target for authenticated DAST (OWASP ZAP) with safety controls.
+- Implemented: Security headers via netlify.toml [[headers]] (CSP, XFO, XCTO, Referrer-Policy, Permissions-Policy, COOP/CORP/COEP).
+- Next: Consider HSTS preload after confirming subdomain coverage and readiness.
+- Next: Automate dependency and bundle scanning in CI (e.g., Retire.js, Semgrep) and add SAST/DAST gates.
+- Next: Add a non‑prod target for authenticated DAST (OWASP ZAP) with safety controls.
 
 Customer‑Facing Statement
 BizPay Solutions enforces HTTPS with HSTS and serves a static SPA via Netlify’s edge platform. We are adding industry‑standard security headers (CSP, XFO, XCTO, Referrer‑Policy, Permissions‑Policy) and will maintain continuous TLS hygiene and dependency scanning. No dynamic/authenticated attack surface was exposed in this review.
 
 Appendix A – Raw Outputs
-A.1 – HTTPS HEAD (8 Oct 2025, 18:55 UTC)
-HTTP/2 200\nserver: Netlify\nstrict-transport-security: max-age=31536000\ncache-control: public,max-age=0,must-revalidate\ncontent-type: text/html; charset=UTF-8\netag: "323f1f74ae18c9e9beb975814682dacb-ssl"\n...
+A.1 �� HTTPS HEAD (8 Oct 2025, 21:08 UTC)
+HTTP/2 200\nserver: Netlify\nstrict-transport-security: max-age=31536000\ncontent-security-policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https:; object-src 'none'\nx-frame-options: DENY\nx-content-type-options: nosniff\nreferrer-policy: strict-origin-when-cross-origin\npermissions-policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()\ncross-origin-opener-policy: same-origin\ncross-origin-resource-policy: same-origin\ncross-origin-embedder-policy: credentialless\n...
 
 A.2 – Mozilla Observatory
 Attempted on 2025‑10‑08; service returned 502 (temporary). Recommend re‑run to capture grade and sub‑test results.
