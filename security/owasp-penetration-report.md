@@ -16,7 +16,7 @@ Executive Summary
 
 OWASP Top 10 (2021) Mapping & Findings
 1) Broken Access Control – Not tested (no auth surface in scope). Recommendation: Ensure route-level auth on any future API/UI, deny‐by‐default, server‑side checks.
-2) Cryptographic Failures – Partial: HSTS present (max‑age=31536000). SSL Labs scan enqueued; see Appendix. Recommendation: Enforce TLS 1.2+ only, strong ciphers, enable preload HSTS when validated.
+2) Cryptographic Failures – HSTS present (max‑age=31536000). SSL Labs reports strong TLS with A+ across all observed endpoints. Recommendation: Maintain TLS 1.2+ only, modern ciphers, consider HSTS preload when validated.
 3) Injection – Not tested. Recommendation: Parameterized queries on backend, strict server validation, output encoding.
 4) Insecure Design – Not assessed externally. Recommendation: Threat model sensitive flows (onboarding, payouts); implement rate limiting and anomaly detection.
 5) Security Misconfiguration – Moderate: Missing key headers below. Recommendation: Add via Netlify headers.
