@@ -47,15 +47,18 @@ Recommendations (Actionable)
 Customer‑Facing Statement
 BizPay Solutions enforces HTTPS with HSTS and serves a static SPA via Netlify’s edge platform. We are adding industry‑standard security headers (CSP, XFO, XCTO, Referrer‑Policy, Permissions‑Policy) and will maintain continuous TLS hygiene and dependency scanning. No dynamic/authenticated attack surface was exposed in this review.
 
-Appendix A – Raw Outputs
+Appendix A – Raw Outputs (updated)
 A.1 – HTTPS HEAD (8 Oct 2025, 21:12 UTC)
 HTTP/2 200\nserver: Netlify\nstrict-transport-security: max-age=31536000; includeSubDomains; preload\ncontent-security-policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https:; object-src 'none'\nx-frame-options: DENY\nx-content-type-options: nosniff\nreferrer-policy: strict-origin-when-cross-origin\npermissions-policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()\ncross-origin-opener-policy: same-origin\ncross-origin-resource-policy: same-origin\ncross-origin-embedder-policy: credentialless\n...
 
 A.2 – Mozilla Observatory
-Attempted on 2025‑10‑08; service returned 502 (temporary). Recommend re‑run to capture grade and sub���test results.
+Attempted on 2025‑10‑08; service returned 502 (temporary). Recommend re‑run to capture grade and sub‑test results.
 
 A.3 – Qualys SSL Labs (READY)
 {"status":"READY","endpoints":[{"ipAddress":"2600:1f1c:446:4900:0:0:0:258","statusMessage":"Ready","grade":"A+"},{"ipAddress":"2600:1f1c:446:4900:0:0:0:259","statusMessage":"Ready","grade":"A+"},{"ipAddress":"52.52.192.191","statusMessage":"Ready","grade":"A+"},{"ipAddress":"13.52.188.95","statusMessage":"Ready","grade":"A+"}]}
+
+A.4 – Mozilla Observatory
+Service returned 502 at time of test; will re‑run later and append grade/results.
 
 Notes & Limitations
 - Non‑intrusive external assessment only; no authenticated areas probed; no invasive testing performed on production.
