@@ -54,14 +54,14 @@ Customer‑Facing Statement
 BizPay Solutions enforces HTTPS with HSTS and serves a static SPA via Netlify’s edge platform. We are adding industry‑standard security headers (CSP, XFO, XCTO, Referrer‑Policy, Permissions‑Policy) and will maintain continuous TLS hygiene and dependency scanning. No dynamic/authenticated attack surface was exposed in this review.
 
 Appendix A – Raw Outputs
-A.1 – HTTPS HEAD (8 Oct 2025)
+A.1 – HTTPS HEAD (8 Oct 2025, 18:55 UTC)
 HTTP/2 200\nserver: Netlify\nstrict-transport-security: max-age=31536000\ncache-control: public,max-age=0,must-revalidate\ncontent-type: text/html; charset=UTF-8\netag: "323f1f74ae18c9e9beb975814682dacb-ssl"\n...
 
 A.2 – Mozilla Observatory
 Attempted on 2025‑10‑08; service returned 502 (temporary). Recommend re‑run to capture grade and sub‑test results.
 
-A.3 – Qualys SSL Labs
-Status: scan started (status="DNS"). Recommend polling until status="READY" and archiving endpoint details (protocols, ciphers, chain, grade).
+A.3 – Qualys SSL Labs (READY)
+{"status":"READY","endpoints":[{"ipAddress":"2600:1f1c:446:4900:0:0:0:258","statusMessage":"Ready","grade":"A+"},{"ipAddress":"2600:1f1c:446:4900:0:0:0:259","statusMessage":"Ready","grade":"A+"},{"ipAddress":"52.52.192.191","statusMessage":"Ready","grade":"A+"},{"ipAddress":"13.52.188.95","statusMessage":"Ready","grade":"A+"}]}
 
 Notes & Limitations
 - Non‑intrusive external assessment only; no authenticated areas probed; no invasive testing performed on production.
