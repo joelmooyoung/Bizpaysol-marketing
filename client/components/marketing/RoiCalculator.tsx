@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 type ProcessorKey = "stripe" | "square" | "paypal" | "other";
 
-const PROCESSORS: Record<ProcessorKey, { label: string; percent: number; fixed: number }> = {
+const PROCESSORS: Record<
+  ProcessorKey,
+  { label: string; percent: number; fixed: number }
+> = {
   stripe: { label: "Stripe (2.9% + $0.30)", percent: 2.9, fixed: 0.3 },
   square: { label: "Square (2.6% + $0.10)", percent: 2.6, fixed: 0.1 },
   paypal: { label: "PayPal (2.7% + $0.30)", percent: 2.7, fixed: 0.3 },
@@ -19,7 +22,13 @@ export function RoiCalculator() {
   const [avg, setAvg] = useState<number>(500);
   const [processor, setProcessor] = useState<ProcessorKey>("stripe");
 
-  const { currentCost, bizpayCost, monthlySavings, annualSavings, threeYearSavings } = useMemo(() => {
+  const {
+    currentCost,
+    bizpayCost,
+    monthlySavings,
+    annualSavings,
+    threeYearSavings,
+  } = useMemo(() => {
     const p = PROCESSORS[processor];
     const numTx = Math.max(1, volume / Math.max(1, avg));
     const current = volume * (p.percent / 100) + numTx * p.fixed;
@@ -40,16 +49,22 @@ export function RoiCalculator() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold">Calculate Your Savings</h2>
-            <p className="mt-2 text-muted-foreground">See how much you could save by switching to BizPaySol ACH</p>
+            <p className="mt-2 text-muted-foreground">
+              See how much you could save by switching to BizPaySol ACH
+            </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {/* Calculator Inputs */}
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Monthly Payment Volume</label>
+                <label className="block text-sm font-medium mb-2">
+                  Monthly Payment Volume
+                </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                    $
+                  </span>
                   <input
                     type="number"
                     inputMode="decimal"
@@ -63,7 +78,9 @@ export function RoiCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Current Processor</label>
+                <label className="block text-sm font-medium mb-2">
+                  Current Processor
+                </label>
                 <select
                   value={processor}
                   onChange={(e) => setProcessor(e.target.value as ProcessorKey)}
@@ -78,9 +95,13 @@ export function RoiCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Average Transaction Size</label>
+                <label className="block text-sm font-medium mb-2">
+                  Average Transaction Size
+                </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                    $
+                  </span>
                   <input
                     type="number"
                     inputMode="decimal"
@@ -104,35 +125,57 @@ export function RoiCalculator() {
             {/* Results Display */}
             <div className="rounded-xl border-2 border-primary bg-white p-8">
               <div className="text-center mb-6">
-                <div className="text-sm font-semibold text-primary mb-2">Your Estimated Savings</div>
-                <div className="text-5xl font-bold text-primary" aria-live="polite">{currency(monthlySavings)}</div>
-                <div className="text-sm text-muted-foreground mt-1">per month</div>
+                <div className="text-sm font-semibold text-primary mb-2">
+                  Your Estimated Savings
+                </div>
+                <div
+                  className="text-5xl font-bold text-primary"
+                  aria-live="polite"
+                >
+                  {currency(monthlySavings)}
+                </div>
+                <div className="text-sm text-muted-foreground mt-1">
+                  per month
+                </div>
               </div>
 
               <div className="space-y-4 border-t pt-6">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Current monthly cost:</span>
+                  <span className="text-muted-foreground">
+                    Current monthly cost:
+                  </span>
                   <span className="font-semibold">{currency(currentCost)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">BizPaySol cost:</span>
-                  <span className="font-semibold text-emerald-600">{currency(bizpayCost)}</span>
+                  <span className="font-semibold text-emerald-600">
+                    {currency(bizpayCost)}
+                  </span>
                 </div>
                 <div className="flex justify-between text-sm pt-4 border-t">
                   <span className="font-semibold">Annual savings:</span>
-                  <span className="font-bold text-xl text-primary">{currency(annualSavings)}</span>
+                  <span className="font-bold text-xl text-primary">
+                    {currency(annualSavings)}
+                  </span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">3-year savings:</span>
-                  <span className="font-semibold">{currency(threeYearSavings)}</span>
+                  <span className="font-semibold">
+                    {currency(threeYearSavings)}
+                  </span>
                 </div>
               </div>
 
               <div className="mt-6 pt-6 border-t text-center">
-                <Link to="/support#contact" className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
+                <Link
+                  to="/support#contact"
+                  className="inline-flex items-center justify-center h-10 px-6 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                >
                   Request Custom Quote
                 </Link>
-                <p className="text-xs text-muted-foreground mt-3">Based on industry averages. Actual savings may vary.</p>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Based on industry averages. Actual savings may vary.
+                </p>
               </div>
             </div>
           </div>
