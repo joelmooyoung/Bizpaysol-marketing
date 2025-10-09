@@ -1,22 +1,28 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Developer Docs – BizPay Solutions ACH</title>
-  <meta name="description" content="Integrate BizPay Solutions ACH in minutes. Authentication, endpoints, webhooks, and examples." />
-  <link rel="canonical" href="https://www.bizpaysol.com/docs" />
-  <meta name="robots" content="index,follow" />
-</head>
-<body>
-  <main>
-    <h1>Developer Documentation</h1>
-    <p>Secure, NACHA‑compliant ACH with modern APIs, idempotency, and signed webhooks.</p>
-    <h2>Quickstart</h2>
-    <pre><code>curl -X POST https://api.bizpaysol.com/v1/customers \
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Developer Docs – BizPay Solutions ACH</title>
+    <meta
+      name="description"
+      content="Integrate BizPay Solutions ACH in minutes. Authentication, endpoints, webhooks, and examples."
+    />
+    <link rel="canonical" href="https://www.bizpaysol.com/docs" />
+    <meta name="robots" content="index,follow" />
+  </head>
+  <body>
+    <main>
+      <h1>Developer Documentation</h1>
+      <p>
+        Secure, NACHA‑compliant ACH with modern APIs, idempotency, and signed
+        webhooks.
+      </p>
+      <h2>Quickstart</h2>
+      <pre><code>curl -X POST https://api.bizpaysol.com/v1/customers \
   -H "Authorization: Bearer sk_test_123..." \
   -H "Content-Type: application/json" \
   -d '{"name":"Acme Inc","email":"ap@acme.com"}'</code></pre>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
