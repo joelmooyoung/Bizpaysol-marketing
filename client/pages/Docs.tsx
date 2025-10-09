@@ -24,7 +24,7 @@ export default function Docs() {
               ))}
             </nav>
           </aside>
-          <div className="prose prose-slate max-w-none">
+          <div className="prose prose-slate max-w-none" id="quickstart">
             <h2 className="text-xl font-semibold">Developer Portal Overview</h2>
             <p className="mt-2 text-muted-foreground max-w-2xl">
               Integrate BizPay Solutions in minutes. Secure, NACHA‑compliant ACH with modern APIs, idempotency, and signed webhooks.
