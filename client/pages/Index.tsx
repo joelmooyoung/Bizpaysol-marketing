@@ -3,22 +3,24 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Hero } from "@/components/marketing/Hero";
 import { TrustBar } from "@/components/marketing/TrustBar";
-import { TestimonialsCarousel } from "@/components/marketing/TestimonialsCarousel";
+import { TestimonialsGrid } from "@/components/marketing/TestimonialsGrid";
 import { ComparisonTable } from "@/components/marketing/ComparisonTable";
 import { IntegrationsTeaser } from "@/components/marketing/IntegrationsTeaser";
 import { AchNoCodeDemo } from "@/components/marketing/AchNoCodeDemo";
-import { VideoTestimonials } from "@/components/marketing/VideoTestimonials";
+import { PricingPreview } from "@/components/marketing/PricingPreview";
+import { RoiCalculator } from "@/components/marketing/RoiCalculator";
 
 export default function Index() {
   return (
     <Layout>
       <Hero />
       <TrustBar />
+      <PricingPreview />
       {/* No-code ACH demo */}
       <AchNoCodeDemo />
 
-      <TestimonialsCarousel />
-      <VideoTestimonials />
+      <TestimonialsGrid />
+      <RoiCalculator />
       <ComparisonTable />
 
       <section className="border-t bg-white py-12">
