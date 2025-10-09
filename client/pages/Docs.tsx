@@ -28,18 +28,22 @@ export default function Docs() {
             <h2 className="text-xl font-semibold">5‑Minute Quickstart (TypeScript)</h2>
             <ol>
               <li>Create an API key in the dashboard.</li>
-              <li>Install SDK: <code>npm i @bizpaysol/sdk</code> (example package name)</li>
-              <li>Initialize client and create first customer:</li>
+              <li>Test with cURL (customers.create):</li>
             </ol>
-            <pre><code>{`import { BizPay } from "@bizpaysol/sdk";
-const client = new BizPay({ apiKey: process.env.BIZPAY_API_KEY! });
-
-await client.customers.create({
-  name: "Acme Inc",
-  email: "ap@acme.com",
-});`}</code></pre>
-
-            <p className="mt-4"><a href="#" className="text-primary">See full Quickstart →</a></p>
+            <pre><code>{`curl -X POST https://api.bizpaysol.com/v1/customers \
+  -H "Authorization: Bearer sk_test_123..." \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Acme Inc","email":"ap@acme.com"}'`}</code></pre>
+            <p className="mt-2">Or with fetch (Node 18+):</p>
+            <pre><code>{`const res = await fetch('https://api.bizpaysol.com/v1/customers', {
+  method: 'POST',
+  headers: {
+    Authorization: 'Bearer ' + process.env.BIZPAY_API_KEY,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ name: 'Acme Inc', email: 'ap@acme.com' })
+});
+const data = await res.json();`}</code></pre>
 
             <h2 className="text-xl font-semibold">Developer Portal Overview</h2>
             <p className="mt-2 text-muted-foreground max-w-2xl">
