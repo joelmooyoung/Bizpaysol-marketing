@@ -20,6 +20,20 @@ export default function Index() {
       <TestimonialsCarousel />
       <VideoTestimonials />
       <ComparisonTable />
+
+      <section className="border-t bg-white py-12">
+        <div className="container">
+          <h2 className="text-2xl font-bold tracking-tight">Comparisons</h2>
+          <p className="mt-2 text-sm text-muted-foreground">See why fintechs choose BizPay Solutions for ACH.</p>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-4 text-sm">
+            <li><Link to="/compare/stripe-ach" className="text-primary hover:underline">BizPay vs. Stripe ACH</Link></li>
+            <li><Link to="/compare/dwolla" className="text-primary hover:underline">BizPay vs. Dwolla</Link></li>
+            <li><Link to="/compare/modern-treasury" className="text-primary hover:underline">BizPay vs. Modern Treasury</Link></li>
+            <li><Link to="/compare/gocardless" className="text-primary hover:underline">BizPay vs. GoCardless</Link></li>
+          </ul>
+        </div>
+      </section>
+
       <IntegrationsTeaser />
 
       {/* CTA band */}
