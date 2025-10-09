@@ -30,7 +30,8 @@ export function Hero() {
             Cut payment costs and churn—speed up settlement with ACH.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Switch to our industry‑leading ACH platform to lower fees, recover revenue lost to card declines, and accelerate cash flow.
+            Switch to our industry‑leading ACH platform to lower fees, recover
+            revenue lost to card declines, and accelerate cash flow.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="px-6">
@@ -41,13 +42,17 @@ export function Hero() {
             </Button>
           </div>
           <div className="mt-4 text-xs text-muted-foreground">
-            SOC 2 Type II • ISO 27001 • GDPR • TLS 1.2+ • Encryption in transit and at rest
+            SOC 2 Type II • ISO 27001 • GDPR • TLS 1.2+ • Encryption in transit
+            and at rest
           </div>
         </div>
         <div className="space-y-4">
           <InteractiveDemo />
           {(import.meta.env.VITE_FOUNDER_VIDEO_URL as string | undefined) ? (
-            <VideoEmbed url={import.meta.env.VITE_FOUNDER_VIDEO_URL as string} title="Founder walkthrough" />
+            <VideoEmbed
+              url={import.meta.env.VITE_FOUNDER_VIDEO_URL as string}
+              title="Founder walkthrough"
+            />
           ) : null}
         </div>
       </div>

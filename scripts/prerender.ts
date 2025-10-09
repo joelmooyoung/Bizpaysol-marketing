@@ -1,9 +1,11 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
+import fs from "node:fs/promises";
+import path from "node:path";
+import React from "react";
+import { renderToString } from "react-dom/server";
 
-async function loadPage(modulePath: string): Promise<React.FC | (() => JSX.Element)> {
+async function loadPage(
+  modulePath: string,
+): Promise<React.FC | (() => JSX.Element)> {
   const mod = await import(modulePath);
   return (mod.default ?? mod) as any;
 }
@@ -15,7 +17,10 @@ async function renderPageToHtml(Component: any) {
 }
 
 async function injectIntoTemplate(template: string, ssr: string) {
-  return template.replace('<div id="root"></div>', `<div id="root">${ssr}</div>`);
+  return template.replace(
+    '<div id="root"></div>',
+    `<div id="root">${ssr}</div>`,
+  );
 }
 
 async function ensureDir(p: string) {
@@ -24,24 +29,27 @@ async function ensureDir(p: string) {
 
 async function main() {
   const projectRoot = path.resolve(process.cwd());
-  const distSpa = path.join(projectRoot, 'dist', 'spa');
-  const templatePath = path.join(distSpa, 'index.html');
+  const distSpa = path.join(projectRoot, "dist", "spa");
+  const templatePath = path.join(distSpa, "index.html");
 
-  let template = await fs.readFile(templatePath, 'utf8');
+  let template = await fs.readFile(templatePath, "utf8");
 
   const routes: { route: string; module: string }[] = [
-    { route: '/', module: '@/pages/Index.tsx' },
-    { route: '/product', module: '@/pages/Product.tsx' },
-    { route: '/pricing', module: '@/pages/Pricing.tsx' },
-    { route: '/docs', module: '@/pages/Docs.tsx' },
-    { route: '/support', module: '@/pages/Support.tsx' },
-    { route: '/about', module: '@/pages/About.tsx' },
-    { route: '/case-studies', module: '@/pages/CaseStudies.tsx' },
-    { route: '/security', module: '@/pages/Security.tsx' },
-    { route: '/compare/stripe-ach', module: '@/pages/compare/StripeACH.tsx' },
-    { route: '/compare/dwolla', module: '@/pages/compare/Dwolla.tsx' },
-    { route: '/compare/modern-treasury', module: '@/pages/compare/ModernTreasury.tsx' },
-    { route: '/compare/gocardless', module: '@/pages/compare/GoCardless.tsx' },
+    { route: "/", module: "@/pages/Index.tsx" },
+    { route: "/product", module: "@/pages/Product.tsx" },
+    { route: "/pricing", module: "@/pages/Pricing.tsx" },
+    { route: "/docs", module: "@/pages/Docs.tsx" },
+    { route: "/support", module: "@/pages/Support.tsx" },
+    { route: "/about", module: "@/pages/About.tsx" },
+    { route: "/case-studies", module: "@/pages/CaseStudies.tsx" },
+    { route: "/security", module: "@/pages/Security.tsx" },
+    { route: "/compare/stripe-ach", module: "@/pages/compare/StripeACH.tsx" },
+    { route: "/compare/dwolla", module: "@/pages/compare/Dwolla.tsx" },
+    {
+      route: "/compare/modern-treasury",
+      module: "@/pages/compare/ModernTreasury.tsx",
+    },
+    { route: "/compare/gocardless", module: "@/pages/compare/GoCardless.tsx" },
   ];
 
   for (const { route, module } of routes) {
@@ -49,13 +57,13 @@ async function main() {
     const ssr = await renderPageToHtml(Component);
     const html = await injectIntoTemplate(template, ssr);
 
-    if (route === '/') {
+    if (route === "/") {
       // Overwrite root index with SSR content
-      await fs.writeFile(templatePath, html, 'utf8');
+      await fs.writeFile(templatePath, html, "utf8");
     } else {
       const outDir = path.join(distSpa, route);
       await ensureDir(outDir);
-      await fs.writeFile(path.join(outDir, 'index.html'), html, 'utf8');
+      await fs.writeFile(path.join(outDir, "index.html"), html, "utf8");
     }
   }
 
@@ -63,6 +71,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error('[ssg] Failed:', err);
+  console.error("[ssg] Failed:", err);
   process.exit(1);
 });
