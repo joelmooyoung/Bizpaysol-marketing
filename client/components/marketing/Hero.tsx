@@ -27,20 +27,17 @@ export function Hero() {
             BizPay Solutions · NACHA‑Compliant ACH
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Move B2B Money Smarter with Bank‑to‑Bank ACH
+            The ACH API That Stops Card Decline Revenue Loss
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            BizPay Solutions helps finance teams lower costs, accelerate cash flow, and de‑risk payments with NACHA‑compliant ACH rails, real‑time bank verification, and developer‑friendly APIs.
+            Integrate our high‑availability, TypeScript‑powered ACH platform to cut payment fees by 80% and reduce recurring billing failures.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="px-6">
-              <Link to="/support#contact">Request a Live Demo</Link>
+              <Link to="/support#contact">Request Enterprise Demo</Link>
             </Button>
             <Button asChild variant="outline" className="px-6">
-              <a href="mailto:sales@bizpaysol.com">Talk to Sales</a>
-            </Button>
-            <Button asChild variant="ghost" className="px-6">
-              <Link to="/pricing">Start Onboarding</Link>
+              <Link to="/docs">View API Documentation →</Link>
             </Button>
           </div>
           <div className="mt-4 text-xs text-muted-foreground">
