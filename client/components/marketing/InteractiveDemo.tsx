@@ -33,12 +33,28 @@ export function InteractiveDemo() {
     return () => clearInterval(t);
   }, []);
 
+  const images = [
+    { url: "https://images.pexels.com/photos/8833426/pexels-photo-8833426.jpeg", alt: "API key setup on a device" },
+    { url: "https://images.pexels.com/photos/29221981/pexels-photo-29221981.jpeg", alt: "Customer profile creation" },
+    { url: "https://images.pexels.com/photos/8830896/pexels-photo-8830896.jpeg", alt: "Bank transfer initiated" },
+    { url: "https://images.pexels.com/photos/9710060/pexels-photo-9710060.jpeg", alt: "Launch to production" },
+  ];
+
   return (
     <div className="rounded-xl border bg-white p-6 shadow-xl">
       <div className="mb-4 flex items-center gap-2 text-xs text-muted-foreground">
         <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" /> Live demo
       </div>
-      <div className="grid gap-3">
+      <div className="grid gap-4">
+        <div className="overflow-hidden rounded-lg border bg-slate-50">
+          <img
+            src={images[index % images.length].url}
+            alt={images[index % images.length].alt}
+            loading="lazy"
+            className="h-44 w-full object-cover transition-opacity duration-500"
+          />
+        </div>
+
         <div className="flex items-center gap-3">
           <current.icon className="h-6 w-6 text-primary" />
           <div>
