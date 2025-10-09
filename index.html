@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BizPay Solutions – NACHA‑Compliant B2B ACH Payment Processor</title>
+    <title>BizPay Solutions – NACHA���Compliant B2B ACH Payment Processor</title>
     <meta
       name="description"
       content="BizPay Solutions helps finance teams lower costs, accelerate cash flow, and de‑risk B2B payments with NACHA‑compliant ACH rails, real‑time bank verification, and developer‑friendly APIs."
@@ -96,5 +96,63 @@
     <div id="root"></div>
 
     <script type="module" src="/client/App.tsx"></script>
+
+    <!-- Lightweight live chat widget -->
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
+      <button
+        onclick="toggleChat()"
+        id="chat-toggle"
+        class="h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
+        aria-label="Open chat"
+        aria-expanded="false"
+        aria-controls="chat-window"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+      </button>
+
+      <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 h-96 bg-white rounded-lg shadow-2xl border">
+        <div class="bg-primary text-primary-foreground p-4 rounded-t-lg flex justify-between items-center">
+          <div>
+            <div class="font-semibold">Chat with us</div>
+            <div class="text-xs opacity-90">We typically reply in minutes</div>
+          </div>
+          <button onclick="toggleChat()" class="text-primary-foreground hover:opacity-80" aria-label="Close chat">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="p-4 h-64 overflow-y-auto text-sm">
+          <p class="mb-2">How can we help?</p>
+          <ul class="list-disc pl-5 space-y-1 text-muted-foreground">
+            <li>Questions about pricing or onboarding</li>
+            <li>Technical support for developers</li>
+            <li>Security, compliance, or enterprise needs</li>
+          </ul>
+          <div class="mt-4 space-y-2">
+            <a href="/support#contact" class="inline-flex items-center justify-center h-9 px-4 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full">Contact Form</a>
+            <a href="mailto:support@bizpaysol.com" class="inline-flex items-center justify-center h-9 px-4 rounded-md border border-input hover:bg-accent w-full">Email support@bizpaysol.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleChat() {
+        var el = document.getElementById('chat-window');
+        var btn = document.getElementById('chat-toggle');
+        if (!el || !btn) return;
+        var hidden = el.classList.contains('hidden');
+        if (hidden) {
+          el.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          el.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    </script>
   </body>
 </html>
