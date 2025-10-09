@@ -27,9 +27,9 @@ export default function Pricing() {
           <p className="mt-3 max-w-2xl text-muted-foreground">
             ACH-first plans for builders. Estimate savings and migrate in minutes.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg"><a href="/support#contact">Get Started</a></Button>
-            <Button asChild size="lg" variant="outline"><a href="mailto:sales@bizpaysol.com">Contact Sales</a></Button>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button asChild size="lg"><a href="/support#contact">Request Enterprise Demo</a></Button>
+            <Button asChild size="lg" variant="outline"><a href="/docs">View API Documentation →</a></Button>
             <MigrationImport />
           </div>
 
