@@ -16,6 +16,10 @@ import About from "./pages/About";
 import CaseStudies from "./pages/CaseStudies";
 import Security from "./pages/Security";
 import { Terms, Privacy } from "./pages/Legal";
+import StripeACH from "./pages/compare/StripeACH";
+import Dwolla from "./pages/compare/Dwolla";
+import ModernTreasury from "./pages/compare/ModernTreasury";
+import GoCardless from "./pages/compare/GoCardless";
 
 const queryClient = new QueryClient();
 
