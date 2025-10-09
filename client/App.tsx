@@ -40,6 +40,10 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/security" element={<Security />} />
+          <Route path="/compare/stripe-ach" element={<StripeACH />} />
+          <Route path="/compare/dwolla" element={<Dwolla />} />
+          <Route path="/compare/modern-treasury" element={<ModernTreasury />} />
+          <Route path="/compare/gocardless" element={<GoCardless />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
