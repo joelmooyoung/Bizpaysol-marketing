@@ -25,6 +25,22 @@ export default function Docs() {
             </nav>
           </aside>
           <div className="prose prose-slate max-w-none" id="quickstart">
+            <h2 className="text-xl font-semibold">5‑Minute Quickstart (TypeScript)</h2>
+            <ol>
+              <li>Create an API key in the dashboard.</li>
+              <li>Install SDK: <code>npm i @bizpaysol/sdk</code> (example package name)</li>
+              <li>Initialize client and create first customer:</li>
+            </ol>
+            <pre><code>{`import { BizPay } from "@bizpaysol/sdk";
+const client = new BizPay({ apiKey: process.env.BIZPAY_API_KEY! });
+
+await client.customers.create({
+  name: "Acme Inc",
+  email: "ap@acme.com",
+});`}</code></pre>
+
+            <p className="mt-4"><a href="#" className="text-primary">See full Quickstart →</a></p>
+
             <h2 className="text-xl font-semibold">Developer Portal Overview</h2>
             <p className="mt-2 text-muted-foreground max-w-2xl">
               Integrate BizPay Solutions in minutes. Secure, NACHA‑compliant ACH with modern APIs, idempotency, and signed webhooks.
