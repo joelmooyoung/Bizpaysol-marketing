@@ -27,10 +27,10 @@ export function Hero() {
             BizPay Solutions · NACHA‑Compliant ACH
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            The ACH API That Stops Card Decline Revenue Loss
+            Eliminate Card Decline Revenue Loss with Seamless ACH
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Integrate our high‑availability, TypeScript‑powered ACH platform to cut payment fees by 80% and reduce recurring billing failures.
+            Leverage our industry-leading ACH platform to cut payment fees by 80% and reduce recurring billing failures.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="px-6">
