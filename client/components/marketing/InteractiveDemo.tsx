@@ -34,16 +34,29 @@ export function InteractiveDemo() {
   }, []);
 
   const images = [
-    { url: "https://images.pexels.com/photos/8833426/pexels-photo-8833426.jpeg", alt: "API key setup on a device" },
-    { url: "https://images.pexels.com/photos/29221981/pexels-photo-29221981.jpeg", alt: "Customer profile creation" },
-    { url: "https://images.pexels.com/photos/8830896/pexels-photo-8830896.jpeg", alt: "Bank transfer initiated" },
-    { url: "https://images.pexels.com/photos/9710060/pexels-photo-9710060.jpeg", alt: "Launch to production" },
+    {
+      url: "https://images.pexels.com/photos/8833426/pexels-photo-8833426.jpeg",
+      alt: "API key setup on a device",
+    },
+    {
+      url: "https://images.pexels.com/photos/29221981/pexels-photo-29221981.jpeg",
+      alt: "Customer profile creation",
+    },
+    {
+      url: "https://images.pexels.com/photos/8830896/pexels-photo-8830896.jpeg",
+      alt: "Bank transfer initiated",
+    },
+    {
+      url: "https://images.pexels.com/photos/9710060/pexels-photo-9710060.jpeg",
+      alt: "Launch to production",
+    },
   ];
 
   return (
     <div className="rounded-xl border bg-white p-6 shadow-xl">
       <div className="mb-4 flex items-center gap-2 text-xs text-muted-foreground">
-        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" /> Live demo
+        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />{" "}
+        Live demo
       </div>
       <div className="grid gap-4">
         <div className="overflow-hidden rounded-lg border bg-slate-50">
@@ -65,7 +78,9 @@ export function InteractiveDemo() {
         <div className="mt-2 h-2 w-full rounded bg-slate-100">
           <div
             className="h-2 rounded bg-primary transition-all"
-            style={{ width: `${((index % steps.length) + 1) * (100 / steps.length)}%` }}
+            style={{
+              width: `${((index % steps.length) + 1) * (100 / steps.length)}%`,
+            }}
           />
         </div>
         <div className="mt-2 grid grid-cols-4 gap-2 text-center text-xs">
