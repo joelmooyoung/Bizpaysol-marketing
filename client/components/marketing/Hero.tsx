@@ -24,7 +24,7 @@ export function Hero() {
       <div className="container grid items-center gap-8 py-16 md:grid-cols-2 md:py-24">
         <div>
           <p className="mb-2 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
-            BizPay Solutions · NACHA‑Compliant ACH
+            Part of the ACH Network · Full ACH Service
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
             Cut payment costs and churn—speed up settlement with ACH.
