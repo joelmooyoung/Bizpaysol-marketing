@@ -207,12 +207,14 @@
         }
       }
       // Fallback: if Crisp widget does not load, show our button
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var crispLoaded = !!document.querySelector('[id^="crisp-"], .crisp-client');
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var crispLoaded = !!document.querySelector(
+            '[id^="crisp-"], .crisp-client',
+          );
           if (!crispLoaded) {
-            var widget = document.getElementById('chat-widget');
-            if (widget) widget.classList.remove('hidden');
+            var widget = document.getElementById("chat-widget");
+            if (widget) widget.classList.remove("hidden");
           }
         }, 3500);
       });
