@@ -29,7 +29,7 @@ export function InteractiveDemo() {
   const current = useMemo(() => steps[index % steps.length], [index]);
 
   useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % steps.length), 3500);
+    const t = setInterval(() => setIndex((i) => (i + 1) % steps.length), 7000);
     return () => clearInterval(t);
   }, []);
 
@@ -59,12 +59,12 @@ export function InteractiveDemo() {
         Live demo
       </div>
       <div className="grid gap-4">
-        <div className="overflow-hidden rounded-lg border bg-slate-50">
+        <div className="overflow-hidden rounded-lg border bg-white aspect-square">
           <img
             src={images[index % images.length].url}
             alt={images[index % images.length].alt}
             loading="lazy"
-            className="h-44 w-full object-cover transition-opacity duration-500"
+            className="h-full w-full object-contain"
           />
         </div>
 
