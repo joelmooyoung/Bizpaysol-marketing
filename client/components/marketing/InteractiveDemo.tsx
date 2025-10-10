@@ -43,12 +43,12 @@ export function InteractiveDemo() {
       alt: "Customer profile creation",
     },
     {
-      url: "https://images.pexels.com/photos/8817668/pexels-photo-8817668.jpeg",
-      alt: "Bank-to-bank ACH transfer concept (debit/credit)",
+      url: "https://images.pexels.com/photos/8833420/pexels-photo-8833420.jpeg",
+      alt: "Electronic ACH transfer in mobile banking app",
     },
     {
-      url: "https://images.pexels.com/photos/9710060/pexels-photo-9710060.jpeg",
-      alt: "Fast success rocket launch",
+      url: "https://images.pexels.com/photos/16632180/pexels-photo-16632180.jpeg",
+      alt: "Bullet train speed — fast success",
     },
   ];
 
