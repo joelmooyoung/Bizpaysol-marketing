@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      BizPay Solutions – NACHA���Compliant B2B ACH Payment Processor
+      BizPay Solutions – NACHA�����Compliant B2B ACH Payment Processor
     </title>
     <meta
       name="description"
@@ -206,6 +206,16 @@
           btn.setAttribute("aria-expanded", "false");
         }
       }
+      // Fallback: if Crisp widget does not load, show our button
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var crispLoaded = !!document.querySelector('[id^="crisp-"], .crisp-client');
+          if (!crispLoaded) {
+            var widget = document.getElementById('chat-widget');
+            if (widget) widget.classList.remove('hidden');
+          }
+        }, 3500);
+      });
     </script>
   </body>
 </html>
