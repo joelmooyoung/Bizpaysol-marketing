@@ -43,8 +43,8 @@ export function InteractiveDemo() {
       alt: "Customer profile creation",
     },
     {
-      url: "https://images.pexels.com/photos/8833420/pexels-photo-8833420.jpeg",
-      alt: "Electronic ACH transfer in mobile banking app",
+      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2F11fe6c62adbf4b3f9f91232e3cb1e53d?format=webp&width=800",
+      alt: "Customer's first ACH transaction",
     },
     {
       url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fd5c1b4dd360f403485885132f5616e8a?format=webp&width=800",
