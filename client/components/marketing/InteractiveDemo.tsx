@@ -3,14 +3,14 @@ import { CheckCircle2, CreditCard, Users, Workflow } from "lucide-react";
 
 const steps = [
   {
-    icon: Workflow,
-    title: "Create API Key",
-    desc: "Spin up in seconds with test credentials.",
-  },
-  {
     icon: Users,
     title: "Create Customer",
     desc: "Tokenize bank accounts with Plaid/route & account.",
+  },
+  {
+    icon: Workflow,
+    title: "Create API Key",
+    desc: "Spin up in seconds with test credentials.",
   },
   {
     icon: CreditCard,
@@ -35,12 +35,12 @@ export function InteractiveDemo() {
 
   const images = [
     {
-      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fff4c7749a9c74bcbab65e20a854c5547?format=webp&width=800",
-      alt: "Obtaining a security key for transmission",
-    },
-    {
       url: "https://images.pexels.com/photos/29221981/pexels-photo-29221981.jpeg",
       alt: "Customer profile creation",
+    },
+    {
+      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fff4c7749a9c74bcbab65e20a854c5547?format=webp&width=800",
+      alt: "Obtaining a security key for transmission",
     },
     {
       url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2F11fe6c62adbf4b3f9f91232e3cb1e53d?format=webp&width=800",
