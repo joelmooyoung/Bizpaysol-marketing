@@ -47,8 +47,8 @@ export function InteractiveDemo() {
       alt: "Electronic ACH transfer in mobile banking app",
     },
     {
-      url: "https://images.pexels.com/photos/16632180/pexels-photo-16632180.jpeg",
-      alt: "Bullet train speed — fast success",
+      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fd5c1b4dd360f403485885132f5616e8a?format=webp&width=800",
+      alt: "Fast setup and successful transmission – ACH success",
     },
   ];
 
