@@ -35,8 +35,8 @@ export function InteractiveDemo() {
 
   const images = [
     {
-      url: "https://images.pexels.com/photos/8833426/pexels-photo-8833426.jpeg",
-      alt: "API key setup on a device",
+      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fff4c7749a9c74bcbab65e20a854c5547?format=webp&width=800",
+      alt: "Obtaining a security key for transmission",
     },
     {
       url: "https://images.pexels.com/photos/29221981/pexels-photo-29221981.jpeg",
