@@ -4,8 +4,8 @@ import { CheckCircle2, CreditCard, Users, Workflow } from "lucide-react";
 const steps = [
   {
     icon: Users,
-    title: "Create Customer",
-    desc: "Tokenize bank accounts with Plaid/route & account.",
+    title: "The ACH Network",
+    desc: "Full ACH service.",
   },
   {
     icon: Workflow,
