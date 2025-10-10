@@ -43,12 +43,12 @@ export function InteractiveDemo() {
       alt: "Customer profile creation",
     },
     {
-      url: "https://images.pexels.com/photos/8830896/pexels-photo-8830896.jpeg",
-      alt: "Bank transfer initiated",
+      url: "https://images.pexels.com/photos/8817668/pexels-photo-8817668.jpeg",
+      alt: "Bank-to-bank ACH transfer concept (debit/credit)",
     },
     {
       url: "https://images.pexels.com/photos/9710060/pexels-photo-9710060.jpeg",
-      alt: "Launch to production",
+      alt: "Fast success rocket launch",
     },
   ];
 
