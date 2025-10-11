@@ -27,7 +27,7 @@ export function Hero() {
             Part of the ACH Network · Full ACH Service
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Cut payment costs and churn—speed up settlement with ACH.
+            The API-First ACH Platform Built for Enterprise Security and Scale. SOC 2 Type II Verified.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
             Switch to our industry‑leading ACH platform to lower fees, recover
