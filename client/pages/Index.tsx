@@ -14,6 +14,7 @@ export default function Index() {
   return (
     <Layout>
       <Hero />
+      <JourneyRoadmap />
       <TrustBar />
       <PricingPreview />
       {/* No-code ACH demo */}
