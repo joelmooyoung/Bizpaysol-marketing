@@ -9,6 +9,7 @@ import { IntegrationsTeaser } from "@/components/marketing/IntegrationsTeaser";
 import { AchNoCodeDemo } from "@/components/marketing/AchNoCodeDemo";
 import { PricingPreview } from "@/components/marketing/PricingPreview";
 import { RoiCalculator } from "@/components/marketing/RoiCalculator";
+import { JourneyRoadmap } from "@/components/marketing/JourneyRoadmap";
 
 export default function Index() {
   return (
