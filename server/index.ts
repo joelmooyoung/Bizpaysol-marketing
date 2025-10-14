@@ -24,7 +24,7 @@ export function createServer() {
     );
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https:; frame-src 'self'; object-src 'none'",
+      "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://app.chatwoot.com; style-src 'self' https://app.chatwoot.com; img-src 'self' data: blob: https:; font-src 'self' data: https://app.chatwoot.com; connect-src 'self' https: wss: https://app.chatwoot.com wss://app.chatwoot.com; frame-src 'self' https://app.chatwoot.com; object-src 'none'",
     );
     next();
   });
