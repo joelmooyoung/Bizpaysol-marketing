@@ -20,6 +20,7 @@ import StripeACH from "./pages/compare/StripeACH";
 import Dwolla from "./pages/compare/Dwolla";
 import ModernTreasury from "./pages/compare/ModernTreasury";
 import GoCardless from "./pages/compare/GoCardless";
+import AdminIngest from "./pages/AdminIngest";
 
 const queryClient = new QueryClient();
 
