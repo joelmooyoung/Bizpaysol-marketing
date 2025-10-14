@@ -77,13 +77,27 @@ In summary, morning batches (standard or same-day) focus on overnight/next-morni
         const res = await fetch("/.netlify/functions/rag?action=ingest", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ texts: [
-            { title: "ACH vs Wires vs Cards", url: "/docs/ach-wire-card", content: TEXT1 },
-            { title: "ACH Settlement", url: "/docs/ach-settlement", content: TEXT2 }
-          ] }),
+          body: JSON.stringify({
+            texts: [
+              {
+                title: "ACH vs Wires vs Cards",
+                url: "/docs/ach-wire-card",
+                content: TEXT1,
+              },
+              {
+                title: "ACH Settlement",
+                url: "/docs/ach-settlement",
+                content: TEXT2,
+              },
+            ],
+          }),
         });
         const data = await res.json();
-        setStatus(res.ok ? `Done (inserted ${data?.inserted ?? 0})` : `Error: ${JSON.stringify(data)}`);
+        setStatus(
+          res.ok
+            ? `Done (inserted ${data?.inserted ?? 0})`
+            : `Error: ${JSON.stringify(data)}`,
+        );
       } catch (e: any) {
         setStatus(`Error: ${e.message}`);
       }
@@ -97,8 +111,12 @@ In summary, morning batches (standard or same-day) focus on overnight/next-morni
         <h1 className="text-2xl font-semibold">Admin: Ingest Text</h1>
         <p className="mt-2 text-sm text-muted-foreground">Status: {status}</p>
         <h2 className="mt-8 text-lg font-semibold">Preview</h2>
-        <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">{TEXT1}</pre>
-        <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">{TEXT2}</pre>
+        <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
+          {TEXT1}
+        </pre>
+        <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
+          {TEXT2}
+        </pre>
       </div>
     </Layout>
   );
