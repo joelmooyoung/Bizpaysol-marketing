@@ -45,6 +45,7 @@ const App = () => (
           <Route path="/compare/dwolla" element={<Dwolla />} />
           <Route path="/compare/modern-treasury" element={<ModernTreasury />} />
           <Route path="/compare/gocardless" element={<GoCardless />} />
+          <Route path="/admin/ingest" element={<AdminIngest />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
