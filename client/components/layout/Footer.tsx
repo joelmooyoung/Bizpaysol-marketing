@@ -13,7 +13,7 @@ export function Footer() {
             BizPaySol
           </div>
           <p className="text-xs font-medium text-muted-foreground">
-            Powered by Enterprise Payment Technology
+            Powered by Enterprise Payment Technologies
           </p>
           <p className="text-sm text-muted-foreground max-w-xs">
             Enterprise ACH by BizPaySol — a cloud-based ACH platform and API for
