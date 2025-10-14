@@ -35,8 +35,8 @@ export function InteractiveDemo() {
 
   const images = [
     {
-      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2F9727d0530852423b86b089d548d5507c?format=webp&width=800",
-      alt: "The ACH Network – Automated Clearing House",
+      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fd68fdb1a85f344cd971416c9a87244dc?format=webp&width=800",
+      alt: "ACH Network visualization",
     },
     {
       url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fd68fdb1a85f344cd971416c9a87244dc?format=webp&width=800",
