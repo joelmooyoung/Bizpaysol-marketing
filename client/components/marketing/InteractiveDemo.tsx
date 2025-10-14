@@ -39,8 +39,8 @@ export function InteractiveDemo() {
       alt: "The ACH Network – Automated Clearing House",
     },
     {
-      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fd68fdb1a85f344cd971416c9a87244dc?format=webp&width=800",
-      alt: "ACH Network visualization",
+      url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2Fa14ff1af57ed44fe81167db9956504e0?format=webp&width=800",
+      alt: "Obtaining a security key for transmission diagram",
     },
     {
       url: "https://cdn.builder.io/api/v1/image/assets%2F9a930541b2654097be9377fff1612aa0%2F11fe6c62adbf4b3f9f91232e3cb1e53d?format=webp&width=800",
