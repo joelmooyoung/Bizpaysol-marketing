@@ -76,17 +76,6 @@
         "url": "https://www.bizpaysol.com/"
       }
     </script>
-    <script type="text/javascript">
-      window.$crisp = [];
-      window.CRISP_WEBSITE_ID = "f063895e-5378-4941-8419-555924440446";
-      (function () {
-        d = document;
-        s = d.createElement("script");
-        s.src = "https://client.crisp.chat/l.js";
-        s.async = 1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-      })();
-    </script>
   </head>
 
   <body>
@@ -111,9 +100,8 @@
     <script type="module" src="/client/App.tsx"></script>
 
     <!-- Lightweight live chat widget -->
-    <div id="chat-widget" class="fixed bottom-6 right-6 z-50 hidden">
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
       <button
-        onclick="toggleChat()"
         id="chat-toggle"
         class="h-10 rounded-full px-4 bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
         aria-label="Open chat"
@@ -150,9 +138,9 @@
             <div class="text-xs opacity-90">We typically reply in minutes</div>
           </div>
           <button
-            onclick="toggleChat()"
             class="text-primary-foreground hover:opacity-80"
             aria-label="Close chat"
+            id="chat-close"
           >
             <svg
               class="h-5 w-5"
@@ -192,32 +180,6 @@
       </div>
     </div>
 
-    <script>
-      function toggleChat() {
-        var el = document.getElementById("chat-window");
-        var btn = document.getElementById("chat-toggle");
-        if (!el || !btn) return;
-        var hidden = el.classList.contains("hidden");
-        if (hidden) {
-          el.classList.remove("hidden");
-          btn.setAttribute("aria-expanded", "true");
-        } else {
-          el.classList.add("hidden");
-          btn.setAttribute("aria-expanded", "false");
-        }
-      }
-      // Fallback: if Crisp widget does not load, show our button
-      window.addEventListener("load", function () {
-        setTimeout(function () {
-          var crispLoaded = !!document.querySelector(
-            '[id^="crisp-"], .crisp-client',
-          );
-          if (!crispLoaded) {
-            var widget = document.getElementById("chat-widget");
-            if (widget) widget.classList.remove("hidden");
-          }
-        }, 3500);
-      });
-    </script>
+    <script type="module" src="/client/chat-widget.ts"></script>
   </body>
 </html>
