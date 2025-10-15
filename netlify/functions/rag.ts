@@ -192,11 +192,25 @@ export const handler = async (event: any) => {
 
     if (action === "ingest") {
       const ADMIN_TOKEN = process.env.ADMIN_INGEST_TOKEN;
-      if (ADMIN_TOKEN) {
-        const hdrs = event.headers || {};
-        const auth = (hdrs.authorization || hdrs.Authorization || hdrs["x-admin-token"]) as string | undefined;
-        const provided = auth?.startsWith("Bearer ") ? auth.slice(7) : auth;
-        if (!provided || provided !== ADMIN_TOKEN) return json(401, { error: "unauthorized" });
+      const ADMIN_IPS = (process.env.ADMIN_INGEST_IPS || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+
+      const hdrs = event.headers || {};
+      const fwdFor = (hdrs["x-forwarded-for"] || hdrs["X-Forwarded-For"] || "") as string;
+      const clientIp = (hdrs["x-nf-client-connection-ip"] || hdrs["client-ip"] || hdrs["x-real-ip"] || fwdFor.split(",")[0] || "").toString().trim();
+
+      const auth = (hdrs.authorization || hdrs.Authorization || hdrs["x-admin-token"]) as string | undefined;
+      const provided = auth?.startsWith("Bearer ") ? auth.slice(7) : auth;
+
+      const tokenOk = !!ADMIN_TOKEN && provided === ADMIN_TOKEN;
+      const ipOk = ADMIN_IPS.length ? ADMIN_IPS.includes(clientIp) : false;
+
+      if (ADMIN_TOKEN || ADMIN_IPS.length) {
+        if (!(tokenOk || ipOk)) {
+          return json(401, { error: "unauthorized" });
+        }
       }
 
       const items: { url?: string; title?: string; content: string }[] = [];
