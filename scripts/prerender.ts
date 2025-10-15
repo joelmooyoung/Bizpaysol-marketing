@@ -83,7 +83,7 @@ async function main() {
   for (const { route, module } of routes) {
     const Component = await loadPage(module);
     const ssr = await renderPageToHtml(Component);
-    const html = await injectIntoTemplate(template, ssr);
+    const html = await injectIntoTemplate(template, ssr, route);
 
     if (route === "/") {
       // Overwrite root index with SSR content
