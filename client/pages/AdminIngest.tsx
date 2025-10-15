@@ -72,7 +72,7 @@ In summary, morning batches (standard or same-day) focus on overnight/next-morni
 const JOEL_RESOURCES_TEXT = `Here are several high-quality resources (with URLs) on the topics you asked about. You can use them for reading, citing, or further research.
 
 General & ACH Network / How ACH Works
-1. What Is the Automated Clearing House (ACH), and How Does It Work? — Investopedia
+1. What Is the Automated Clearing House (ACH), and How Does It Work? ��� Investopedia
 https://www.investopedia.com/terms/a/ach.asp
 2. The ABCs of ACH — Nacha
 https://www.nacha.org/content/abcs-ach
@@ -155,6 +155,75 @@ const JOEL_URLS: string[] = [
   "https://www.aba.com/banking-topics/technology/cybersecurity/protecting-customers",
   "https://www.uschamber.com/co/run/finance/secure-payment-systems-guide",
 ];
+
+const JOEL_NEUTRAL_SUMMARY = `Here’s a neutral, vendor-free summary that covers the ACH network, transaction types, settlement timing, and website security for financial transactions — written in plain, factual language:
+
+⸻
+
+1. The ACH Network – Concept and Overview
+The Automated Clearing House (ACH) network is a nationwide electronic payment system that moves funds between banks in the United States. It is operated by two main entities: the Federal Reserve and The Clearing House. ACH transactions are batch-processed and settle at specific times each business day.
+
+The network allows individuals, businesses, and government agencies to send and receive payments such as direct deposits, bill payments, tax refunds, and vendor disbursements. Instead of relying on paper checks, the ACH system transmits payment instructions securely between financial institutions.
+
+Key characteristics:
+• Operates as a batch clearing system, not real-time.
+• Used for both credits (pushing funds to another account) and debits (pulling funds from another account).
+• Governed by NACHA operating rules, which set security, timing, and error-handling standards.
+• Common for payroll, utility payments, insurance premiums, and B2B transfers.
+
+⸻
+
+2. Types of ACH Transactions
+ACH payments fall into two broad categories:
+• ACH Credit – The sender’s bank pushes funds to the receiver’s bank. Example: an employer sends payroll deposits to employees.
+• ACH Debit – The receiver’s bank pulls funds from the payer’s account. Example: a business pulls funds to collect a customer’s monthly bill.
+
+Transactions are further classified by Standard Entry Class (SEC) codes, which describe how authorization was obtained and what type of accounts are involved. Examples include:
+• PPD – Prearranged Payment and Deposit (consumer transactions like payroll or bill payments)
+• CCD – Corporate Credit or Debit (business-to-business payments)
+• WEB – Internet-initiated entries
+• TEL – Telephone-initiated entries
+• ARC / BOC / POP – Check conversion entries
+• CTX – Corporate Trade Exchange (large, structured data for business use)
+
+Each code determines what authorization is required and how disputes are handled.
+
+⸻
+
+3. Settlement and Processing Time
+ACH transactions are not instantaneous; they move through a defined cycle:
+1. Initiation – A payment instruction is sent to the originating bank.
+2. Batching – Transactions are grouped and submitted to the ACH operator (Federal Reserve or The Clearing House).
+3. Clearing and Settlement – Funds are transferred between banks, and accounts are updated.
+
+Traditional ACH payments typically settle within one to three business days, depending on when they are submitted and the receiving bank’s posting schedule.
+• Same-Day ACH allows certain transactions to settle within hours.
+• Most modern ACH payments clear in one business day or less due to extended settlement windows.
+
+Weekends and holidays do not count toward processing time, and cutoff times vary between institutions.
+
+⸻
+
+4. Security and Website Practices for Financial Transactions
+Because ACH transactions involve sensitive financial data, maintaining strong security practices is essential. Key measures include:
+• Encryption: Use secure, encrypted connections (HTTPS/TLS) for all data transmission.
+• Authentication: Require multi-factor authentication for system and user logins.
+• Data protection: Store account information in encrypted form and limit access to authorized personnel only.
+• Monitoring: Implement continuous monitoring for unusual or unauthorized activity.
+• Regular updates: Keep software and servers patched and up to date to prevent known vulnerabilities.
+• User education: Inform users and staff about phishing, social engineering, and password security.
+• Compliance: Follow relevant standards such as NACHA Operating Rules, PCI DSS, and U.S. federal data protection laws.
+
+Banks and processors also use digital certificates, tokenization, and secure APIs to safeguard transactions end to end.
+
+⸻
+
+5. Summary
+• The ACH network enables electronic fund transfers across U.S. banks through batch processing.
+• ACH credits push money; ACH debits pull it.
+• Different SEC codes govern authorization methods.
+• Settlement normally takes one business day; same-day options exist.
+• Security relies on encryption, authentication, and strict data-handling controls.`;
 
 export default function AdminIngest() {
   const [status, setStatus] = useState<string>("Idle");
@@ -350,6 +419,22 @@ export default function AdminIngest() {
               }
             >
               Ingest ACH Resources (Joel)
+            </button>
+            <button
+              className="rounded-md bg-secondary px-4 py-2"
+              onClick={() =>
+                ingest({
+                  texts: [
+                    {
+                      title: "ACH Neutral Overview",
+                      url: "/docs/ach-neutral-overview",
+                      content: JOEL_NEUTRAL_SUMMARY,
+                    },
+                  ],
+                })
+              }
+            >
+              Ingest ACH Neutral Summary
             </button>
           </div>
           <h3 className="mt-4 font-medium">Preview</h3>
