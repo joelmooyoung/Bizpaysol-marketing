@@ -42,5 +42,23 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
+  // Preview debug proxy to production RAG function
+  app.post("/api/rag-answer", async (req, res) => {
+    try {
+      const question = String(req.body?.question || "");
+      if (!question) return res.status(400).json({ error: "question required" });
+      const endpoint = process.env.RAG_ENDPOINT || "https://www.bizpaysol.com/.netlify/functions/rag?action=answer";
+      const r = await fetch(endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      const data = await r.json();
+      res.status(r.status).json(data);
+    } catch (e: any) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+
   return app;
 }
