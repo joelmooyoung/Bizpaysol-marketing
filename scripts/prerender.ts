@@ -18,10 +18,13 @@ async function renderPageToHtml(Component: any) {
 
 function setPerRouteMeta(template: string, route: string) {
   try {
-    const canonicalMatch = template.match(/<link\s+rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i);
+    const canonicalMatch = template.match(
+      /<link\s+rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i,
+    );
     const baseHref = canonicalMatch?.[1] || "https://www.bizpaysol.com/";
     const origin = new URL(baseHref).origin;
-    const canonicalUrl = route === "/" ? `${origin}/` : `${origin}${route.replace(/\/$/, "")}/`;
+    const canonicalUrl =
+      route === "/" ? `${origin}/` : `${origin}${route.replace(/\/$/, "")}/`;
 
     // Replace canonical href
     template = template.replace(
@@ -43,7 +46,11 @@ function setPerRouteMeta(template: string, route: string) {
   }
 }
 
-async function injectIntoTemplate(template: string, ssr: string, route: string) {
+async function injectIntoTemplate(
+  template: string,
+  ssr: string,
+  route: string,
+) {
   const withSSR = template.replace(
     '<div id="root"></div>',
     `<div id=\"root\">${ssr}</div>`,
