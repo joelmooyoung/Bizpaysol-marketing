@@ -384,8 +384,8 @@ export default function AdminIngest() {
             Use these to quickly seed your KB.
           </p>
           <div className="flex flex-wrap gap-2">
-            <button
-              className="rounded-md bg-secondary px-4 py-2"
+            <button type="button"
+              className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
                   texts: [
