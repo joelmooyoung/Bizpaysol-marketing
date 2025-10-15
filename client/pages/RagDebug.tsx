@@ -1,6 +1,5 @@
 import Layout from "@/components/layout/Layout";
 import { useState } from "react";
-import Layout from "@/components/layout/Layout";
 
 export default function RagDebug() {
   const [q, setQ] = useState("What is ACH?");
