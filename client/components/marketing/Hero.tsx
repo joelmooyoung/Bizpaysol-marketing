@@ -27,11 +27,10 @@ export function Hero() {
             Part of the ACH Network · Full ACH Service
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            The API-First ACH Platform Built for Enterprise Security and Scale. SOC 2 Type II Verified.
+            Complete ACH Platform — Powerful Dashboard + Developer API
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Switch to our industry‑leading ACH platform to lower fees, recover
-            revenue lost to card declines, and accelerate cash flow.
+            Operate ACH end‑to‑end with a full web dashboard, NACHA file generation, secure webhooks, and a modern API. Lower fees, faster reconciliation, greater control.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="px-6">
@@ -39,6 +38,9 @@ export function Hero() {
             </Button>
             <Button asChild variant="outline" className="px-6">
               <Link to="/docs">View API Documentation →</Link>
+            </Button>
+            <Button className="px-6" asChild variant="secondary">
+              <a href="https://sandbox.bizpaysol.com" target="_blank" rel="noopener noreferrer">Launch Live Sandbox</a>
             </Button>
           </div>
           <div className="mt-4 text-xs text-muted-foreground">
