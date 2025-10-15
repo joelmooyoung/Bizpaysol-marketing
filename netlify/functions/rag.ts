@@ -17,7 +17,7 @@ function json(statusCode: number, obj: any) {
 
 async function embed(text: string): Promise<number[]> {
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
     {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -27,7 +27,10 @@ async function embed(text: string): Promise<number[]> {
       }),
     },
   );
-  if (!res.ok) throw new Error(`Gemini embed failed: ${res.status}`);
+  if (!res.ok) {
+    const t = await res.text().catch(() => "");
+    throw new Error(`Gemini embed failed: ${res.status} ${t}`);
+  }
   const data = await res.json();
   return data?.embedding?.values || data?.data?.[0]?.embedding || [];
 }
@@ -85,14 +88,17 @@ async function generateAnswer(
     .join("\n\n");
   const prompt = `You are BizPaySol's assistant. Answer using only the context below. If unsure, say you don't know.\n\nQUESTION:\n${question}\n\nCONTEXT:\n${contextText}`;
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`,
     {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
     },
   );
-  if (!res.ok) throw new Error(`Gemini gen failed: ${res.status}`);
+  if (!res.ok) {
+    const t = await res.text().catch(() => "");
+    throw new Error(`Gemini gen failed: ${res.status} ${t}`);
+  }
   const data = await res.json();
   const text =
     data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join("") ||
