@@ -198,10 +198,22 @@ export const handler = async (event: any) => {
         .filter(Boolean);
 
       const hdrs = event.headers || {};
-      const fwdFor = (hdrs["x-forwarded-for"] || hdrs["X-Forwarded-For"] || "") as string;
-      const clientIp = (hdrs["x-nf-client-connection-ip"] || hdrs["client-ip"] || hdrs["x-real-ip"] || fwdFor.split(",")[0] || "").toString().trim();
+      const fwdFor = (hdrs["x-forwarded-for"] ||
+        hdrs["X-Forwarded-For"] ||
+        "") as string;
+      const clientIp = (
+        hdrs["x-nf-client-connection-ip"] ||
+        hdrs["client-ip"] ||
+        hdrs["x-real-ip"] ||
+        fwdFor.split(",")[0] ||
+        ""
+      )
+        .toString()
+        .trim();
 
-      const auth = (hdrs.authorization || hdrs.Authorization || hdrs["x-admin-token"]) as string | undefined;
+      const auth = (hdrs.authorization ||
+        hdrs.Authorization ||
+        hdrs["x-admin-token"]) as string | undefined;
       const provided = auth?.startsWith("Bearer ") ? auth.slice(7) : auth;
 
       const tokenOk = !!ADMIN_TOKEN && provided === ADMIN_TOKEN;
