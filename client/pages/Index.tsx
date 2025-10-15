@@ -70,6 +70,32 @@ export default function Index() {
 
       <IntegrationsTeaser />
 
+      <section className="border-t bg-white py-14">
+        <div className="container">
+          <h2 className="text-2xl font-bold tracking-tight">Why BizPaySol Wins</h2>
+          <ul className="mt-4 grid gap-3 md:grid-cols-2 text-sm text-muted-foreground">
+            <li className="rounded-lg border bg-white p-4 text-foreground">
+              <span className="font-medium">Dual Reference Tracking</span> — system + customer references for perfect reconciliation.
+            </li>
+            <li className="rounded-lg border bg-white p-4 text-foreground">
+              <span className="font-medium">Signed Webhooks</span> — HMAC secrets, replay protection, delivery logs and retries.
+            </li>
+            <li className="rounded-lg border bg-white p-4 text-foreground">
+              <span className="font-medium">Intelligent Rate Limiting</span> — burst/minute and daily caps with monitoring.
+            </li>
+            <li className="rounded-lg border bg-white p-4 text-foreground">
+              <span className="font-medium">SFTP Transmission</span> — encrypted NACHA file delivery included.
+            </li>
+            <li className="rounded-lg border bg-white p-4 text-foreground">
+              <span className="font-medium">RBAC</span> — admin, operator, viewer roles and audit trails.
+            </li>
+            <li className="rounded-lg border bg-white p-4 text-foreground">
+              <span className="font-medium">Multi‑Company</span> — originator company management with individual API keys and limits.
+            </li>
+          </ul>
+        </div>
+      </section>
+
       {/* CTA band */}
       <section className="border-t bg-gradient-to-r from-blue-600 to-sky-500 py-14 text-white">
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
