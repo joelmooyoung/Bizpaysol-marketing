@@ -89,7 +89,9 @@ export default function AdminIngest() {
   async function ingest(payload: any) {
     setStatus("Submitting...");
     try {
-      const headers: Record<string, string> = { "content-type": "application/json" };
+      const headers: Record<string, string> = {
+        "content-type": "application/json",
+      };
       const token = adminToken.trim();
       if (token) {
         headers.Authorization = `Bearer ${token}`;
@@ -143,7 +145,8 @@ export default function AdminIngest() {
               }}
             />
             <p className="text-xs text-muted-foreground">
-              If protected, paste your token. It will be sent as Authorization: Bearer ...
+              If protected, paste your token. It will be sent as Authorization:
+              Bearer ...
             </p>
           </div>
         </section>
