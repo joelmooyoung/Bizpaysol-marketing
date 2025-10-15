@@ -276,7 +276,12 @@ export default function AdminIngest() {
       }
 
       const ok = res.ok;
-      const inserted = typeof data === "object" && data && typeof (data as any).inserted === "number" ? (data as any).inserted : 0;
+      const inserted =
+        typeof data === "object" &&
+        data &&
+        typeof (data as any).inserted === "number"
+          ? (data as any).inserted
+          : 0;
       setStatus(
         ok
           ? `Done (inserted ${inserted})`
@@ -285,7 +290,11 @@ export default function AdminIngest() {
       t.update(
         ok
           ? { title: "Ingested", description: `Inserted ${inserted} chunks` }
-          : { title: `Error ${res.status}`, description: typeof data === "string" ? data : JSON.stringify(data) },
+          : {
+              title: `Error ${res.status}`,
+              description:
+                typeof data === "string" ? data : JSON.stringify(data),
+            },
       );
     } catch (e: any) {
       setStatus(`Error: ${e.message}`);
@@ -346,7 +355,8 @@ export default function AdminIngest() {
               onChange={(e) => setContent(e.target.value)}
             />
             <div>
-              <button type="button"
+              <button
+                type="button"
                 className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
                 disabled={submitting}
                 onClick={() => {
@@ -378,7 +388,8 @@ export default function AdminIngest() {
             onChange={(e) => setUrlsInput(e.target.value)}
           />
           <div>
-            <button type="button"
+            <button
+              type="button"
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               disabled={submitting}
               onClick={() => {
