@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 const SAMPLE_TEXT1 = `Here’s the neutral comparison between ACH, wire transfers, and card payments — written in the same simple, factual style:
 
@@ -236,6 +237,8 @@ export default function AdminIngest() {
 
   const [urlsInput, setUrlsInput] = useState("");
 
+  const [submitting, setSubmitting] = useState(false);
+
   const [adminToken, setAdminToken] = useState<string>(() => {
     try {
       return localStorage.getItem("admin_ingest_token") || "";
@@ -245,7 +248,9 @@ export default function AdminIngest() {
   });
 
   async function ingest(payload: any) {
+    setSubmitting(true);
     setStatus("Submitting...");
+    const t = toast({ title: "Ingesting…", description: "Submitting request" });
     try {
       const headers: Record<string, string> = {
         "content-type": "application/json",
@@ -270,13 +275,23 @@ export default function AdminIngest() {
         data = text;
       }
 
+      const ok = res.ok;
+      const inserted = typeof data === "object" && data && typeof (data as any).inserted === "number" ? (data as any).inserted : 0;
       setStatus(
-        res.ok
-          ? `Done (inserted ${typeof data === "object" && data && typeof data.inserted === "number" ? data.inserted : 0})`
+        ok
+          ? `Done (inserted ${inserted})`
           : `Error ${res.status}: ${typeof data === "string" ? data : JSON.stringify(data)}`,
+      );
+      t.update(
+        ok
+          ? { title: "Ingested", description: `Inserted ${inserted} chunks` }
+          : { title: `Error ${res.status}`, description: typeof data === "string" ? data : JSON.stringify(data) },
       );
     } catch (e: any) {
       setStatus(`Error: ${e.message}`);
+      t.update({ title: "Error", description: e.message });
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -331,8 +346,9 @@ export default function AdminIngest() {
               onChange={(e) => setContent(e.target.value)}
             />
             <div>
-              <button
+              <button type="button"
                 className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+                disabled={submitting}
                 onClick={() => {
                   if (!content.trim())
                     return setStatus("Error: content required");
@@ -362,8 +378,9 @@ export default function AdminIngest() {
             onChange={(e) => setUrlsInput(e.target.value)}
           />
           <div>
-            <button
+            <button type="button"
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+              disabled={submitting}
               onClick={() => {
                 const urls = urlsInput
                   .split(/\r?\n/)
