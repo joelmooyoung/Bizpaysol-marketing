@@ -102,8 +102,13 @@ async function pickGenerateModel(): Promise<string> {
   const models = await listModels();
   if (!models.length) return "";
   const supportsGen = (m: any) =>
-    Array.isArray(m.supported_generation_methods) && m.supported_generation_methods.includes("generateContent");
-  const byName = (substr: string) => models.find((m: any) => typeof m.name === "string" && m.name.includes(substr) && supportsGen(m))?.name;
+    Array.isArray(m.supported_generation_methods) &&
+    m.supported_generation_methods.includes("generateContent");
+  const byName = (substr: string) =>
+    models.find(
+      (m: any) =>
+        typeof m.name === "string" && m.name.includes(substr) && supportsGen(m),
+    )?.name;
   return (
     byName("gemini-1.5-flash-latest") ||
     byName("gemini-1.5-flash-8b") ||
@@ -128,7 +133,8 @@ async function generateAnswer(
   const prompt = `You are BizPaySol's assistant. Answer using only the context below. If unsure, say you don't know.\n\nQUESTION:\n${question}\n\nCONTEXT:\n${contextText}`;
 
   const modelName = await pickGenerateModel();
-  if (!modelName) throw new Error("No Gemini model available for generateContent");
+  if (!modelName)
+    throw new Error("No Gemini model available for generateContent");
   const url = `https://generativelanguage.googleapis.com/v1/${modelName}:generateContent?key=${GEMINI_API_KEY}`;
 
   const res = await fetch(url, {
