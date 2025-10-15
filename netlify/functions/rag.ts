@@ -7,6 +7,14 @@ const SUPABASE_URL = process.env.SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY as string;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY as string;
 
+function json(statusCode: number, obj: any) {
+  return {
+    statusCode,
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(obj),
+  };
+}
+
 async function embed(text: string): Promise<number[]> {
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
@@ -107,10 +115,10 @@ async function fetchUrl(url: string) {
 export const handler = async (event: any) => {
   try {
     if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !GEMINI_API_KEY) {
-      return { statusCode: 500, body: "Missing env vars" };
+      return json(500, { error: "Missing env vars" });
     }
     if (event.httpMethod !== "POST")
-      return { statusCode: 405, body: "Method not allowed" };
+      return json(405, { error: "Method not allowed" });
     const action = (event.queryStringParameters?.action || "answer") as
       | "ingest"
       | "answer";
@@ -138,15 +146,12 @@ export const handler = async (event: any) => {
         }
       }
       await supabaseInsert(rows);
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ inserted: rows.length }),
-      };
+      return json(200, { inserted: rows.length });
     }
 
     // answer
     const q = String(body.question || "").trim();
-    if (!q) return { statusCode: 400, body: "question required" };
+    if (!q) return json(400, { error: "question required" });
     const qe = await embed(q);
     const matches = await supabaseRPCMatch(
       qe,
@@ -160,11 +165,8 @@ export const handler = async (event: any) => {
         title: m.title,
       })),
     );
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ answer, sources: matches }),
-    };
+    return json(200, { answer, sources: matches });
   } catch (e: any) {
-    return { statusCode: 500, body: `error: ${e.message}` };
+    return json(500, { error: e.message });
   }
 };
