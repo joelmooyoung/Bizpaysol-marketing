@@ -92,7 +92,9 @@ export function createServer() {
         process.env.RAG_ENDPOINT_BASE ||
         "https://www.bizpaysol.com/.netlify/functions/rag";
       const url = `${endpointBase}?action=ingest`;
-      const headers: Record<string, string> = { "content-type": "application/json" };
+      const headers: Record<string, string> = {
+        "content-type": "application/json",
+      };
       const auth = req.headers["authorization"] || req.headers["x-admin-token"];
       if (typeof auth === "string" && auth) headers["authorization"] = auth;
 
