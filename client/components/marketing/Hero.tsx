@@ -30,7 +30,9 @@ export function Hero() {
             Complete ACH Platform — Powerful Dashboard + Developer API
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Operate ACH end‑to‑end with a full web dashboard, NACHA file generation, secure webhooks, and a modern API. Lower fees, faster reconciliation, greater control.
+            Operate ACH end‑to‑end with a full web dashboard, NACHA file
+            generation, secure webhooks, and a modern API. Lower fees, faster
+            reconciliation, greater control.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="px-6">
@@ -40,7 +42,13 @@ export function Hero() {
               <Link to="/docs">View API Documentation →</Link>
             </Button>
             <Button className="px-6" asChild variant="secondary">
-              <a href="https://sandbox.bizpaysol.com" target="_blank" rel="noopener noreferrer">Launch Live Sandbox</a>
+              <a
+                href="https://sandbox.bizpaysol.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Launch Live Sandbox
+              </a>
             </Button>
           </div>
           <div className="mt-4 text-xs text-muted-foreground">
