@@ -21,7 +21,7 @@ function setPerRouteMeta(template: string, route: string) {
     const canonicalMatch = template.match(/<link\s+rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i);
     const baseHref = canonicalMatch?.[1] || "https://www.bizpaysol.com/";
     const origin = new URL(baseHref).origin;
-    const canonicalUrl = route === "/" ? `${origin}/` : `${origin}${route}`;
+    const canonicalUrl = route === "/" ? `${origin}/` : `${origin}${route.replace(/\/$/, "")}/`;
 
     // Replace canonical href
     template = template.replace(
