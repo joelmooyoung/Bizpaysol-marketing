@@ -256,7 +256,7 @@ export default function AdminIngest() {
         headers["x-admin-token"] = token;
       }
 
-      const res = await fetch("/.netlify/functions/rag?action=ingest", {
+      const res = await fetch("/api/rag-ingest", {
         method: "POST",
         headers,
         body: JSON.stringify(payload),
