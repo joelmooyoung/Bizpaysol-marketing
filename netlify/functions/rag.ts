@@ -104,8 +104,8 @@ async function pickGenerateModel(): Promise<string> {
     const arr = Array.isArray(m.supported_generation_methods)
       ? m.supported_generation_methods
       : Array.isArray(m.supportedGenerationMethods)
-      ? m.supportedGenerationMethods
-      : [];
+        ? m.supportedGenerationMethods
+        : [];
     return arr.includes("generateContent");
   };
   if (!models.length) {
