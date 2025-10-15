@@ -87,7 +87,11 @@ export default function AdminIngest() {
         body: JSON.stringify(payload),
       });
       const data = await res.json().catch(() => ({}));
-      setStatus(res.ok ? `Done (inserted ${data?.inserted ?? 0})` : `Error: ${JSON.stringify(data)}`);
+      setStatus(
+        res.ok
+          ? `Done (inserted ${data?.inserted ?? 0})`
+          : `Error: ${JSON.stringify(data)}`,
+      );
     } catch (e: any) {
       setStatus(`Error: ${e.message}`);
     }
@@ -124,8 +128,17 @@ export default function AdminIngest() {
               <button
                 className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
                 onClick={() => {
-                  if (!content.trim()) return setStatus("Error: content required");
-                  ingest({ texts: [{ title: title || undefined, url: srcUrl || undefined, content }] });
+                  if (!content.trim())
+                    return setStatus("Error: content required");
+                  ingest({
+                    texts: [
+                      {
+                        title: title || undefined,
+                        url: srcUrl || undefined,
+                        content,
+                      },
+                    ],
+                  });
                 }}
               >
                 Ingest Text
@@ -161,15 +174,25 @@ export default function AdminIngest() {
 
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">Sample Docs</h2>
-          <p className="text-sm text-muted-foreground">Use these to quickly seed your KB.</p>
+          <p className="text-sm text-muted-foreground">
+            Use these to quickly seed your KB.
+          </p>
           <div className="flex gap-2">
             <button
               className="rounded-md bg-secondary px-4 py-2"
               onClick={() =>
                 ingest({
                   texts: [
-                    { title: "ACH vs Wires vs Cards", url: "/docs/ach-wire-card", content: SAMPLE_TEXT1 },
-                    { title: "ACH Settlement", url: "/docs/ach-settlement", content: SAMPLE_TEXT2 },
+                    {
+                      title: "ACH vs Wires vs Cards",
+                      url: "/docs/ach-wire-card",
+                      content: SAMPLE_TEXT1,
+                    },
+                    {
+                      title: "ACH Settlement",
+                      url: "/docs/ach-settlement",
+                      content: SAMPLE_TEXT2,
+                    },
                   ],
                 })
               }
@@ -178,8 +201,12 @@ export default function AdminIngest() {
             </button>
           </div>
           <h3 className="mt-4 font-medium">Preview</h3>
-          <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">{SAMPLE_TEXT1}</pre>
-          <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">{SAMPLE_TEXT2}</pre>
+          <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
+            {SAMPLE_TEXT1}
+          </pre>
+          <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
+            {SAMPLE_TEXT2}
+          </pre>
         </section>
       </div>
     </Layout>
