@@ -438,6 +438,22 @@ export default function AdminIngest() {
             >
               Ingest ACH Neutral Summary
             </button>
+            <button
+              className="rounded-md bg-secondary px-4 py-2"
+              onClick={() =>
+                ingest({
+                  texts: [
+                    {
+                      title: "Full-stack ACH Processing System Overview",
+                      url: "/docs/ach-system-overview",
+                      content: ACH_SYSTEM_SUMMARY,
+                    },
+                  ],
+                })
+              }
+            >
+              Ingest ACH System Summary
+            </button>
           </div>
           <h3 className="mt-4 font-medium">Preview</h3>
           <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
