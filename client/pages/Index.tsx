@@ -87,7 +87,7 @@ export default function Index() {
               size="lg"
               className="bg-white text-slate-900 hover:bg-white/90"
             >
-              <Link to="/pricing">Start Onboarding</Link>
+              <a href="https://sandbox.bizpaysol.com" target="_blank" rel="noopener noreferrer">Launch Live Sandbox</a>
             </Button>
             <Button
               asChild
