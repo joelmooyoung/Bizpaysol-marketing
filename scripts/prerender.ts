@@ -16,11 +16,39 @@ async function renderPageToHtml(Component: any) {
   return html;
 }
 
-async function injectIntoTemplate(template: string, ssr: string) {
-  return template.replace(
+function setPerRouteMeta(template: string, route: string) {
+  try {
+    const canonicalMatch = template.match(/<link\s+rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i);
+    const baseHref = canonicalMatch?.[1] || "https://www.bizpaysol.com/";
+    const origin = new URL(baseHref).origin;
+    const canonicalUrl = route === "/" ? `${origin}/` : `${origin}${route}`;
+
+    // Replace canonical href
+    template = template.replace(
+      /(<link\s+rel=["']canonical["'][^>]*href=)["'][^"']+["']/i,
+      `$1"${canonicalUrl}"`,
+    );
+
+    // Replace og:url
+    if (template.match(/<meta\s+property=["']og:url["'][^>]*content=/i)) {
+      template = template.replace(
+        /(<meta\s+property=["']og:url["'][^>]*content=)["'][^"']+["']/i,
+        `$1"${canonicalUrl}"`,
+      );
+    }
+
+    return template;
+  } catch {
+    return template; // fail-safe
+  }
+}
+
+async function injectIntoTemplate(template: string, ssr: string, route: string) {
+  const withSSR = template.replace(
     '<div id="root"></div>',
-    `<div id="root">${ssr}</div>`,
+    `<div id=\"root\">${ssr}</div>`,
   );
+  return setPerRouteMeta(withSSR, route);
 }
 
 async function ensureDir(p: string) {
