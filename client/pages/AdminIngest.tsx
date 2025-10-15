@@ -225,6 +225,8 @@ Banks and processors also use digital certificates, tokenization, and secure API
 • Settlement normally takes one business day; same-day options exist.
 • Security relies on encryption, authentication, and strict data-handling controls.`;
 
+const ACH_SYSTEM_SUMMARY = `This is a full-stack ACH (Automated Clearing House) processing system for financial institutions. It enables the creation, management, and processing of ACH transactions, generating NACHA-compliant files for bank transmission. Key capabilities include robust authentication, secure file encryption, SFTP transmission, and real-time dashboard monitoring with reporting. The system supports a dual reference number system for improved customer service and transaction reconciliation, and includes comprehensive security features based on OWASP guidelines.`;
+
 export default function AdminIngest() {
   const [status, setStatus] = useState<string>("Idle");
 
