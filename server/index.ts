@@ -46,8 +46,11 @@ export function createServer() {
   app.post("/api/rag-answer", async (req, res) => {
     try {
       const question = String(req.body?.question || "");
-      if (!question) return res.status(400).json({ error: "question required" });
-      const endpoint = process.env.RAG_ENDPOINT || "https://www.bizpaysol.com/.netlify/functions/rag?action=answer";
+      if (!question)
+        return res.status(400).json({ error: "question required" });
+      const endpoint =
+        process.env.RAG_ENDPOINT ||
+        "https://www.bizpaysol.com/.netlify/functions/rag?action=answer";
       const r = await fetch(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json" },

@@ -49,12 +49,22 @@ export default function RagDebug() {
       <div className="container py-12 space-y-4">
         <h1 className="text-2xl font-semibold">RAG Debug</h1>
         <div className="flex gap-2">
-          <input className="w-full rounded-md border px-3 py-2" value={q} onChange={(e) => setQ(e.target.value)} />
-          <button className="rounded-md bg-primary px-4 py-2 text-primary-foreground" onClick={ask} disabled={loading}>
+          <input
+            className="w-full rounded-md border px-3 py-2"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+          <button
+            className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+            onClick={ask}
+            disabled={loading}
+          >
             {loading ? "Asking..." : "Ask"}
           </button>
         </div>
-        <pre className="whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[60vh] overflow-auto">{resText}</pre>
+        <pre className="whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[60vh] overflow-auto">
+          {resText}
+        </pre>
       </div>
     </Layout>
   );
