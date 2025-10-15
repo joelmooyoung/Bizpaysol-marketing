@@ -16,23 +16,27 @@ function json(statusCode: number, obj: any) {
 }
 
 async function embed(text: string): Promise<number[]> {
-  const res = await fetch(
+  const payload = { model: "text-embedding-004", content: { parts: [{ text }] } };
+  const urls = [
     `https://generativelanguage.googleapis.com/v1/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
-    {
+    `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
+  ];
+  let lastErr = "";
+  for (const url of urls) {
+    const res = await fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        model: "text-embedding-004",
-        content: { parts: [{ text }] },
-      }),
-    },
-  );
-  if (!res.ok) {
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return data?.embedding?.values || data?.data?.[0]?.embedding || [];
+    }
     const t = await res.text().catch(() => "");
-    throw new Error(`Gemini embed failed: ${res.status} ${t}`);
+    lastErr = `${res.status} ${t}`;
+    if (res.status !== 404) break;
   }
-  const data = await res.json();
-  return data?.embedding?.values || data?.data?.[0]?.embedding || [];
+  throw new Error(`Gemini embed failed: ${lastErr}`);
 }
 
 function chunk(text: string, size = 1500) {
@@ -87,23 +91,27 @@ async function generateAnswer(
     )
     .join("\n\n");
   const prompt = `You are BizPaySol's assistant. Answer using only the context below. If unsure, say you don't know.\n\nQUESTION:\n${question}\n\nCONTEXT:\n${contextText}`;
-  const res = await fetch(
+
+  const urls = [
     `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`,
-    {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
-    },
-  );
-  if (!res.ok) {
+    `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+  ];
+
+  const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] });
+  let lastErr = "";
+  for (const url of urls) {
+    const res = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body });
+    if (res.ok) {
+      const data = await res.json();
+      const text = data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join("") || "";
+      return text.trim();
+    }
     const t = await res.text().catch(() => "");
-    throw new Error(`Gemini gen failed: ${res.status} ${t}`);
+    lastErr = `${res.status} ${t}`;
+    if (res.status !== 404) break;
   }
-  const data = await res.json();
-  const text =
-    data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join("") ||
-    "";
-  return text.trim();
+  throw new Error(`Gemini gen failed: ${lastErr}`);
 }
 
 async function fetchUrl(url: string) {
