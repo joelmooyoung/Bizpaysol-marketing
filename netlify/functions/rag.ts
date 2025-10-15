@@ -83,6 +83,38 @@ async function supabaseRPCMatch(queryEmbedding: number[], matchCount = 5) {
   return res.json();
 }
 
+async function listModels(): Promise<any[]> {
+  const endpoints = [
+    `https://generativelanguage.googleapis.com/v1/models?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`,
+  ];
+  for (const url of endpoints) {
+    const r = await fetch(url);
+    if (r.ok) {
+      const j = await r.json().catch(() => ({}));
+      return Array.isArray(j.models) ? j.models : [];
+    }
+  }
+  return [];
+}
+
+async function pickGenerateModel(): Promise<string> {
+  const models = await listModels();
+  if (!models.length) return "";
+  const supportsGen = (m: any) =>
+    Array.isArray(m.supported_generation_methods) && m.supported_generation_methods.includes("generateContent");
+  const byName = (substr: string) => models.find((m: any) => typeof m.name === "string" && m.name.includes(substr) && supportsGen(m))?.name;
+  return (
+    byName("gemini-1.5-flash-latest") ||
+    byName("gemini-1.5-flash-8b") ||
+    byName("gemini-1.5-flash") ||
+    byName("gemini-1.5-pro-latest") ||
+    byName("gemini-1.5-pro") ||
+    models.find(supportsGen)?.name ||
+    ""
+  );
+}
+
 async function generateAnswer(
   question: string,
   contexts: { content: string; url?: string; title?: string }[],
@@ -95,33 +127,24 @@ async function generateAnswer(
     .join("\n\n");
   const prompt = `You are BizPaySol's assistant. Answer using only the context below. If unsure, say you don't know.\n\nQUESTION:\n${question}\n\nCONTEXT:\n${contextText}`;
 
-  const urls = [
-    `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`,
-    `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-  ];
+  const modelName = await pickGenerateModel();
+  if (!modelName) throw new Error("No Gemini model available for generateContent");
+  const url = `https://generativelanguage.googleapis.com/v1/${modelName}:generateContent?key=${GEMINI_API_KEY}`;
 
-  const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] });
-  let lastErr = "";
-  for (const url of urls) {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body,
-    });
-    if (res.ok) {
-      const data = await res.json();
-      const text =
-        data?.candidates?.[0]?.content?.parts
-          ?.map((p: any) => p.text)
-          .join("") || "";
-      return text.trim();
-    }
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+  });
+  if (!res.ok) {
     const t = await res.text().catch(() => "");
-    lastErr = `${res.status} ${t}`;
-    if (res.status !== 404) break;
+    throw new Error(`Gemini gen failed: ${res.status} ${t}`);
   }
-  throw new Error(`Gemini gen failed: ${lastErr}`);
+  const data = await res.json();
+  const text =
+    data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join("") ||
+    "";
+  return text.trim();
 }
 
 async function fetchUrl(url: string) {
