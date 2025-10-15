@@ -15,8 +15,28 @@ export default function RagDebug() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ question: q }),
       });
-      const data = await res.json();
-      setResText(JSON.stringify(data, null, 2));
+      const ct = res.headers.get("content-type") || "";
+      let data: any;
+      if (ct.includes("application/json")) {
+        try {
+          data = await res.json();
+        } catch {
+          const txt = await res.text();
+          try {
+            data = JSON.parse(txt);
+          } catch {
+            data = { error: txt };
+          }
+        }
+      } else {
+        const txt = await res.text();
+        try {
+          data = JSON.parse(txt);
+        } catch {
+          data = { error: txt };
+        }
+      }
+      setResText(JSON.stringify({ status: res.status, data }, null, 2));
     } catch (e: any) {
       setResText(`error: ${e.message}`);
     } finally {

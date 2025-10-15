@@ -53,8 +53,31 @@ export function createServer() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ question }),
       });
-      const data = await r.json();
-      res.status(r.status).json(data);
+
+      const contentType = r.headers.get("content-type") || "";
+      let responseBody: any;
+
+      if (contentType.includes("application/json")) {
+        try {
+          responseBody = await r.json();
+        } catch {
+          const txt = await r.text();
+          try {
+            responseBody = JSON.parse(txt);
+          } catch {
+            responseBody = { error: txt };
+          }
+        }
+      } else {
+        const txt = await r.text();
+        try {
+          responseBody = JSON.parse(txt);
+        } catch {
+          responseBody = { error: txt };
+        }
+      }
+
+      res.status(r.status).json(responseBody);
     } catch (e: any) {
       res.status(500).json({ error: e.message });
     }
