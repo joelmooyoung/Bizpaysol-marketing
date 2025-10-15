@@ -100,10 +100,24 @@ async function listModels(): Promise<any[]> {
 
 async function pickGenerateModel(): Promise<string> {
   const models = await listModels();
-  if (!models.length) return "";
-  const supportsGen = (m: any) =>
-    Array.isArray(m.supported_generation_methods) &&
-    m.supported_generation_methods.includes("generateContent");
+  const supportsGen = (m: any) => {
+    const arr = Array.isArray(m.supported_generation_methods)
+      ? m.supported_generation_methods
+      : Array.isArray(m.supportedGenerationMethods)
+      ? m.supportedGenerationMethods
+      : [];
+    return arr.includes("generateContent");
+  };
+  if (!models.length) {
+    const fallbacks = [
+      "models/gemini-1.5-flash-latest",
+      "models/gemini-1.5-flash",
+      "models/gemini-1.5-flash-8b",
+      "models/gemini-1.5-pro-latest",
+      "models/gemini-1.5-pro",
+    ];
+    return fallbacks[0];
+  }
   const byName = (substr: string) =>
     models.find(
       (m: any) =>
