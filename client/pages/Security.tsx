@@ -16,24 +16,25 @@ export default function Security() {
                 <li>NACHA compliant ACH operations</li>
                 <li>ISO 27001 aligned controls</li>
                 <li>GDPR alignment for applicable data</li>
+                <li>OWASP ZAP DAST scans (Oct 2025) with all critical/high resolved</li>
               </ul>
             </div>
             <div className="rounded-lg border bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold">Transport & Data</h2>
               <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
                 <li>TLS 1.2+ only with HSTS (includeSubDomains; preload)</li>
-                <li>Encryption in transit and at rest</li>
-                <li>Signed webhooks with replay protection</li>
+                <li>Encryption in transit and at rest (AES‑256 at rest)</li>
+                <li>Signed webhooks with replay protection (HMAC)</li>
                 <li>Tokenized bank data; secrets never logged</li>
               </ul>
             </div>
             <div className="rounded-lg border bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold">Application Security</h2>
               <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
-                <li>Security headers: CSP, XFO, XCTO, Referrer‑Policy, Permissions‑Policy, COOP/CORP/COEP</li>
-                <li>Role‑based access, audit trails</li>
-                <li>Dependency and bundle scanning in CI</li>
-                <li>DAST in non‑production environments</li>
+                <li>Security headers: CSP, HSTS, COEP/COOP/CORP, Referrer‑Policy, Permissions‑Policy</li>
+                <li>Role‑based access, audit trails, account lockout protection</li>
+                <li>Scrypt + Bcrypt password hashing</li>
+                <li>Automated dependency and bundle scanning in CI</li>
               </ul>
             </div>
             <div className="rounded-lg border bg-white p-6 shadow-sm">
