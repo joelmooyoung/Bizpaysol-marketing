@@ -53,7 +53,7 @@ function chunk(text: string, size = 1500) {
 }
 
 async function supabaseInsert(rows: any[]) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/rag.documents`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rag_documents`, {
     method: "POST",
     headers: {
       apikey: SUPABASE_ANON_KEY,
