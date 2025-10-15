@@ -59,7 +59,7 @@ Same-Day ACH
 Introduced in phases starting in 2016, same-day ACH allows faster processing within the same business day for eligible transactions (up to $1 million per item). It has three batch windows: morning, afternoon, and late-afternoon/evening. These enable quicker settlements but require earlier submissions and may incur fees.
 • Morning window:
 ◦ Submission deadline: 10:30 AM ET.
-◦ Settlement time: 1:00 PM ET (funds often available to recipients by 1:30 PM ET).
+�� Settlement time: 1:00 PM ET (funds often available to recipients by 1:30 PM ET).
 • Afternoon window:
 ◦ Submission deadline: 2:45 PM ET.
 ◦ Settlement time: 5:00 PM ET (funds often available by end-of-day).
@@ -68,6 +68,93 @@ Introduced in phases starting in 2016, same-day ACH allows faster processing wit
 ◦ Settlement time: 6:00 PM ET (funds available shortly after, but still same-day).
 Same-day eligibility depends on the transaction type, and not all banks participate fully. If a submission misses a window, it rolls to the next available one, potentially becoming next-day.
 In summary, morning batches (standard or same-day) focus on overnight/next-morning settlements for efficiency, while afternoon windows cater to urgent same-day needs. The exact timing can vary slightly by ACH operator or bank, but these FedACH standards are widely followed.`;
+
+const JOEL_RESOURCES_TEXT = `Here are several high-quality resources (with URLs) on the topics you asked about. You can use them for reading, citing, or further research.
+
+General & ACH Network / How ACH Works
+1. What Is the Automated Clearing House (ACH), and How Does It Work? — Investopedia
+https://www.investopedia.com/terms/a/ach.asp
+2. The ABCs of ACH — Nacha
+https://www.nacha.org/content/abcs-ach
+3. How ACH Works – ACH Guide for Developers (Nacha)
+https://achdevguide.nacha.org/how-ach-works
+4. ACH Network — Wikipedia
+https://en.wikipedia.org/wiki/ACH_Network
+5. Automated Clearinghouse Services — Federal Reserve Board
+https://www.federalreserve.gov/paymentsystems/fedach_about.htm
+6. What to Know About the ACH Network | ACH Payments — Dwolla
+https://www.dwolla.com/resources/ach-101-connecting-to-the-ach-network
+7. ACH Payments Fact Sheet — Nacha
+https://www.nacha.org/content/ach-payments-fact-sheet
+8. What Is an ACH Payment? How It Works, Process, & Costs — Ramp
+https://ramp.com/blog/ach-payments-101
+9. Top 5 ACH Payment Types and ACH Payment Glossary — Modern Treasury
+https://www.moderntreasury.com/journal/the-top-5-ach-payment-types-and-an-ach-payment-glossary
+
+Types of ACH / Transaction Variants / SEC Codes
+• Modern Treasury’s “Top 5 ACH Payment Types and ACH Payment Glossary” covers common ACH Standard Entry Class (SEC) codes such as PPD, CCD, WEB, TEL, ARC, BOC, CTX.
+https://www.moderntreasury.com/journal/the-top-5-ach-payment-types-and-an-ach-payment-glossary
+• GBankMO’s ACH Reference Guide (PDF) discusses PPD, CCD, and other entry types.
+https://gbankmo.com/files/download/documents/ACH%20Reference%20Guide.pdf
+• GoCardless article on ACH Credit vs ACH Debit
+https://gocardless.com/en-us/guides/ach/ach-credit-vs-debit/
+• EBizCharge on ACH Debit vs. ACH Credit
+https://ebizcharge.com/learn/ach-debit-vs-ach-credit/
+
+How Long ACH Transactions Take / Settlement Timing
+1. ACH processing 101 (Plaid) — discusses 1–3 business days, same-day ACH, cutoffs
+https://plaid.com/resources/ach/ach-processing/
+2. How long do ACH payments take to process? — Stripe
+https://stripe.com/resources/more/how-long-do-ach-payments-take-to-process-here-is-what-you-need-to-know
+3. How Long Do ACH Transfers Take? A Complete Guide — Ramp
+https://ramp.com/blog/how-long-do-ach-transfers-take
+4. ACH advances & settlement times | Nacha — “Significant Majority of ACH Payments Settle in One Business Day or Less”
+https://www.nacha.org/news/significant-majority-ach-payments-settle-one-business-day-or-less
+5. ACH More Information (BNY Mellon / Treasury API Library)
+https://marketplace.bnymellon.com/treasury/api-library/ach-more-information
+6. ACH vs EFT: Understanding differences & benefits — JPMorgan
+https://www.jpmorgan.com/insights/treasury/integrated-receivables/ach-vs-eft-understanding-the-differences-and-benefits-of-each
+
+Website / Payment Security for Financial Transactions
+1. Best practices for secure online payment processing — Checkout.com
+https://www.checkout.com/blog/best-practices-for-secure-online-payment-processing
+2. Payment security explained: A guide for businesses — Stripe
+https://stripe.com/resources/more/payment-security
+3. Top 5 Payment Processing Security Risks and Best Practices — DivergeIT
+https://www.divergeit.com/blog/payment-processing-security
+4. Digital Payment Security Risks and Best Practices — Comerica
+https://www.comerica.com/insights/business-finance/digital-payment-security-risks-and-best-practices.html
+5. Protecting Customers | American Bankers Association
+https://www.aba.com/banking-topics/technology/cybersecurity/protecting-customers
+6. What You Need To Know About Secure Payment Systems — U.S. Chamber (CO site)
+https://www.uschamber.com/co/run/finance/secure-payment-systems-guide`;
+
+const JOEL_URLS: string[] = [
+  "https://www.investopedia.com/terms/a/ach.asp",
+  "https://www.nacha.org/content/abcs-ach",
+  "https://achdevguide.nacha.org/how-ach-works",
+  "https://en.wikipedia.org/wiki/ACH_Network",
+  "https://www.federalreserve.gov/paymentsystems/fedach_about.htm",
+  "https://www.dwolla.com/resources/ach-101-connecting-to-the-ach-network",
+  "https://www.nacha.org/content/ach-payments-fact-sheet",
+  "https://ramp.com/blog/ach-payments-101",
+  "https://www.moderntreasury.com/journal/the-top-5-ach-payment-types-and-an-ach-payment-glossary",
+  "https://gbankmo.com/files/download/documents/ACH%20Reference%20Guide.pdf",
+  "https://gocardless.com/en-us/guides/ach/ach-credit-vs-debit/",
+  "https://ebizcharge.com/learn/ach-debit-vs-ach-credit/",
+  "https://plaid.com/resources/ach/ach-processing/",
+  "https://stripe.com/resources/more/how-long-do-ach-payments-take-to-process-here-is-what-you-need-to-know",
+  "https://ramp.com/blog/how-long-do-ach-transfers-take",
+  "https://www.nacha.org/news/significant-majority-ach-payments-settle-one-business-day-or-less",
+  "https://marketplace.bnymellon.com/treasury/api-library/ach-more-information",
+  "https://www.jpmorgan.com/insights/treasury/integrated-receivables/ach-vs-eft-understanding-the-differences-and-benefits-of-each",
+  "https://www.checkout.com/blog/best-practices-for-secure-online-payment-processing",
+  "https://stripe.com/resources/more/payment-security",
+  "https://www.divergeit.com/blog/payment-processing-security",
+  "https://www.comerica.com/insights/business-finance/digital-payment-security-risks-and-best-practices.html",
+  "https://www.aba.com/banking-topics/technology/cybersecurity/protecting-customers",
+  "https://www.uschamber.com/co/run/finance/secure-payment-systems-guide",
+];
 
 export default function AdminIngest() {
   const [status, setStatus] = useState<string>("Idle");
@@ -225,7 +312,7 @@ export default function AdminIngest() {
           <p className="text-sm text-muted-foreground">
             Use these to quickly seed your KB.
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               className="rounded-md bg-secondary px-4 py-2"
               onClick={() =>
@@ -246,6 +333,23 @@ export default function AdminIngest() {
               }
             >
               Ingest Sample Docs
+            </button>
+            <button
+              className="rounded-md bg-secondary px-4 py-2"
+              onClick={() =>
+                ingest({
+                  texts: [
+                    {
+                      title: "ACH Resources Curated",
+                      url: "/docs/ach-resources-curated",
+                      content: JOEL_RESOURCES_TEXT,
+                    },
+                  ],
+                  urls: JOEL_URLS,
+                })
+              }
+            >
+              Ingest ACH Resources (Joel)
             </button>
           </div>
           <h3 className="mt-4 font-medium">Preview</h3>
