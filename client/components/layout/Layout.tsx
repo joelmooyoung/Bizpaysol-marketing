@@ -11,7 +11,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       <StickyFunnelBar />
       <main className="pt-20">{children}</main>
       <Footer />
-      <ExitSurveyModal />
       <QuickDemoWidget />
     </div>
   );
