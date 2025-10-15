@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { StickyFunnelBar } from "@/components/marketing/StickyFunnelBar";
-import { ExitSurveyModal } from "@/components/marketing/ExitSurveyModal";
 import { QuickDemoWidget } from "@/components/marketing/QuickDemoWidget";
 
 export default function Layout({ children }: { children: ReactNode }) {
