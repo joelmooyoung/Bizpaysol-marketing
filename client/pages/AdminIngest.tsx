@@ -78,19 +78,39 @@ export default function AdminIngest() {
 
   const [urlsInput, setUrlsInput] = useState("");
 
+  const [adminToken, setAdminToken] = useState<string>(() => {
+    try {
+      return localStorage.getItem("admin_ingest_token") || "";
+    } catch {
+      return "";
+    }
+  });
+
   async function ingest(payload: any) {
     setStatus("Submitting...");
     try {
+      const headers: Record<string, string> = { "content-type": "application/json" };
+      const token = adminToken.trim();
+      if (token) headers.Authorization = `Bearer ${token}`;
+
       const res = await fetch("/.netlify/functions/rag?action=ingest", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers,
         body: JSON.stringify(payload),
       });
-      const data = await res.json().catch(() => ({}));
+
+      const text = await res.text();
+      let data: any = {};
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = text;
+      }
+
       setStatus(
         res.ok
-          ? `Done (inserted ${data?.inserted ?? 0})`
-          : `Error: ${JSON.stringify(data)}`,
+          ? `Done (inserted ${typeof data === "object" && data && typeof data.inserted === "number" ? data.inserted : 0})`
+          : `Error ${res.status}: ${typeof data === "string" ? data : JSON.stringify(data)}`,
       );
     } catch (e: any) {
       setStatus(`Error: ${e.message}`);
@@ -102,6 +122,28 @@ export default function AdminIngest() {
       <div className="container py-20 space-y-8">
         <h1 className="text-2xl font-semibold">Admin: Ingest</h1>
         <p className="text-sm text-muted-foreground">Status: {status}</p>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Authorization</h2>
+          <div className="grid gap-2">
+            <input
+              className="rounded-md border px-3 py-2"
+              type="password"
+              placeholder="Admin token (Bearer)"
+              value={adminToken}
+              onChange={(e) => {
+                const v = e.target.value;
+                setAdminToken(v);
+                try {
+                  localStorage.setItem("admin_ingest_token", v);
+                } catch {}
+              }}
+            />
+            <p className="text-xs text-muted-foreground">
+              If protected, paste your token. It will be sent as Authorization: Bearer ...
+            </p>
+          </div>
+        </section>
 
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">Paste Text</h2>
