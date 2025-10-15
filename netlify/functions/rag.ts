@@ -191,6 +191,14 @@ export const handler = async (event: any) => {
     const body = event.body ? JSON.parse(event.body) : {};
 
     if (action === "ingest") {
+      const ADMIN_TOKEN = process.env.ADMIN_INGEST_TOKEN;
+      if (ADMIN_TOKEN) {
+        const hdrs = event.headers || {};
+        const auth = (hdrs.authorization || hdrs.Authorization || hdrs["x-admin-token"]) as string | undefined;
+        const provided = auth?.startsWith("Bearer ") ? auth.slice(7) : auth;
+        if (!provided || provided !== ADMIN_TOKEN) return json(401, { error: "unauthorized" });
+      }
+
       const items: { url?: string; title?: string; content: string }[] = [];
       const urls: string[] = Array.isArray(body.urls) ? body.urls : [];
       for (const u of urls) items.push(await fetchUrl(u));
