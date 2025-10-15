@@ -194,7 +194,9 @@ export const handler = async (event: any) => {
       const ADMIN_TOKEN = process.env.ADMIN_INGEST_TOKEN;
       const hdrs = event.headers || {};
       if (ADMIN_TOKEN) {
-        const auth = (hdrs.authorization || hdrs.Authorization || hdrs["x-admin-token"]) as string | undefined;
+        const auth = (hdrs.authorization ||
+          hdrs.Authorization ||
+          hdrs["x-admin-token"]) as string | undefined;
         const provided = auth?.startsWith("Bearer ") ? auth.slice(7) : auth;
         if (!provided || provided !== ADMIN_TOKEN) {
           return json(401, { error: "unauthorized" });
