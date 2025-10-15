@@ -384,7 +384,8 @@ export default function AdminIngest() {
             Use these to quickly seed your KB.
           </p>
           <div className="flex flex-wrap gap-2">
-            <button type="button"
+            <button
+              type="button"
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
@@ -405,7 +406,8 @@ export default function AdminIngest() {
             >
               Ingest Sample Docs
             </button>
-            <button type="button"
+            <button
+              type="button"
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
@@ -422,7 +424,8 @@ export default function AdminIngest() {
             >
               Ingest ACH Resources (Joel)
             </button>
-            <button type="button"
+            <button
+              type="button"
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
@@ -438,7 +441,8 @@ export default function AdminIngest() {
             >
               Ingest ACH Neutral Summary
             </button>
-            <button type="button"
+            <button
+              type="button"
               className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
