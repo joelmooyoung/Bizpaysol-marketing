@@ -405,8 +405,8 @@ export default function AdminIngest() {
             >
               Ingest Sample Docs
             </button>
-            <button
-              className="rounded-md bg-secondary px-4 py-2"
+            <button type="button"
+              className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
                   texts: [
@@ -422,8 +422,8 @@ export default function AdminIngest() {
             >
               Ingest ACH Resources (Joel)
             </button>
-            <button
-              className="rounded-md bg-secondary px-4 py-2"
+            <button type="button"
+              className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
                   texts: [
@@ -438,8 +438,8 @@ export default function AdminIngest() {
             >
               Ingest ACH Neutral Summary
             </button>
-            <button
-              className="rounded-md bg-secondary px-4 py-2"
+            <button type="button"
+              className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
               onClick={() =>
                 ingest({
                   texts: [
