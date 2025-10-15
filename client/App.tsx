@@ -12,6 +12,7 @@ import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import Docs from "./pages/Docs";
 import Support from "./pages/Support";
+import RagDebug from "./pages/RagDebug";
 import About from "./pages/About";
 import CaseStudies from "./pages/CaseStudies";
 import Security from "./pages/Security";
