@@ -91,7 +91,10 @@ export default function AdminIngest() {
     try {
       const headers: Record<string, string> = { "content-type": "application/json" };
       const token = adminToken.trim();
-      if (token) headers.Authorization = `Bearer ${token}`;
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+        headers["x-admin-token"] = token;
+      }
 
       const res = await fetch("/.netlify/functions/rag?action=ingest", {
         method: "POST",
