@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const TEXT1 = `Here’s the neutral comparison between ACH, wire transfers, and card payments — written in the same simple, factual style:
+const SAMPLE_TEXT1 = `Here’s the neutral comparison between ACH, wire transfers, and card payments — written in the same simple, factual style:
 
 6. ACH vs. Wire Transfers vs. Card Payments
 
@@ -30,13 +30,13 @@ Card Payments (Credit or Debit)
 • Security: Relies on PCI DSS standards, encryption, and tokenization of card data.
 
 7. Key Differences at a Glance
-Feature	ACH Transfers	Wire Transfers	Card Payments
-Speed	1–3 business days (same-day possible)	Instant to 1 day	Instant authorization, 1–3 day settlement
-Cost	Low	High	Moderate to high for merchants
-Best for	Routine, recurring, or scheduled payments	Large, time-sensitive transfers	Consumer purchases
-Reversible?	Limited	No	Yes (disputes/chargebacks)
-Security Oversight	NACHA & U.S. banks	Bank-to-bank networks	Card networks & PCI DSS
-Typical Users	Employers, billers, B2B	Businesses, institutions	Retailers, online stores
+Feature\tACH Transfers\tWire Transfers\tCard Payments
+Speed\t1–3 business days (same-day possible)\tInstant to 1 day\tInstant authorization, 1–3 day settlement
+Cost\tLow\tHigh\tModerate to high for merchants
+Best for\tRoutine, recurring, or scheduled payments\tLarge, time-sensitive transfers\tConsumer purchases
+Reversible?\tLimited\tNo\tYes (disputes/chargebacks)
+Security Oversight\tNACHA & U.S. banks\tBank-to-bank networks\tCard networks & PCI DSS
+Typical Users\tEmployers, billers, B2B\tBusinesses, institutions\tRetailers, online stores
 
 8. Summary
 • ACH is cost-effective and secure for scheduled or recurring payments.
@@ -44,9 +44,7 @@ Typical Users	Employers, billers, B2B	Businesses, institutions	Retailers, online
 • Card payments prioritize convenience and consumer protection but come with higher fees.
 Together, these systems form the backbone of electronic payments in the U.S., each suited for different timing, cost, and risk needs.`;
 
-export default function AdminIngest() {
-  const [status, setStatus] = useState<string>("Ready");
-  const TEXT2 = `What is ACH Settlement?
+const SAMPLE_TEXT2 = `What is ACH Settlement?
 The Automated Clearing House (ACH) network, operated by Nacha and the Federal Reserve, facilitates electronic funds transfers in the United States, such as direct deposits, bill payments, and business-to-business transactions. “Settlement” in the context of ACH refers to the process where the ACH operator (typically the Federal Reserve or The Clearing House) nets out all the transactions in a batch across participating financial institutions and adjusts their reserve accounts accordingly. This is the point at which funds are officially transferred between the originating depository financial institution (ODFI) and the receiving depository financial institution (RDFI), making the transaction final and irrevocable.
 In practice, settlement doesn’t mean the funds instantly appear in the recipient’s account—it’s an interbank process. After settlement, the RDFI must make the funds available to the recipient by specific deadlines outlined in Nacha rules (e.g., by the end of the business day for credits like payroll). Delays can occur due to holidays, weekends, or risk holds, but settlement itself is a fixed, scheduled event that ensures the banking system balances out net debits and credits efficiently.
 ACH Settlement Timeline
@@ -70,53 +68,119 @@ Introduced in phases starting in 2016, same-day ACH allows faster processing wit
 ◦ Settlement time: 6:00 PM ET (funds available shortly after, but still same-day).
 Same-day eligibility depends on the transaction type, and not all banks participate fully. If a submission misses a window, it rolls to the next available one, potentially becoming next-day.
 In summary, morning batches (standard or same-day) focus on overnight/next-morning settlements for efficiency, while afternoon windows cater to urgent same-day needs. The exact timing can vary slightly by ACH operator or bank, but these FedACH standards are widely followed.`;
-  useEffect(() => {
-    const run = async () => {
-      try {
-        setStatus("Ingesting...");
-        const res = await fetch("/.netlify/functions/rag?action=ingest", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            texts: [
-              {
-                title: "ACH vs Wires vs Cards",
-                url: "/docs/ach-wire-card",
-                content: TEXT1,
-              },
-              {
-                title: "ACH Settlement",
-                url: "/docs/ach-settlement",
-                content: TEXT2,
-              },
-            ],
-          }),
-        });
-        const data = await res.json();
-        setStatus(
-          res.ok
-            ? `Done (inserted ${data?.inserted ?? 0})`
-            : `Error: ${JSON.stringify(data)}`,
-        );
-      } catch (e: any) {
-        setStatus(`Error: ${e.message}`);
-      }
-    };
-    run();
-  }, []);
+
+export default function AdminIngest() {
+  const [status, setStatus] = useState<string>("Idle");
+
+  const [title, setTitle] = useState("");
+  const [srcUrl, setSrcUrl] = useState("");
+  const [content, setContent] = useState("");
+
+  const [urlsInput, setUrlsInput] = useState("");
+
+  async function ingest(payload: any) {
+    setStatus("Submitting...");
+    try {
+      const res = await fetch("/.netlify/functions/rag?action=ingest", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      setStatus(res.ok ? `Done (inserted ${data?.inserted ?? 0})` : `Error: ${JSON.stringify(data)}`);
+    } catch (e: any) {
+      setStatus(`Error: ${e.message}`);
+    }
+  }
 
   return (
     <Layout>
-      <div className="container py-20">
-        <h1 className="text-2xl font-semibold">Admin: Ingest Text</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Status: {status}</p>
-        <h2 className="mt-8 text-lg font-semibold">Preview</h2>
-        <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
-          {TEXT1}
-        </pre>
-        <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">
-          {TEXT2}
-        </pre>
+      <div className="container py-20 space-y-8">
+        <h1 className="text-2xl font-semibold">Admin: Ingest</h1>
+        <p className="text-sm text-muted-foreground">Status: {status}</p>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Paste Text</h2>
+          <div className="grid gap-2">
+            <input
+              className="rounded-md border px-3 py-2"
+              placeholder="Title (optional)"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <input
+              className="rounded-md border px-3 py-2"
+              placeholder="Source URL (optional)"
+              value={srcUrl}
+              onChange={(e) => setSrcUrl(e.target.value)}
+            />
+            <textarea
+              className="min-h-[180px] w-full rounded-md border px-3 py-2 font-mono text-xs"
+              placeholder="Paste content here..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+            <div>
+              <button
+                className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+                onClick={() => {
+                  if (!content.trim()) return setStatus("Error: content required");
+                  ingest({ texts: [{ title: title || undefined, url: srcUrl || undefined, content }] });
+                }}
+              >
+                Ingest Text
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Ingest URLs</h2>
+          <textarea
+            className="min-h-[120px] w-full rounded-md border px-3 py-2 font-mono text-xs"
+            placeholder="One URL per line"
+            value={urlsInput}
+            onChange={(e) => setUrlsInput(e.target.value)}
+          />
+          <div>
+            <button
+              className="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+              onClick={() => {
+                const urls = urlsInput
+                  .split(/\r?\n/)
+                  .map((s) => s.trim())
+                  .filter((s) => s.length);
+                if (!urls.length) return setStatus("Error: at least one URL");
+                ingest({ urls });
+              }}
+            >
+              Ingest URLs
+            </button>
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Sample Docs</h2>
+          <p className="text-sm text-muted-foreground">Use these to quickly seed your KB.</p>
+          <div className="flex gap-2">
+            <button
+              className="rounded-md bg-secondary px-4 py-2"
+              onClick={() =>
+                ingest({
+                  texts: [
+                    { title: "ACH vs Wires vs Cards", url: "/docs/ach-wire-card", content: SAMPLE_TEXT1 },
+                    { title: "ACH Settlement", url: "/docs/ach-settlement", content: SAMPLE_TEXT2 },
+                  ],
+                })
+              }
+            >
+              Ingest Sample Docs
+            </button>
+          </div>
+          <h3 className="mt-4 font-medium">Preview</h3>
+          <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">{SAMPLE_TEXT1}</pre>
+          <pre className="mt-2 whitespace-pre-wrap rounded-md border p-4 text-xs max-h-[30vh] overflow-auto">{SAMPLE_TEXT2}</pre>
+        </section>
       </div>
     </Layout>
   );
