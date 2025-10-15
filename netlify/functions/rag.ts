@@ -16,7 +16,10 @@ function json(statusCode: number, obj: any) {
 }
 
 async function embed(text: string): Promise<number[]> {
-  const payload = { model: "text-embedding-004", content: { parts: [{ text }] } };
+  const payload = {
+    model: "text-embedding-004",
+    content: { parts: [{ text }] },
+  };
   const urls = [
     `https://generativelanguage.googleapis.com/v1/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
     `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent?key=${GEMINI_API_KEY}`,
@@ -101,10 +104,17 @@ async function generateAnswer(
   const body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] });
   let lastErr = "";
   for (const url of urls) {
-    const res = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body });
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body,
+    });
     if (res.ok) {
       const data = await res.json();
-      const text = data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join("") || "";
+      const text =
+        data?.candidates?.[0]?.content?.parts
+          ?.map((p: any) => p.text)
+          .join("") || "";
       return text.trim();
     }
     const t = await res.text().catch(() => "");
