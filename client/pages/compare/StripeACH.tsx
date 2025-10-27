@@ -1,7 +1,26 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function StripeACH() {
+  useEffect(() => {
+    setPageMeta({
+      title: "BizPay Solutions vs. Stripe ACH - Detailed Comparison",
+      description: "Compare BizPay Solutions with Stripe ACH for B2B recurring payments. See the differences in costs, reliability, reconciliation, and developer experience.",
+      canonicalUrl: "https://www.bizpaysol.com/compare/stripe-ach/",
+      keywords: "BizPay vs Stripe, ACH comparison, payment processor comparison, Stripe ACH alternative",
+      ogTitle: "BizPay Solutions vs. Stripe ACH",
+      ogDescription: "Compare ACH payment solutions: BizPay vs Stripe ACH for B2B payments, costs, and features."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "ComparisonChart",
+      "title": "BizPay Solutions vs. Stripe ACH",
+      "description": "Detailed comparison of ACH payment features and pricing"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">
