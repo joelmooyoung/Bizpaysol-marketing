@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, FileCheck2, PlugZap, BarChart2 } from "lucide-react";
 import { FeaturesQuiz } from "@/components/marketing/FeaturesQuiz";
+import { ComparisonMatrix } from "@/components/marketing/ComparisonMatrix";
 import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 const featureCards = [
@@ -77,19 +78,31 @@ export default function Product() {
 
           <div className="mt-16">
             <h2 className="text-2xl font-bold">API Example</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Example request via REST:</p>
+            <p className="mt-2 text-sm text-muted-foreground">Create a customer and initiate an ACH transfer:</p>
             <div className="mt-4 overflow-hidden rounded-md border bg-slate-950">
               <pre className="overflow-x-auto p-5 text-sm leading-relaxed text-slate-100">
-{`POST /api/v1/projects/close
+{`// Create a customer
+POST /v1/customers
 {
-  "project_id": "12345",
-  "reason": "completed"
+  "name": "Acme Corp",
+  "email": "finance@acme.com"
+}
+
+// Initiate ACH transfer
+POST /v1/transfers
+{
+  "customer_id": "cust_123",
+  "amount": 15000,
+  "currency": "USD",
+  "description": "Q4 Invoice #INV-2025-001"
 }`}
               </pre>
             </div>
           </div>
         </div>
       </section>
+
+      <ComparisonMatrix />
     </Layout>
   );
 }
