@@ -33,9 +33,7 @@ export function Hero() {
             Complete ACH Platform — Powerful Dashboard + Developer API
           </h2>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Operate ACH end‑to‑end with a full web dashboard, NACHA file
-            generation, secure webhooks, and a modern API. Lower fees, faster
-            reconciliation, greater control.
+            Enterprise ACH platform trusted by 2,000+ businesses. Process 50k+ transfers. Lower costs by 30-65%, reduce DSO, launch faster. SOC 2 Type II Verified.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="px-6">
