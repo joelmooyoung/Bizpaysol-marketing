@@ -21,15 +21,16 @@ function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export function PricingPreview() {
   return (
-    <section className="bg-slate-50 py-12 border-t">
+    <section className="bg-gradient-to-b from-white to-slate-50 py-16 border-t">
       <div className="container">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight">
             Transparent, Predictable Pricing
           </h2>
-          <p className="text-muted-foreground mt-2">
-            Save 30-65% vs legacy providers. No hidden fees. Volume discounts available. First month free on annual plans.
+          <p className="text-lg text-muted-foreground mt-3">
+            Save 30-65% vs legacy providers. No hidden fees. Volume discounts available.
           </p>
+          <p className="text-sm text-emerald-600 font-semibold mt-2">✓ First month free on annual plans</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
