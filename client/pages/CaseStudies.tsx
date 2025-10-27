@@ -75,46 +75,47 @@ export default function CaseStudies() {
           <div className="mt-12 space-y-4">
             <h2 className="text-2xl font-bold tracking-tight">Full Case Study Examples</h2>
             <p className="text-muted-foreground">Detailed breakdowns showing how companies transformed their payment operations.</p>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Title</h3>
-                <p className="text-sm text-muted-foreground">How a Mid‑Market Logistics Company Reduced Costs and DSO with ACH via BizPay Solutions</p>
+            <div className="bg-slate-50 rounded-lg p-8 border">
+              <h3 className="text-lg font-semibold mb-4">FleetSync Pro - Logistics Tech</h3>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">THE CHALLENGE</h4>
+                  <p className="text-sm mb-4">FleetSync was processing $15M/month in driver payouts and fuel reimbursements. With legacy wire transfers, they faced:</p>
+                  <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-5">
+                    <li>$8,500/month in wire fees</li>
+                    <li>3-5 day payment delays</li>
+                    <li>Manual reconciliation taking 40 hrs/week</li>
+                    <li>4.2% failed payment rate</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">THE SOLUTION</h4>
+                  <p className="text-sm mb-4">Migrated to BizPaySol's intelligent ACH with:</p>
+                  <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-5">
+                    <li>Same-day ACH processing</li>
+                    <li>Automated retry logic for failed payments</li>
+                    <li>Webhook-based reconciliation</li>
+                    <li>NACHA compliance + SOC 2 Type II</li>
+                  </ul>
+                </div>
               </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Summary</h3>
-                <p className="text-sm text-muted-foreground">2–3 sentences quantifying impact (e.g., −65% costs, −7 days DSO, +30% ops efficiency).</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Company Profile</h3>
-                <p className="text-sm text-muted-foreground">Industry, size, key systems (ERP/CRM).</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Challenge</h3>
-                <p className="text-sm text-muted-foreground">Fees, churn, reconciliation complexity, returns management.</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Solution</h3>
-                <p className="text-sm text-muted-foreground">Why BizPay; integration scope; features used (Same Day ACH, retries, webhooks).</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Implementation</h3>
-                <p className="text-sm text-muted-foreground">Timeline, team, stack, testing, go‑live steps.</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Results</h3>
-                <p className="text-sm text-muted-foreground">Quantified KPIs and charts (costs, DSO, exception rate).</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Compliance & Security</h3>
-                <p className="text-sm text-muted-foreground">NACHA controls, SOC 2, audit trails.</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Quotes</h3>
-                <p className="text-sm text-muted-foreground">Executive and developer perspectives on impact and integration.</p>
-              </div>
-              <div className="rounded-lg border p-4">
-                <h3 className="font-semibold">Next Steps</h3>
-                <p className="text-sm text-muted-foreground">Expansion to new flows, entities, or regions.</p>
+              <div className="grid gap-6 md:grid-cols-4 mt-6 pt-6 border-t">
+                <div>
+                  <div className="text-2xl font-bold text-primary">$102k</div>
+                  <div className="text-xs text-muted-foreground">Annual savings</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary">7 days</div>
+                  <div className="text-xs text-muted-foreground">DSO reduction</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary">0.8%</div>
+                  <div className="text-xs text-muted-foreground">Failed rate now</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary">5 days</div>
+                  <div className="text-xs text-muted-foreground">Time to go live</div>
+                </div>
               </div>
             </div>
             <div className="flex gap-3">
