@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { MigrationImport } from "@/components/pricing/MigrationImport";
+import { ROICalculatorEnhanced } from "@/components/marketing/ROICalculatorEnhanced";
 import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function Pricing() {
