@@ -1,6 +1,16 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
+import { setPageMeta } from "@/lib/seo";
 
 export function Terms() {
+  useEffect(() => {
+    setPageMeta({
+      title: "Terms of Service - BizPaySol",
+      description: "BizPaySol Terms of Service for ACH payment platform. Effective October 5, 2025. Read our full terms and conditions.",
+      canonicalUrl: "https://www.bizpaysol.com/terms/",
+      noindex: true
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">
