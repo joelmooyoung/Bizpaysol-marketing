@@ -6,26 +6,26 @@ export function JourneyRoadmap() {
     {
       n: 1,
       title: "Explore",
-      desc: "See product features, API, and integrations.",
+      desc: "5-minute API demo, SDKs, and feature tour.",
       icon: Search,
       to: "/product",
-      cta: "Explore Product",
+      cta: "View Features",
     },
     {
       n: 2,
-      title: "Calc",
-      desc: "Estimate savings with our ROI & pricing calculator.",
+      title: "Calculate",
+      desc: "See your cost savings in minutes. Free migration included.",
       icon: Calculator,
       to: "/pricing#calculator",
-      cta: "Run Calculator",
+      cta: "Calculate Savings",
     },
     {
       n: 3,
-      title: "Trial",
-      desc: "Kick off a sandbox and send your first ACH.",
+      title: "Go Live",
+      desc: "Sandbox included. Send your first ACH in 15 minutes.",
       icon: FlaskConical,
       to: "/docs",
-      cta: "Start Trial",
+      cta: "Get Started Free",
     },
   ];
 
@@ -33,10 +33,10 @@ export function JourneyRoadmap() {
     <section className="relative border-t bg-gradient-to-b from-slate-50 to-white py-10">
       <div className="container">
         <h2 className="text-center text-2xl font-bold tracking-tight">
-          Your 3‑Step Journey
+          Launch in 3 Steps
         </h2>
         <p className="mt-1 text-center text-sm text-muted-foreground">
-          Step 1: Explore → Step 2: Calc → Step 3: Trial
+          From discovery to live production in days, not months. No complex setup.
         </p>
 
         <div className="mt-6 grid items-stretch gap-4 md:grid-cols-3">

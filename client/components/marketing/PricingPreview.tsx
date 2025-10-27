@@ -36,28 +36,28 @@ export function PricingPreview() {
           {/* Starter Tier */}
           <div className="rounded-xl border bg-white p-6 shadow-sm">
             <div className="text-sm font-semibold text-primary mb-2">
-              Starter
+              Essential
             </div>
-            <div className="text-3xl font-bold mb-1">0.8%</div>
+            <div className="text-3xl font-bold mb-1">$0.25</div>
             <div className="text-sm text-muted-foreground mb-4">
               per ACH transaction
             </div>
             <ul className="space-y-2 text-sm mb-6">
               <li className="flex items-start gap-2">
                 <CheckIcon />
-                Up to $50k monthly volume
+                Perfect for startups & SMBs
               </li>
               <li className="flex items-start gap-2">
                 <CheckIcon />
-                Standard API access
+                REST API + webhooks
               </li>
               <li className="flex items-start gap-2">
                 <CheckIcon />
-                Email support (24hr response)
+                Email & chat support
               </li>
               <li className="flex items-start gap-2">
                 <CheckIcon />
-                No setup fees
+                No monthly fees
               </li>
             </ul>
             <Link
