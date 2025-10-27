@@ -27,7 +27,7 @@ export function Hero() {
             Part of the ACH Network · Full ACH Service
           </p>
           <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-            ACH Payment are fueling Fintech's Future
+            ACH Payments are fueling Fintech's Future
           </h1>
           <h2 className="mt-4 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">
             Complete ACH Platform — Powerful Dashboard + Developer API
