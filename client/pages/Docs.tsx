@@ -33,10 +33,10 @@ export default function Docs() {
   }, []);
   return (
     <Layout>
-      <section className="bg-white py-12">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container grid gap-8 md:grid-cols-[260px_1fr]">
           <aside className="space-y-4">
-            <h1 className="text-2xl font-bold">Enterprise ACH Developer Docs</h1>
+            <h1 className="text-2xl font-bold text-slate-900">Developer Documentation</h1>
             <Input placeholder="Search docs..." className="w-full" />
             <nav className="mt-4 space-y-2">
               {sections.map((s) => (

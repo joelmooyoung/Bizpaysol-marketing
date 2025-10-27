@@ -51,11 +51,11 @@ export default function Product() {
 
   return (
     <Layout>
-      <section className="bg-white py-16">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
         <div className="container">
-          <h1 className="text-4xl font-extrabold tracking-tight">Product & Features</h1>
-          <p className="mt-4 max-w-3xl text-muted-foreground">
-            Enterprise ACH is built to simplify the complex process of ACH transactions, reducing risk while accelerating operational efficiency.
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">Product & Features</h1>
+          <p className="mt-4 max-w-3xl text-lg text-slate-600">
+            Enterprise ACH built to simplify the complex process of ACH transactions, reducing risk while accelerating operational efficiency.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

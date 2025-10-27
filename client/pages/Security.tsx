@@ -22,9 +22,9 @@ export default function Security() {
   }, []);
   return (
     <Layout>
-      <section className="bg-white py-16">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
         <div className="container max-w-4xl">
-          <h1 className="text-4xl font-extrabold tracking-tight">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
             Security & Compliance
           </h1>
           <p className="mt-3 text-muted-foreground">

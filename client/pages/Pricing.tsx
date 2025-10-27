@@ -27,7 +27,7 @@ export default function Pricing() {
   }, []);
   return (
     <Layout>
-      <section className="bg-white py-16">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
         <div className="container">
           {(() => {
             const key = "pricing_promo_variant";

@@ -22,10 +22,10 @@ export default function CaseStudies() {
   }, []);
   return (
     <Layout>
-      <section className="bg-white py-16">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
         <div className="container max-w-5xl">
-          <h1 className="text-4xl font-extrabold tracking-tight">Case Studies</h1>
-          <p className="mt-3 text-muted-foreground">How teams use BizPaySol to reduce cost and time-to-launch on ACH.</p>
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">Case Studies</h1>
+          <p className="mt-3 text-lg text-slate-600">How companies transformed their payment operations and cut costs with BizPaySol.</p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <article className="rounded-lg border p-6 hover:shadow-md transition">
