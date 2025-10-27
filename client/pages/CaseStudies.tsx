@@ -1,6 +1,25 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function CaseStudies() {
+  useEffect(() => {
+    setPageMeta({
+      title: "BizPaySol Case Studies - Real Results from Fintech Companies",
+      description: "See how companies reduced ACH costs by 30-65%, improved reconciliation, and launched faster with BizPaySol. Real case studies and ROI metrics.",
+      canonicalUrl: "https://www.bizpaysol.com/case-studies/",
+      keywords: "ACH case studies, payment processor success stories, fintech ROI, cost savings",
+      ogTitle: "BizPaySol Case Studies",
+      ogDescription: "How teams use BizPaySol to reduce cost and time-to-launch on ACH."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "BizPaySol Case Studies",
+      "description": "Real-world examples of how businesses benefit from BizPaySol ACH platform"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">

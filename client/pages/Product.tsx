@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, FileCheck2, PlugZap, BarChart2 } from "lucide-react";
 import { FeaturesQuiz } from "@/components/marketing/FeaturesQuiz";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 const featureCards = [
   {
@@ -27,6 +29,25 @@ const featureCards = [
 ];
 
 export default function Product() {
+  useEffect(() => {
+    setPageMeta({
+      title: "ACH Payment Platform Features - BizPaySol Product",
+      description: "Enterprise ACH platform with API-first design, compliance built-in, custom integrations, and advanced reporting. Developer-friendly REST API with webhooks.",
+      canonicalUrl: "https://www.bizpaysol.com/product/",
+      keywords: "ACH platform features, payment API, NACHA compliant, developer API, payment webhooks",
+      ogTitle: "Product & Features - BizPaySol",
+      ogDescription: "Enterprise ACH built to simplify complex transactions, reduce risk, and accelerate efficiency."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "BizPaySol ACH Platform",
+      "description": "Enterprise-grade ACH payment platform for fintech companies",
+      "brand": "BizPaySol"
+    });
+  }, []);
+
   return (
     <Layout>
       <section className="bg-white py-16">
