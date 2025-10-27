@@ -1,7 +1,26 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function GoCardless() {
+  useEffect(() => {
+    setPageMeta({
+      title: "BizPay Solutions vs. GoCardless - US ACH vs International Bank Debit",
+      description: "Compare BizPay Solutions with GoCardless. BizPay specializes in US B2B ACH payments while GoCardless focuses on international bank debit. See which fits your needs.",
+      canonicalUrl: "https://www.bizpaysol.com/compare/gocardless/",
+      keywords: "BizPay vs GoCardless, ACH payment processor, bank debit comparison, payment platform",
+      ogTitle: "BizPay Solutions vs. GoCardless",
+      ogDescription: "ACH for US B2B vs bank debit in other regions—fit, costs, and integration paths."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "ComparisonChart",
+      "title": "BizPay Solutions vs. GoCardless",
+      "description": "Detailed comparison of ACH payment features and pricing"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">

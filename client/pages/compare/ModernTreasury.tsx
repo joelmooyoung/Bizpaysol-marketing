@@ -1,7 +1,26 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function ModernTreasury() {
+  useEffect(() => {
+    setPageMeta({
+      title: "BizPay Solutions vs. Modern Treasury - ACH Payment Comparison",
+      description: "Compare BizPay Solutions with Modern Treasury for ACH payments. Evaluate operational complexity, cost, time-to-value, and integration requirements.",
+      canonicalUrl: "https://www.bizpaysol.com/compare/modern-treasury/",
+      keywords: "BizPay vs Modern Treasury, ACH payment platform, payment processor comparison, Modern Treasury alternative",
+      ogTitle: "BizPay Solutions vs. Modern Treasury",
+      ogDescription: "Comparison for engineering teams evaluating operational complexity, cost, and time-to-value."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "ComparisonChart",
+      "title": "BizPay Solutions vs. Modern Treasury",
+      "description": "Detailed comparison of ACH payment features and pricing"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">

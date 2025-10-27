@@ -1,7 +1,26 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function Dwolla() {
+  useEffect(() => {
+    setPageMeta({
+      title: "BizPay Solutions vs. Dwolla - ACH Payment Platform Comparison",
+      description: "Compare BizPay Solutions with Dwolla for ACH payments. See differences in recurring billing, payouts, developer experience, and pricing for fintech companies.",
+      canonicalUrl: "https://www.bizpaysol.com/compare/dwolla/",
+      keywords: "BizPay vs Dwolla, ACH platform comparison, Dwolla alternative, payment processor",
+      ogTitle: "BizPay Solutions vs. Dwolla",
+      ogDescription: "Focused ACH platform comparison for fintechs building recurring billing and payouts."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "ComparisonChart",
+      "title": "BizPay Solutions vs. Dwolla",
+      "description": "Detailed comparison of ACH payment features and pricing"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">
