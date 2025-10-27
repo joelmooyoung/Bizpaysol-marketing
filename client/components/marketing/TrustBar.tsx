@@ -5,8 +5,8 @@ export function TrustBar() {
   return (
     <div className="border-t bg-white/80 py-5 backdrop-blur">
       <div className="container space-y-2 text-center">
-        <div className="text-sm font-semibold">Enterprise-Grade Financial Compliance, Built for Scale.</div>
-        <div className="text-xs text-muted-foreground">99.95% Uptime • ~1.5s API response (global)</div>
+        <div className="text-sm font-semibold">Trusted by 2,000+ Companies. 50k+ Transfers. 99.95% Uptime.</div>
+        <div className="text-xs text-muted-foreground">$50M+ processed annually • &lt;1.5s API response • Enterprise-grade compliance</div>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
           <Badge className="bg-white">SOC 2 Type II</Badge>
           <Badge className="bg-white">NACHA Compliant</Badge>
