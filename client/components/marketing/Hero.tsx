@@ -26,9 +26,12 @@ export function Hero() {
           <p className="mb-2 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
             Part of the ACH Network · Full ACH Service
           </p>
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-            Complete ACH Platform — Powerful Dashboard + Developer API
+          <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
+            ACH Payment are fueling Fintech's Future
           </h1>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">
+            Complete ACH Platform — Powerful Dashboard + Developer API
+          </h2>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
             Operate ACH end‑to‑end with a full web dashboard, NACHA file
             generation, secure webhooks, and a modern API. Lower fees, faster
