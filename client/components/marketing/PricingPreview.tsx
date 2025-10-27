@@ -28,9 +28,12 @@ export function PricingPreview() {
             Transparent, Predictable Pricing
           </h2>
           <p className="text-lg text-muted-foreground mt-3">
-            Save 30-65% vs legacy providers. No hidden fees. Volume discounts available.
+            Save 30-65% vs legacy providers. No hidden fees. Volume discounts
+            available.
           </p>
-          <p className="text-sm text-emerald-600 font-semibold mt-2">✓ First month free on annual plans</p>
+          <p className="text-sm text-emerald-600 font-semibold mt-2">
+            ✓ First month free on annual plans
+          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">

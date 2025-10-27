@@ -130,10 +130,7 @@ export function ComparisonMatrix() {
             </thead>
             <tbody>
               {comparisonData.map((row, idx) => (
-                <tr
-                  key={idx}
-                  className="border-b hover:bg-slate-50 transition"
-                >
+                <tr key={idx} className="border-b hover:bg-slate-50 transition">
                   <td className="px-4 py-3 font-medium text-foreground">
                     {row.feature}
                   </td>
@@ -157,7 +154,12 @@ export function ComparisonMatrix() {
 
         <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
           <p className="text-sm text-blue-900">
-            💡 <strong>Need custom features?</strong> Enterprise plans include white-glove support and custom integrations. <a href="/support#contact" className="underline">Contact our team</a> to discuss your specific requirements.
+            💡 <strong>Need custom features?</strong> Enterprise plans include
+            white-glove support and custom integrations.{" "}
+            <a href="/support#contact" className="underline">
+              Contact our team
+            </a>{" "}
+            to discuss your specific requirements.
           </p>
         </div>
       </div>

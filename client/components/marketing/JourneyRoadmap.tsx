@@ -37,7 +37,8 @@ export function JourneyRoadmap() {
             Launch in 3 Steps
           </h2>
           <p className="mt-3 text-lg text-muted-foreground">
-            From discovery to live production in days, not months. No complex setup required.
+            From discovery to live production in days, not months. No complex
+            setup required.
           </p>
         </div>
 
@@ -64,7 +65,9 @@ export function JourneyRoadmap() {
                       <s.icon className="h-5 w-5 text-primary" />
                       <h3 className="text-base font-semibold">{s.title}</h3>
                     </div>
-                    <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {s.desc}
+                    </p>
                   </div>
                 </div>
                 <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary">
@@ -78,7 +81,13 @@ export function JourneyRoadmap() {
 
         <div className="mt-10 text-center">
           <p className="text-sm text-muted-foreground">
-            Need help? <Link className="text-primary font-semibold hover:underline" to="/support#contact">Request a personalized demo</Link>
+            Need help?{" "}
+            <Link
+              className="text-primary font-semibold hover:underline"
+              to="/support#contact"
+            >
+              Request a personalized demo
+            </Link>
           </p>
         </div>
       </div>

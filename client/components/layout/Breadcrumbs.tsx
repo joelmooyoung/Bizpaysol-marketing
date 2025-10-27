@@ -8,30 +8,12 @@ interface BreadcrumbItem {
 
 const routeBreadcrumbs: Record<string, BreadcrumbItem[]> = {
   "/": [{ label: "Home" }],
-  "/product": [
-    { label: "Home", href: "/" },
-    { label: "Product" },
-  ],
-  "/pricing": [
-    { label: "Home", href: "/" },
-    { label: "Pricing" },
-  ],
-  "/docs": [
-    { label: "Home", href: "/" },
-    { label: "Documentation" },
-  ],
-  "/support": [
-    { label: "Home", href: "/" },
-    { label: "Support" },
-  ],
-  "/about": [
-    { label: "Home", href: "/" },
-    { label: "About" },
-  ],
-  "/case-studies": [
-    { label: "Home", href: "/" },
-    { label: "Case Studies" },
-  ],
+  "/product": [{ label: "Home", href: "/" }, { label: "Product" }],
+  "/pricing": [{ label: "Home", href: "/" }, { label: "Pricing" }],
+  "/docs": [{ label: "Home", href: "/" }, { label: "Documentation" }],
+  "/support": [{ label: "Home", href: "/" }, { label: "Support" }],
+  "/about": [{ label: "Home", href: "/" }, { label: "About" }],
+  "/case-studies": [{ label: "Home", href: "/" }, { label: "Case Studies" }],
   "/security": [
     { label: "Home", href: "/" },
     { label: "Security & Compliance" },
@@ -60,7 +42,9 @@ const routeBreadcrumbs: Record<string, BreadcrumbItem[]> = {
 
 export function Breadcrumbs() {
   const location = useLocation();
-  const breadcrumbs = routeBreadcrumbs[location.pathname] || [{ label: "Page" }];
+  const breadcrumbs = routeBreadcrumbs[location.pathname] || [
+    { label: "Page" },
+  ];
 
   return (
     <nav aria-label="Breadcrumb" className="border-b bg-slate-50/50 py-3">
@@ -69,10 +53,7 @@ export function Breadcrumbs() {
           {breadcrumbs.map((item, index) => (
             <li key={index} className="flex items-center gap-1">
               {item.href ? (
-                <Link
-                  to={item.href}
-                  className="text-primary hover:underline"
-                >
+                <Link to={item.href} className="text-primary hover:underline">
                   {item.label}
                 </Link>
               ) : (

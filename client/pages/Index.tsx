@@ -17,28 +17,32 @@ export default function Index() {
   useEffect(() => {
     setPageMeta({
       title: "ACH Payments Platform for Fintech - BizPay Solutions",
-      description: "ACH Payments are fueling Fintech's Future. Complete ACH platform with powerful dashboard, developer API, lower fees, and faster reconciliation. SOC 2 Type II Verified.",
+      description:
+        "ACH Payments are fueling Fintech's Future. Complete ACH platform with powerful dashboard, developer API, lower fees, and faster reconciliation. SOC 2 Type II Verified.",
       canonicalUrl: "https://www.bizpaysol.com/",
-      keywords: "ACH payments, ACH platform, fintech, payment processing, NACHA compliant",
+      keywords:
+        "ACH payments, ACH platform, fintech, payment processing, NACHA compliant",
       ogTitle: "ACH Payments are Fueling Fintech's Future",
-      ogDescription: "Complete ACH platform built for enterprise security and scale. Lower costs, faster reconciliation, greater control.",
+      ogDescription:
+        "Complete ACH platform built for enterprise security and scale. Lower costs, faster reconciliation, greater control.",
       twitterTitle: "ACH Payments are Fueling Fintech's Future",
-      twitterDescription: "Enterprise ACH platform with API, dashboard, and webhooks. SOC 2 Type II Verified."
+      twitterDescription:
+        "Enterprise ACH platform with API, dashboard, and webhooks. SOC 2 Type II Verified.",
     });
 
     setStructuredData({
       "@context": "https://schema.org",
       "@type": "FinancialService",
-      "name": "BizPay Solutions",
-      "url": "https://www.bizpaysol.com/",
-      "description": "Enterprise ACH payment platform for fintech companies",
-      "areaServed": "US",
-      "telephone": "+1-800-BIZPAY-1",
-      "email": "support@bizpaysol.com",
-      "hasOfferCatalog": {
+      name: "BizPay Solutions",
+      url: "https://www.bizpaysol.com/",
+      description: "Enterprise ACH payment platform for fintech companies",
+      areaServed: "US",
+      telephone: "+1-800-BIZPAY-1",
+      email: "support@bizpaysol.com",
+      hasOfferCatalog: {
         "@type": "OfferCatalog",
-        "name": "ACH Payment Solutions"
-      }
+        name: "ACH Payment Solutions",
+      },
     });
   }, []);
   return (

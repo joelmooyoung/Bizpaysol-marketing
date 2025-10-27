@@ -21,7 +21,9 @@ export function TrustBar() {
         </div>
 
         <div className="pt-4 border-t">
-          <p className="text-xs text-muted-foreground mb-3 font-semibold">ENTERPRISE-GRADE COMPLIANCE</p>
+          <p className="text-xs text-muted-foreground mb-3 font-semibold">
+            ENTERPRISE-GRADE COMPLIANCE
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <Badge className="bg-white border-slate-200">SOC 2 Type II</Badge>
             <Badge className="bg-white border-slate-200">NACHA Compliant</Badge>
@@ -33,7 +35,12 @@ export function TrustBar() {
         </div>
 
         <div className="text-xs pt-2">
-          <Link to="/security" className="text-primary font-semibold underline decoration-dotted underline-offset-2 hover:no-underline">View full security & compliance details →</Link>
+          <Link
+            to="/security"
+            className="text-primary font-semibold underline decoration-dotted underline-offset-2 hover:no-underline"
+          >
+            View full security & compliance details →
+          </Link>
         </div>
       </div>
     </div>

@@ -35,7 +35,9 @@ export function Hero() {
             Complete ACH Platform — Powerful Dashboard + Developer API
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-slate-600 leading-relaxed">
-            Enterprise ACH platform processing 50k+ transfers. Lower costs by 30-65%, reduce DSO, launch faster. <span className="font-semibold">SOC 2 Type II Verified</span>.
+            Enterprise ACH platform processing 50k+ transfers. Lower costs by
+            30-65%, reduce DSO, launch faster.{" "}
+            <span className="font-semibold">SOC 2 Type II Verified</span>.
           </p>
 
           <div className="space-y-4 pt-2">
@@ -61,7 +63,9 @@ export function Hero() {
           <div className="flex flex-wrap gap-3 pt-2 border-t-2 border-slate-200">
             <div className="text-xs text-slate-600 space-y-1">
               <p className="font-semibold">Security & Compliance</p>
-              <p>SOC 2 Type II • ISO 27001 • NACHA • GDPR • TLS 1.2+ • AES-256</p>
+              <p>
+                SOC 2 Type II • ISO 27001 • NACHA • GDPR • TLS 1.2+ • AES-256
+              </p>
             </div>
           </div>
         </div>

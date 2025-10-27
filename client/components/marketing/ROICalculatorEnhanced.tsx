@@ -9,10 +9,10 @@ export function ROICalculatorEnhanced() {
   const [currentCost, setCurrentCost] = useState(0.015); // default 1.5%
 
   const bizpayPricing: Record<number, number> = {
-    50000: 0.0050,
-    100000: 0.0030,
+    50000: 0.005,
+    100000: 0.003,
     250000: 0.0025,
-    500000: 0.0020,
+    500000: 0.002,
     1000000: 0.0018,
   };
 
@@ -24,7 +24,7 @@ export function ROICalculatorEnhanced() {
     for (const [volume, rate] of rates) {
       if (monthlyVolume >= volume) return rate as number;
     }
-    return 0.0050;
+    return 0.005;
   };
 
   const bizpayRate = getBizPayRate();
@@ -34,7 +34,9 @@ export function ROICalculatorEnhanced() {
   const annualSavings = monthlySavings * 12;
   const savingsPercent =
     currentMonthlyCost > 0
-      ? Math.round(((currentMonthlyCost - bizpayMonthlyCost) / currentMonthlyCost) * 100)
+      ? Math.round(
+          ((currentMonthlyCost - bizpayMonthlyCost) / currentMonthlyCost) * 100,
+        )
       : 0;
 
   return (
@@ -91,9 +93,7 @@ export function ROICalculatorEnhanced() {
                 <div className="space-y-3">
                   <Slider
                     value={[currentCost * 100]}
-                    onValueChange={(value) =>
-                      setCurrentCost(value[0] / 100)
-                    }
+                    onValueChange={(value) => setCurrentCost(value[0] / 100)}
                     min={0.1}
                     max={3}
                     step={0.1}
@@ -105,20 +105,26 @@ export function ROICalculatorEnhanced() {
                         type="number"
                         value={currentCost * 100}
                         onChange={(e) =>
-                          setCurrentCost(parseFloat(e.target.value || "0") / 100)
+                          setCurrentCost(
+                            parseFloat(e.target.value || "0") / 100,
+                          )
                         }
                         className="w-full px-3 py-2 border rounded-md text-sm"
                       />
                     </div>
                     <div className="text-sm text-muted-foreground flex items-center">
-                      {currentCost > 0 ? `${(currentMonthlyCost / 1000).toFixed(1)}k/mo` : "$0"}
+                      {currentCost > 0
+                        ? `${(currentMonthlyCost / 1000).toFixed(1)}k/mo`
+                        : "$0"}
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-slate-50 rounded-lg p-4 border">
-                <p className="text-xs text-muted-foreground mb-1">Current cost vs BizPaySol</p>
+                <p className="text-xs text-muted-foreground mb-1">
+                  Current cost vs BizPaySol
+                </p>
                 <div className="flex items-baseline gap-2">
                   <span className="text-sm line-through text-muted-foreground">
                     ${(currentMonthlyCost / 1000).toFixed(1)}k/mo
@@ -137,25 +143,33 @@ export function ROICalculatorEnhanced() {
                   <div className="flex items-start gap-2">
                     <TrendingDown className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs text-emerald-700 font-semibold">MONTHLY SAVINGS</p>
+                      <p className="text-xs text-emerald-700 font-semibold">
+                        MONTHLY SAVINGS
+                      </p>
                       <p className="text-3xl font-bold text-emerald-600 mt-1">
                         ${(monthlySavings / 1000).toFixed(1)}k
                       </p>
-                      <p className="text-xs text-emerald-600 mt-1">{savingsPercent}% reduction</p>
+                      <p className="text-xs text-emerald-600 mt-1">
+                        {savingsPercent}% reduction
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="grid gap-3">
                   <div className="rounded-lg border p-4 bg-white">
-                    <p className="text-xs text-muted-foreground font-semibold">ANNUAL SAVINGS</p>
+                    <p className="text-xs text-muted-foreground font-semibold">
+                      ANNUAL SAVINGS
+                    </p>
                     <p className="text-2xl font-bold text-primary mt-1">
                       ${(annualSavings / 1000).toFixed(1)}k/year
                     </p>
                   </div>
 
                   <div className="rounded-lg border p-4 bg-white">
-                    <p className="text-xs text-muted-foreground font-semibold">BIZPAYSOL RATE</p>
+                    <p className="text-xs text-muted-foreground font-semibold">
+                      BIZPAYSOL RATE
+                    </p>
                     <p className="text-2xl font-bold text-primary mt-1">
                       {(bizpayRate * 100).toFixed(2)}%
                     </p>
@@ -164,7 +178,10 @@ export function ROICalculatorEnhanced() {
               </div>
 
               <Button asChild className="w-full" size="lg">
-                <Link to="/support#contact" className="flex items-center justify-center gap-2">
+                <Link
+                  to="/support#contact"
+                  className="flex items-center justify-center gap-2"
+                >
                   Get Started <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -174,16 +191,28 @@ export function ROICalculatorEnhanced() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-3 text-center">
           <div>
-            <p className="text-sm font-semibold text-slate-700">30-65% Cost Reduction</p>
-            <p className="text-xs text-muted-foreground mt-1">Typical savings vs legacy providers</p>
+            <p className="text-sm font-semibold text-slate-700">
+              30-65% Cost Reduction
+            </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Typical savings vs legacy providers
+            </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-700">7-30 Days DSO Reduction</p>
-            <p className="text-xs text-muted-foreground mt-1">Faster cash flow with same-day ACH</p>
+            <p className="text-sm font-semibold text-slate-700">
+              7-30 Days DSO Reduction
+            </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Faster cash flow with same-day ACH
+            </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-700">65% Manual Work Reduction</p>
-            <p className="text-xs text-muted-foreground mt-1">Automatic reconciliation via webhooks</p>
+            <p className="text-sm font-semibold text-slate-700">
+              65% Manual Work Reduction
+            </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Automatic reconciliation via webhooks
+            </p>
           </div>
         </div>
       </div>

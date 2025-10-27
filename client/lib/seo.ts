@@ -19,117 +19,140 @@ export function setPageMeta(meta: PageMeta) {
   // Set or update meta description
   let descTag = document.querySelector('meta[name="description"]');
   if (!descTag) {
-    descTag = document.createElement('meta');
-    descTag.setAttribute('name', 'description');
+    descTag = document.createElement("meta");
+    descTag.setAttribute("name", "description");
     document.head.appendChild(descTag);
   }
-  descTag.setAttribute('content', meta.description);
+  descTag.setAttribute("content", meta.description);
 
   // Set noindex if specified
   if (meta.noindex) {
     let robotsTag = document.querySelector('meta[name="robots"]');
     if (!robotsTag) {
-      robotsTag = document.createElement('meta');
-      robotsTag.setAttribute('name', 'robots');
+      robotsTag = document.createElement("meta");
+      robotsTag.setAttribute("name", "robots");
       document.head.appendChild(robotsTag);
     }
-    robotsTag.setAttribute('content', 'noindex,follow');
+    robotsTag.setAttribute("content", "noindex,follow");
   }
 
   // Set keywords if provided
   if (meta.keywords) {
     let keywordsTag = document.querySelector('meta[name="keywords"]');
     if (!keywordsTag) {
-      keywordsTag = document.createElement('meta');
-      keywordsTag.setAttribute('name', 'keywords');
+      keywordsTag = document.createElement("meta");
+      keywordsTag.setAttribute("name", "keywords");
       document.head.appendChild(keywordsTag);
     }
-    keywordsTag.setAttribute('content', meta.keywords);
+    keywordsTag.setAttribute("content", meta.keywords);
   }
 
   // Set canonical URL
   const canonicalUrl = meta.canonicalUrl || window.location.href;
   let canonicalTag = document.querySelector('link[rel="canonical"]');
   if (!canonicalTag) {
-    canonicalTag = document.createElement('link');
-    canonicalTag.setAttribute('rel', 'canonical');
+    canonicalTag = document.createElement("link");
+    canonicalTag.setAttribute("rel", "canonical");
     document.head.appendChild(canonicalTag);
   }
-  canonicalTag.setAttribute('href', canonicalUrl);
+  canonicalTag.setAttribute("href", canonicalUrl);
 
   // Set OG tags
   const ogTags = [
-    { property: 'og:title', content: meta.ogTitle || meta.title },
-    { property: 'og:description', content: meta.ogDescription || meta.description },
-    { property: 'og:url', content: canonicalUrl },
-    { property: 'og:image', content: meta.ogImage || 'https://www.bizpaysol.com/placeholder.svg' },
+    { property: "og:title", content: meta.ogTitle || meta.title },
+    {
+      property: "og:description",
+      content: meta.ogDescription || meta.description,
+    },
+    { property: "og:url", content: canonicalUrl },
+    {
+      property: "og:image",
+      content: meta.ogImage || "https://www.bizpaysol.com/placeholder.svg",
+    },
   ];
 
   ogTags.forEach(({ property, content }) => {
     let tag = document.querySelector(`meta[property="${property}"]`);
     if (!tag) {
-      tag = document.createElement('meta');
-      tag.setAttribute('property', property);
+      tag = document.createElement("meta");
+      tag.setAttribute("property", property);
       document.head.appendChild(tag);
     }
-    tag.setAttribute('content', content);
+    tag.setAttribute("content", content);
   });
 
   // Set Twitter tags
   const twitterTags = [
-    { name: 'twitter:title', content: meta.twitterTitle || meta.ogTitle || meta.title },
-    { name: 'twitter:description', content: meta.twitterDescription || meta.ogDescription || meta.description },
-    { name: 'twitter:image', content: meta.twitterImage || meta.ogImage || 'https://www.bizpaysol.com/placeholder.svg' },
+    {
+      name: "twitter:title",
+      content: meta.twitterTitle || meta.ogTitle || meta.title,
+    },
+    {
+      name: "twitter:description",
+      content:
+        meta.twitterDescription || meta.ogDescription || meta.description,
+    },
+    {
+      name: "twitter:image",
+      content:
+        meta.twitterImage ||
+        meta.ogImage ||
+        "https://www.bizpaysol.com/placeholder.svg",
+    },
   ];
 
   twitterTags.forEach(({ name, content }) => {
     let tag = document.querySelector(`meta[name="${name}"]`);
     if (!tag) {
-      tag = document.createElement('meta');
-      tag.setAttribute('name', name);
+      tag = document.createElement("meta");
+      tag.setAttribute("name", name);
       document.head.appendChild(tag);
     }
-    tag.setAttribute('content', content);
+    tag.setAttribute("content", content);
   });
 }
 
 export function setStructuredData(data: Record<string, any>) {
   let script = document.querySelector('script[data-structured-data="page"]');
   if (!script) {
-    script = document.createElement('script');
-    script.setAttribute('type', 'application/ld+json');
-    script.setAttribute('data-structured-data', 'page');
+    script = document.createElement("script");
+    script.setAttribute("type", "application/ld+json");
+    script.setAttribute("data-structured-data", "page");
     document.head.appendChild(script);
   }
   script.textContent = JSON.stringify(data);
 }
 
-export function setFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+export function setFAQSchema(
+  faqs: Array<{ question: string; answer: string }>,
+) {
   const faqData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
   setStructuredData(faqData);
 }
 
-export function setBreadcrumbSchema(breadcrumbs: Array<{ name: string; url: string }>) {
+export function setBreadcrumbSchema(
+  breadcrumbs: Array<{ name: string; url: string }>,
+) {
   const breadcrumbData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": breadcrumbs.map((crumb, index) => ({
+    itemListElement: breadcrumbs.map((crumb, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "name": crumb.name,
-      "item": crumb.url
-    }))
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.url,
+    })),
   };
   setStructuredData(breadcrumbData);
 }
