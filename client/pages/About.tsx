@@ -1,6 +1,40 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function About() {
+  useEffect(() => {
+    setPageMeta({
+      title: "About BizPay Solutions - ACH Payment Platform for Fintech",
+      description: "Learn about BizPaySol's mission to simplify ACH payments. Trusted by 2000+ businesses, processing 50k+ ACH transfers with 99.95% uptime.",
+      canonicalUrl: "https://www.bizpaysol.com/about/",
+      keywords: "BizPaySol, ACH platform, fintech company, payment processor, about us",
+      ogTitle: "About BizPaySol - Our Mission",
+      ogDescription: "ACH payments should be simple, safe, and in full compliance. Meet the team behind BizPaySol."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BizPaySol",
+      "url": "https://www.bizpaysol.com/",
+      "description": "Enterprise ACH payment platform for fintech and B2B companies",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1234 Market Street, Suite 500",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA",
+        "postalCode": "30303",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "email": "support@bizpaysol.com",
+        "telephone": "(555) 123-4567"
+      }
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">

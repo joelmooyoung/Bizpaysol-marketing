@@ -1,9 +1,29 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { MigrationImport } from "@/components/pricing/MigrationImport";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function Pricing() {
+  useEffect(() => {
+    setPageMeta({
+      title: "ACH Payment Pricing - BizPay Solutions | Simple, Transparent Rates",
+      description: "Transparent ACH pricing plans starting at $0.25 per transaction. Essential, Professional, and Enterprise tiers. Free migration offer. No hidden fees.",
+      canonicalUrl: "https://www.bizpaysol.com/pricing/",
+      keywords: "ACH payment pricing, payment processor costs, ACH transaction fees, pricing calculator",
+      ogTitle: "Simple, Transparent ACH Pricing",
+      ogDescription: "ACH-first plans for builders. Estimate savings and migrate in minutes."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "PriceSpecification",
+      "priceCurrency": "USD",
+      "price": "0.25",
+      "description": "ACH transaction price starting at $0.25 per transaction"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">
