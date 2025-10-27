@@ -28,17 +28,47 @@ export default function CaseStudies() {
           <p className="mt-3 text-muted-foreground">How teams use BizPaySol to reduce cost and time-to-launch on ACH.</p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <article className="rounded-lg border p-6">
-              <h3 className="text-lg font-semibold">Retail SMB</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Switched from per-transaction fees to flat pricing, cutting costs by 30% while enabling same-day ACH for payouts.</p>
+            <article className="rounded-lg border p-6 hover:shadow-md transition">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">CS</div>
+                <div>
+                  <h3 className="text-base font-semibold">CloudSource</h3>
+                  <p className="text-xs text-muted-foreground">SaaS, $12M ARR</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">"Reduced DSO from 45 to 18 days. ACH recovery alone saves us $156k/year. Integration took 3 days."</p>
+              <div className="mt-4 pt-4 border-t space-y-2 text-xs">
+                <div className="flex justify-between"><span className="text-muted-foreground">Annual savings:</span><span className="font-semibold">$180k</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Monthly volume:</span><span className="font-semibold">$2.4M</span></div>
+              </div>
             </article>
-            <article className="rounded-lg border p-6">
-              <h3 className="text-lg font-semibold">Agency</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Automated receivables and reconciliations via webhooks; first ACH live in under 5 minutes.</p>
+            <article className="rounded-lg border p-6 hover:shadow-md transition">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold">FP</div>
+                <div>
+                  <h3 className="text-base font-semibold">FlowPay</h3>
+                  <p className="text-xs text-muted-foreground">Fintech, $28M ARR</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">"Our developer loved the API. Reduced payment reconciliation workload by 65%. Went live in 7 days."</p>
+              <div className="mt-4 pt-4 border-t space-y-2 text-xs">
+                <div className="flex justify-between"><span className="text-muted-foreground">Cost reduction:</span><span className="font-semibold">42%</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Monthly volume:</span><span className="font-semibold">$8.1M</span></div>
+              </div>
             </article>
-            <article className="rounded-lg border p-6">
-              <h3 className="text-lg font-semibold">Marketplace</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Scaled vendor payouts with built-in fraud checks and idempotency—zero duplicate transfers.</p>
+            <article className="rounded-lg border p-6 hover:shadow-md transition">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">VP</div>
+                <div>
+                  <h3 className="text-base font-semibold">VendorPro</h3>
+                  <p className="text-xs text-muted-foreground">B2B Marketplace, $8M ARR</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">"Eliminated manual reconciliation. Webhooks auto-update our accounting system. 2,400+ vendors paid daily."</p>
+              <div className="mt-4 pt-4 border-t space-y-2 text-xs">
+                <div className="flex justify-between"><span className="text-muted-foreground">Manual work saved:</span><span className="font-semibold">30 hrs/mo</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Monthly volume:</span><span className="font-semibold">$18.5M</span></div>
+              </div>
             </article>
           </div>
 
