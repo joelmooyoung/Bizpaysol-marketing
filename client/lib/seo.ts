@@ -103,3 +103,33 @@ export function setStructuredData(data: Record<string, any>) {
   }
   script.textContent = JSON.stringify(data);
 }
+
+export function setFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+  const faqData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+  setStructuredData(faqData);
+}
+
+export function setBreadcrumbSchema(breadcrumbs: Array<{ name: string; url: string }>) {
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": crumb.name,
+      "item": crumb.url
+    }))
+  };
+  setStructuredData(breadcrumbData);
+}
