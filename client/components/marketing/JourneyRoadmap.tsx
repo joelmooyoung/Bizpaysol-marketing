@@ -30,16 +30,18 @@ export function JourneyRoadmap() {
   ];
 
   return (
-    <section className="relative border-t bg-gradient-to-b from-slate-50 to-white py-10">
+    <section className="relative border-t bg-gradient-to-b from-white via-slate-50 to-slate-100 py-16">
       <div className="container">
-        <h2 className="text-center text-2xl font-bold tracking-tight">
-          Launch in 3 Steps
-        </h2>
-        <p className="mt-1 text-center text-sm text-muted-foreground">
-          From discovery to live production in days, not months. No complex setup.
-        </p>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Launch in 3 Steps
+          </h2>
+          <p className="mt-3 text-lg text-muted-foreground">
+            From discovery to live production in days, not months. No complex setup required.
+          </p>
+        </div>
 
-        <div className="mt-6 grid items-stretch gap-4 md:grid-cols-3">
+        <div className="mt-10 grid items-stretch gap-6 md:grid-cols-3">
           {steps.map((s, i) => (
             <div key={s.n} className="relative">
               {/* Connector arrows (md+) */}
@@ -51,7 +53,7 @@ export function JourneyRoadmap() {
 
               <Link
                 to={s.to}
-                className="group block h-full rounded-xl border bg-white p-5 shadow-sm transition hover:shadow-md"
+                className="group block h-full rounded-xl border bg-white p-6 shadow-sm transition hover:shadow-lg hover:border-primary"
               >
                 <div className="flex items-start gap-3">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
@@ -74,8 +76,10 @@ export function JourneyRoadmap() {
           ))}
         </div>
 
-        <div className="mt-6 text-center text-xs text-muted-foreground">
-          Prefer a guided tour? <Link className="text-primary hover:underline" to="/support#contact">Request a demo</Link>
+        <div className="mt-10 text-center">
+          <p className="text-sm text-muted-foreground">
+            Need help? <Link className="text-primary font-semibold hover:underline" to="/support#contact">Request a personalized demo</Link>
+          </p>
         </div>
       </div>
     </section>

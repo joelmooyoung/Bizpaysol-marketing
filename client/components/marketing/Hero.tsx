@@ -20,41 +20,49 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white" />
-      <div className="container grid items-center gap-8 py-16 md:grid-cols-2 md:py-24">
-        <div>
-          <p className="mb-2 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm">
-            Part of the ACH Network · Full ACH Service
-          </p>
-          <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50 via-slate-50 to-white" />
+      <div className="container grid items-center gap-12 py-20 md:grid-cols-2 md:py-32">
+        <div className="space-y-8">
+          <div className="space-y-2">
+            <p className="inline-flex rounded-full border bg-white px-4 py-1.5 text-xs font-semibold text-primary shadow-sm">
+              ✨ Trusted by 2,000+ Companies
+            </p>
+          </div>
+          <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl leading-tight">
             ACH Payments are fueling Fintech's Future
           </h1>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">
+          <h2 className="mt-6 text-2xl font-semibold tracking-tight text-slate-700 sm:text-3xl">
             Complete ACH Platform — Powerful Dashboard + Developer API
           </h2>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Enterprise ACH platform trusted by 2,000+ businesses. Process 50k+ transfers. Lower costs by 30-65%, reduce DSO, launch faster. SOC 2 Type II Verified.
+          <p className="mt-4 max-w-2xl text-lg text-slate-600 leading-relaxed">
+            Enterprise ACH platform processing 50k+ transfers. Lower costs by 30-65%, reduce DSO, launch faster. <span className="font-semibold">SOC 2 Type II Verified</span>.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild className="px-6">
-              <Link to="/support#contact">Request Enterprise Demo</Link>
-            </Button>
-            <Button asChild variant="outline" className="px-6">
-              <Link to="/docs">View API Documentation →</Link>
-            </Button>
-            <Button className="px-6" asChild variant="secondary">
-              <a
-                href="https://sandbox.bizpaysol.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Launch Live Sandbox
-              </a>
-            </Button>
+
+          <div className="space-y-4 pt-2">
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" className="px-8">
+                <Link to="/support#contact">Request Enterprise Demo</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="px-8">
+                <Link to="/docs">View API Documentation →</Link>
+              </Button>
+              <Button asChild size="lg" className="px-8" variant="secondary">
+                <a
+                  href="https://sandbox.bizpaysol.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Launch Live Sandbox
+                </a>
+              </Button>
+            </div>
           </div>
-          <div className="mt-4 text-xs text-muted-foreground">
-            SOC 2 Type II • ISO 27001 • GDPR • TLS 1.2+ • Encryption in transit
-            and at rest
+
+          <div className="flex flex-wrap gap-3 pt-2 border-t-2 border-slate-200">
+            <div className="text-xs text-slate-600 space-y-1">
+              <p className="font-semibold">Security & Compliance</p>
+              <p>SOC 2 Type II • ISO 27001 • NACHA • GDPR • TLS 1.2+ • AES-256</p>
+            </div>
           </div>
         </div>
         <div className="space-y-4">
