@@ -6,20 +6,20 @@ export function TestimonialsGrid() {
   );
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-gradient-to-b from-slate-50 to-white py-16 border-t">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight">
             Trusted by Finance Teams at Growing Companies
           </h2>
-          <p className="mt-2 text-muted-foreground">
+          <p className="mt-3 text-lg text-muted-foreground">
             See how businesses like yours save money and time with BizPaySol
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3 mb-12">
           {/* Testimonial 1 */}
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-white p-6 shadow-sm hover:shadow-md transition">
             <div
               className="mb-4 flex gap-1 text-yellow-500"
               aria-label="5 star rating"
@@ -63,7 +63,7 @@ export function TestimonialsGrid() {
           </div>
 
           {/* Testimonial 2 */}
-          <div className="rounded-xl border-2 border-primary bg-white p-6 shadow-lg">
+          <div className="rounded-xl border-2 border-primary bg-white p-6 shadow-lg hover:shadow-xl transition">
             <div
               className="mb-4 flex gap-1 text-yellow-500"
               aria-label="5 star rating"
@@ -107,7 +107,7 @@ export function TestimonialsGrid() {
           </div>
 
           {/* Testimonial 3 */}
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-white p-6 shadow-sm hover:shadow-md transition">
             <div
               className="mb-4 flex gap-1 text-yellow-500"
               aria-label="5 star rating"
