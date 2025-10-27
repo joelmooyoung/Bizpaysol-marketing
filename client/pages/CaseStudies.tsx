@@ -73,8 +73,8 @@ export default function CaseStudies() {
           </div>
 
           <div className="mt-12 space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight">Case Study Template</h2>
-            <p className="text-muted-foreground">Use this structure to showcase successful client integrations and outcomes.</p>
+            <h2 className="text-2xl font-bold tracking-tight">Full Case Study Examples</h2>
+            <p className="text-muted-foreground">Detailed breakdowns showing how companies transformed their payment operations.</p>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="rounded-lg border p-4">
                 <h3 className="font-semibold">Title</h3>
