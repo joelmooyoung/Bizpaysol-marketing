@@ -106,6 +106,8 @@ export default function Pricing() {
           <PricingCalculator />
         </div>
       </section>
+
+      <ROICalculatorEnhanced />
     </Layout>
   );
 }
