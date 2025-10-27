@@ -1,6 +1,25 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 export default function Security() {
+  useEffect(() => {
+    setPageMeta({
+      title: "Security & Compliance - BizPaySol | SOC 2, NACHA, ISO 27001",
+      description: "BizPaySol is SOC 2 Type II certified, NACHA compliant, and ISO 27001 aligned. Enterprise-grade security with TLS 1.2+, AES-256 encryption, and signed webhooks.",
+      canonicalUrl: "https://www.bizpaysol.com/security/",
+      keywords: "SOC 2, NACHA compliance, ISO 27001, payment security, data encryption",
+      ogTitle: "Security & Compliance",
+      ogDescription: "Enterprise-grade controls, transparent posture, and continuous improvement."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Security & Compliance",
+      "description": "BizPaySol security certifications and compliance standards"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-16">

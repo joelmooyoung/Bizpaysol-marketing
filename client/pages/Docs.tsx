@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Input } from "@/components/ui/input";
+import { setPageMeta, setStructuredData } from "@/lib/seo";
 
 const sections = [
   "Getting Started",
@@ -11,6 +13,24 @@ const sections = [
 ];
 
 export default function Docs() {
+  useEffect(() => {
+    setPageMeta({
+      title: "Developer Documentation - BizPaySol ACH API",
+      description: "Complete guide to BizPaySol ACH API. 5-minute quickstart, REST endpoints, webhooks, authentication, error codes, and SDK documentation.",
+      canonicalUrl: "https://www.bizpaysol.com/docs/",
+      keywords: "API documentation, ACH API, REST API, webhooks, API reference",
+      ogTitle: "Enterprise ACH Developer Docs",
+      ogDescription: "Integrate BizPay Solutions in minutes with our developer-friendly ACH API."
+    });
+
+    setStructuredData({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "BizPaySol API Documentation",
+      "description": "Complete developer documentation for BizPaySol ACH API",
+      "audience": "Developers"
+    });
+  }, []);
   return (
     <Layout>
       <section className="bg-white py-12">

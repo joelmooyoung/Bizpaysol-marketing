@@ -1,10 +1,21 @@
-import { FormEvent, useCallback, useState } from "react";
+import { FormEvent, useCallback, useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { setPageMeta } from "@/lib/seo";
 
 export default function Support() {
+  useEffect(() => {
+    setPageMeta({
+      title: "Support & Contact - BizPaySol",
+      description: "Get help with BizPaySol ACH API. 24/7 support for enterprise customers. FAQ, contact form, and customer support documentation.",
+      canonicalUrl: "https://www.bizpaysol.com/support/",
+      keywords: "customer support, API support, ACH help, contact support",
+      ogTitle: "We're Here to Help",
+      ogDescription: "Contact BizPaySol support for API questions, enterprise setup, and more."
+    });
+  }, []);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
