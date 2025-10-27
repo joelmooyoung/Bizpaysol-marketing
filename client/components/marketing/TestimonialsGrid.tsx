@@ -151,12 +151,46 @@ export function TestimonialsGrid() {
           </div>
         </div>
 
-        <div className="text-center mt-10">
+        <div className="mt-8 border-t pt-8">
+          <h3 className="text-xl font-semibold mb-4">More Success Stories</h3>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-lg border p-4 bg-slate-50">
+              <div className="flex gap-1 text-yellow-500 mb-2">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="text-sm font-medium mb-3">RecurlyPay's payment success rate improved from 87% to 96% in 3 months.</p>
+              <p className="text-xs text-muted-foreground">API + Webhooks were the game changer.</p>
+            </div>
+            <div className="rounded-lg border p-4 bg-slate-50">
+              <div className="flex gap-1 text-yellow-500 mb-2">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="text-sm font-medium mb-3">Invoiceish cut their payment processing time from 8 days to 1 day.</p>
+              <p className="text-xs text-muted-foreground">Webhook automation eliminated manual work.</p>
+            </div>
+            <div className="rounded-lg border p-4 bg-slate-50">
+              <div className="flex gap-1 text-yellow-500 mb-2">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="text-sm font-medium mb-3">TalentFlow reduced vendor payment costs by 38% year-over-year.</p>
+              <p className="text-xs text-muted-foreground">No more wire fees. Same-day ACH works great.</p>
+            </div>
+            <div className="rounded-lg border p-4 bg-slate-50">
+              <div className="flex gap-1 text-yellow-500 mb-2">
+                <Star /><Star /><Star /><Star /><Star />
+              </div>
+              <p className="text-sm font-medium mb-3">Marketplace Pro scaled from 500 to 5,000 daily payouts.</p>
+              <p className="text-xs text-muted-foreground">Zero duplicate transfers thanks to idempotency.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
           <a
             href="/case-studies"
             className="inline-flex items-center text-primary hover:underline font-semibold"
           >
-            Read more customer stories →
+            Read full case studies →
           </a>
         </div>
       </div>
