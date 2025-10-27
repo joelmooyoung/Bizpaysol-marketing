@@ -169,6 +169,15 @@ export function Terms() {
 }
 
 export function Privacy() {
+  useEffect(() => {
+    setPageMeta({
+      title: "Privacy Policy - BizPaySol",
+      description: "BizPaySol Privacy Policy. Learn how we protect your data, handle cookies, and comply with GDPR.",
+      canonicalUrl: "https://www.bizpaysol.com/privacy/",
+      noindex: true
+    });
+  }, []);
+
   return (
     <Layout>
       <section className="bg-white py-16">
