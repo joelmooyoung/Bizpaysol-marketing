@@ -1,8 +1,17 @@
 // Chatwoot widget loader without inline JS
 const BASE_URL = "https://app.chatwoot.com";
-const WEBSITE_TOKEN = import.meta.env.VITE_CHATWOOT_TOKEN || "";
 
 function loadChatwoot() {
+  // Get token from window global set by Netlify or from meta tag
+  const WEBSITE_TOKEN = (window as any).__CHATWOOT_TOKEN__ || 
+                       document.querySelector('meta[name="chatwoot-token"]')?.getAttribute('content') || 
+                       '';
+  
+  if (!WEBSITE_TOKEN) {
+    console.warn('Chatwoot token not found');
+    return;
+  }
+
   if ((window as any).chatwootSDK) {
     (window as any).chatwootSDK.run({
       websiteToken: WEBSITE_TOKEN,
