@@ -3,6 +3,14 @@
   functions = "netlify/functions"
   publish = "dist/spa"
 
+[security.headers.Content-Security-Policy]
+  enable = true
+
+[security.scan]
+  skip_npm_audit = false
+
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"
 
 [functions]
   external_node_modules = ["express"]
