@@ -29,7 +29,7 @@ export function Hero() {
             </p>
           </div>
           <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl leading-tight">
-            ACH Payments are fueling modern Fintech's Future
+            ACH Payments are fueling Fintech's Future
           </h1>
           <h2 className="mt-6 text-2xl font-semibold tracking-tight text-slate-700 sm:text-3xl">
             Complete ACH Platform — Powerful Dashboard + Developer API
