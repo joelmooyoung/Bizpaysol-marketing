@@ -2,7 +2,6 @@
   command = "npm run build:client"
   functions = "netlify/functions"
   publish = "dist/spa"
-  edge_functions = "netlify/edge-functions"
 
 [security.headers.Content-Security-Policy]
   enable = true
