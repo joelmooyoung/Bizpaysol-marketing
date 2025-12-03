@@ -18,14 +18,14 @@ export default function Index() {
     setPageMeta({
       title: "ACH Payments Platform for Fintech - BizPay Solutions",
       description:
-        "ACH Payments are fueling Fintech's Future. Complete ACH platform with powerful dashboard, developer API, lower fees, and faster reconciliation. SOC 2 Type II Verified.",
+        "ACH Payments are fueling modern Fintech's Future. Complete ACH platform with powerful dashboard, developer API, lower fees, and faster reconciliation. SOC 2 Type II Verified.",
       canonicalUrl: "https://www.bizpaysol.com/",
       keywords:
         "ACH payments, ACH platform, fintech, payment processing, NACHA compliant",
-      ogTitle: "ACH Payments are Fueling Fintech's Future",
+      ogTitle: "ACH Payments are Fueling Modern Fintech's Future",
       ogDescription:
         "Complete ACH platform built for enterprise security and scale. Lower costs, faster reconciliation, greater control.",
-      twitterTitle: "ACH Payments are Fueling Fintech's Future",
+      twitterTitle: "ACH Payments are Fueling Modern Fintech's Future",
       twitterDescription:
         "Enterprise ACH platform with API, dashboard, and webhooks. SOC 2 Type II Verified.",
     });
