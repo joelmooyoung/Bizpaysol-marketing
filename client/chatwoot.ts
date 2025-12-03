@@ -1,6 +1,6 @@
 // Chatwoot widget loader without inline JS
 const BASE_URL = "https://app.chatwoot.com";
-const WEBSITE_TOKEN = "mzAFwoCeVKJ9w4u93xYPhJyT";
+const WEBSITE_TOKEN = import.meta.env.VITE_CHATWOOT_TOKEN || "";
 
 function loadChatwoot() {
   if ((window as any).chatwootSDK) {
