@@ -97,8 +97,8 @@
     </noscript>
     <div id="root"></div>
 
-    <!-- Load environment variables BEFORE app -->
-    <script src="/env-config.js"></script>
+    <!-- Load environment variables from Netlify function -->
+    <script src="/.netlify/functions/env-config"></script>
 
     <script type="module" src="/client/App.tsx"></script>
 
