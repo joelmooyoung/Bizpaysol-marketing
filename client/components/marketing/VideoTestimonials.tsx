@@ -1,6 +1,6 @@
 import { VideoEmbed } from "@/components/marketing/VideoEmbed";
 
-const urls = (import.meta.env.VITE_TESTIMONIAL_VIDEO_URLS as string | undefined)?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
+const urls = ((import.meta.env?.VITE_TESTIMONIAL_VIDEO_URLS || "") as string)?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
 
 export function VideoTestimonials() {
   if (urls.length === 0) return null;

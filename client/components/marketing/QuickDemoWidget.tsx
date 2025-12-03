@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-const DEMO_URL = import.meta.env.VITE_QUICK_DEMO_URL as string | undefined;
+const DEMO_URL = (import.meta.env?.VITE_QUICK_DEMO_URL || "") as string;
 
 export function QuickDemoWidget() {
   const [open, setOpen] = useState(false);

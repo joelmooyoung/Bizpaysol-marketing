@@ -71,9 +71,9 @@ export function Hero() {
         </div>
         <div className="space-y-4">
           <InteractiveDemo />
-          {(import.meta.env.VITE_FOUNDER_VIDEO_URL as string | undefined) ? (
+          {(import.meta.env?.VITE_FOUNDER_VIDEO_URL as string | undefined) ? (
             <VideoEmbed
-              url={import.meta.env.VITE_FOUNDER_VIDEO_URL as string}
+              url={import.meta.env?.VITE_FOUNDER_VIDEO_URL as string}
               title="Founder walkthrough"
             />
           ) : null}

@@ -2,6 +2,19 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import React from "react";
 import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom/server";
+import { config } from "dotenv";
+
+// Load environment variables from .env
+config();
+
+// Inject env vars into import.meta.env-like object for SSG
+Object.assign(process.env, {
+  VITE_QUICK_DEMO_URL: process.env.VITE_QUICK_DEMO_URL || "",
+  VITE_TESTIMONIAL_VIDEO_URLS: process.env.VITE_TESTIMONIAL_VIDEO_URLS || "",
+  VITE_FOUNDER_VIDEO_URL: process.env.VITE_FOUNDER_VIDEO_URL || "",
+  VITE_CHATWOOT_TOKEN: process.env.VITE_CHATWOOT_TOKEN || "",
+});
 
 async function loadPage(
   modulePath: string,
@@ -10,8 +23,8 @@ async function loadPage(
   return (mod.default ?? mod) as any;
 }
 
-async function renderPageToHtml(Component: any) {
-  const element = React.createElement(Component);
+async function renderPageToHtml(Component: any, route: string) {
+  const element = React.createElement(StaticRouter, { location: route }, React.createElement(Component));
   const html = renderToString(element);
   return html;
 }
@@ -89,7 +102,7 @@ async function main() {
 
   for (const { route, module } of routes) {
     const Component = await loadPage(module);
-    const ssr = await renderPageToHtml(Component);
+    const ssr = await renderPageToHtml(Component, route);
     const html = await injectIntoTemplate(template, ssr, route);
 
     if (route === "/") {
