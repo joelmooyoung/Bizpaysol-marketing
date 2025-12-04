@@ -43,11 +43,10 @@ async function fetchUrlContent(url: string, timeout = 5000): Promise<string> {
 
     return text.substring(0, 2000); // Limit to 2000 chars
   } catch (error) {
-    console.warn(`Error fetching ${url}:`, error instanceof Error ? error.message : String(error));
-    return "";
-  }
-}
-    console.error(`Failed to fetch ${url}:`, error);
+    console.warn(
+      `Error fetching ${url}:`,
+      error instanceof Error ? error.message : String(error)
+    );
     return "";
   }
 }
