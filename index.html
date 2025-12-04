@@ -99,11 +99,12 @@
 
     <script type="module" src="/client/App.tsx"></script>
 
-    <!-- Talk2X Chat Widget -->
-    <script
-      id="talk2x-widget"
-      src="https://widget.talk2x.com/chat.js"
-      data-widget-id="YOUR_WIDGET_ID"
-    ></script>
+    <!-- BotPenguin Chat Widget -->
+    <script src="https://cdn.botpenguin.com/websitebot/webChat.js"></script>
+    <script>
+      window.botpenguin_config = {
+        bot_uuid: 'YOUR_BOT_UUID',
+      };
+    </script>
   </body>
 </html>
