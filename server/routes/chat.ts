@@ -73,7 +73,7 @@ Instructions:
 
 export const handleChat: RequestHandler = async (req, res) => {
   try {
-    console.log("Chat request received:", req.method);
+    console.log("Chat request received:", req.method, "at", new Date().toISOString());
 
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
