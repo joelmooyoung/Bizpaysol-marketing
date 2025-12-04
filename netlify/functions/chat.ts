@@ -6,51 +6,6 @@ interface ConversationMessage {
   content: string;
 }
 
-// Default knowledge sources
-const DEFAULT_SOURCES = [
-  "https://www.bizpaysol.com/",
-  "https://www.bizpaysol.com/product",
-  "https://www.bizpaysol.com/pricing",
-];
-
-async function fetchUrlContent(url: string, timeout = 5000): Promise<string> {
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; BizPayBot/1.0)",
-      },
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!response.ok) {
-      console.warn(`Failed to fetch ${url}: ${response.status}`);
-      return "";
-    }
-
-    const html = await response.text();
-    // Extract text content from HTML
-    const text = html
-      .replace(/<script[^>]*>.*?<\/script>/gi, "")
-      .replace(/<style[^>]*>.*?<\/style>/gi, "")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-
-    return text.substring(0, 2000); // Limit to 2000 chars
-  } catch (error) {
-    console.warn(
-      `Error fetching ${url}:`,
-      error instanceof Error ? error.message : String(error)
-    );
-    return "";
-  }
-}
-
 async function generateResponse(
   userMessage: string,
   conversationHistory: ConversationMessage[]
@@ -59,38 +14,19 @@ async function generateResponse(
     throw new Error("GEMINI_API_KEY not configured");
   }
 
-  // Fetch content from a few key sources only (to avoid timeouts)
-  const sources = DEFAULT_SOURCES;
-  let sourceContent = "";
-
-  console.log("Fetching content from", sources.length, "sources");
-  for (const url of sources) {
-    try {
-      const content = await fetchUrlContent(url);
-      if (content) {
-        sourceContent += `\n[Source: ${url}]\n${content}\n`;
-      }
-    } catch (err) {
-      console.warn(`Skipped source ${url}`);
-    }
-  }
-
   const systemPrompt = `You are a friendly customer support assistant for BizPay Solutions, an ACH payment platform.
-
-${sourceContent ? `KNOWLEDGE BASE:\n${sourceContent}` : ""}
 
 Help customers with questions about:
 - ACH payments and transfers
-- Pricing and plans
+- Pricing and plans  
 - Integration and APIs
 - Security and compliance
 - Getting started
 
 Instructions:
 1. Be helpful, concise, and friendly
-2. Reference information from the knowledge base when relevant
-3. If unsure, suggest contacting support@bizpaysol.com
-4. Keep responses under 150 words`;
+2. If unsure, suggest contacting support@bizpaysol.com
+3. Keep responses under 150 words`;
 
   const messages = [
     ...conversationHistory.slice(-5), // Keep last 5 messages for context
@@ -108,7 +44,6 @@ Instructions:
     })),
   };
 
-  console.log("Calling Gemini API...");
   const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
   const res = await fetch(url, {
