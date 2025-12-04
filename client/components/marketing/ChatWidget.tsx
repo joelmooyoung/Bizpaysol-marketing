@@ -49,7 +49,7 @@ export function ChatWidget() {
 
     try {
       // Call the chat API
-      const response = await fetch("/.netlify/functions/chat", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
