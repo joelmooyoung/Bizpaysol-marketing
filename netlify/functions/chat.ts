@@ -1,74 +1,39 @@
 // Chat API endpoint - handles user messages and generates responses using Gemini
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY as string;
 
-interface KnowledgeSource {
-  url: string;
-  title: string;
-}
-
 interface ConversationMessage {
   role: "user" | "assistant";
   content: string;
 }
 
-// Load knowledge sources from config
-let knowledgeSources: KnowledgeSource[] = [];
+// Default knowledge sources
+const DEFAULT_SOURCES = [
+  "https://www.bizpaysol.com/",
+  "https://www.bizpaysol.com/product",
+  "https://www.bizpaysol.com/pricing",
+];
 
-async function loadKnowledgeSources(): Promise<KnowledgeSource[]> {
-  if (knowledgeSources.length > 0) return knowledgeSources;
-
+async function fetchUrlContent(url: string, timeout = 5000): Promise<string> {
   try {
-    // Try to load from environment variable first (for production)
-    if (process.env.KNOWLEDGE_SOURCES) {
-      knowledgeSources = JSON.parse(process.env.KNOWLEDGE_SOURCES).sources;
-      console.log("Loaded knowledge sources from env:", knowledgeSources.length);
-      return knowledgeSources;
-    }
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-    // Fallback to default sources
-    knowledgeSources = [
-      {
-        url: "https://www.bizpaysol.com/",
-        title: "Homepage",
-      },
-      {
-        url: "https://www.bizpaysol.com/product",
-        title: "Product Page",
-      },
-      {
-        url: "https://www.bizpaysol.com/pricing",
-        title: "Pricing Page",
-      },
-      {
-        url: "https://www.bizpaysol.com/docs",
-        title: "Documentation",
-      },
-      {
-        url: "https://www.bizpaysol.com/support",
-        title: "Support & FAQ",
-      },
-    ];
-    console.log("Using default knowledge sources:", knowledgeSources.length);
-    return knowledgeSources;
-  } catch (error) {
-    console.error("Failed to load knowledge sources:", error);
-    return [];
-  }
-}
-
-async function fetchUrlContent(url: string): Promise<string> {
-  try {
     const response = await fetch(url, {
+      signal: controller.signal,
       headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; BizPayBot/1.0; +http://bizpaysol.com)",
+        "User-Agent": "Mozilla/5.0 (compatible; BizPayBot/1.0)",
       },
     });
 
-    if (!response.ok) return "";
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      console.warn(`Failed to fetch ${url}: ${response.status}`);
+      return "";
+    }
 
     const html = await response.text();
-    // Extract text content from HTML (simple approach)
+    // Extract text content from HTML
     const text = html
       .replace(/<script[^>]*>.*?<\/script>/gi, "")
       .replace(/<style[^>]*>.*?<\/style>/gi, "")
@@ -76,8 +41,12 @@ async function fetchUrlContent(url: string): Promise<string> {
       .replace(/\s+/g, " ")
       .trim();
 
-    return text.substring(0, 3000); // Limit to 3000 chars per URL
+    return text.substring(0, 2000); // Limit to 2000 chars
   } catch (error) {
+    console.warn(`Error fetching ${url}:`, error instanceof Error ? error.message : String(error));
+    return "";
+  }
+}
     console.error(`Failed to fetch ${url}:`, error);
     return "";
   }
@@ -91,40 +60,41 @@ async function generateResponse(
     throw new Error("GEMINI_API_KEY not configured");
   }
 
-  // Load knowledge sources dynamically
-  const sources = await loadKnowledgeSources();
-
-  // Fetch content from knowledge sources
+  // Fetch content from a few key sources only (to avoid timeouts)
+  const sources = DEFAULT_SOURCES;
   let sourceContent = "";
-  for (const source of sources) {
-    const content = await fetchUrlContent(source.url);
-    if (content) {
-      sourceContent += `\n[${source.title}]\n${content}\n`;
+
+  console.log("Fetching content from", sources.length, "sources");
+  for (const url of sources) {
+    try {
+      const content = await fetchUrlContent(url);
+      if (content) {
+        sourceContent += `\n[Source: ${url}]\n${content}\n`;
+      }
+    } catch (err) {
+      console.warn(`Skipped source ${url}`);
     }
   }
 
-  const systemPrompt = `You are a helpful customer support assistant for BizPay Solutions, an ACH payment platform. 
+  const systemPrompt = `You are a friendly customer support assistant for BizPay Solutions, an ACH payment platform.
 
-KNOWLEDGE SOURCES:
-${sourceContent || "No knowledge sources available."}
+${sourceContent ? `KNOWLEDGE BASE:\n${sourceContent}` : ""}
 
-You help customers with questions about:
-- ACH payments and how they work
-- Integration and API documentation
+Help customers with questions about:
+- ACH payments and transfers
 - Pricing and plans
-- Security and compliance (SOC 2, NACHA)
-- Comparisons with competitors
-- Getting started and onboarding
+- Integration and APIs
+- Security and compliance
+- Getting started
 
 Instructions:
-1. Use the knowledge sources above to answer questions accurately
-2. If information is in the sources, cite which page you found it on
-3. Be friendly, concise, and helpful
-4. If you don't know something, admit it and suggest they contact support@bizpaysol.com
-5. Keep responses under 200 words`;
+1. Be helpful, concise, and friendly
+2. Reference information from the knowledge base when relevant
+3. If unsure, suggest contacting support@bizpaysol.com
+4. Keep responses under 150 words`;
 
   const messages = [
-    ...conversationHistory,
+    ...conversationHistory.slice(-5), // Keep last 5 messages for context
     { role: "user" as const, content: userMessage },
   ];
 
@@ -139,6 +109,7 @@ Instructions:
     })),
   };
 
+  console.log("Calling Gemini API...");
   const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
   const res = await fetch(url, {
@@ -149,7 +120,8 @@ Instructions:
 
   if (!res.ok) {
     const error = await res.text();
-    throw new Error(`Gemini API error: ${res.status} ${error}`);
+    console.error(`Gemini API error: ${res.status} ${error}`);
+    throw new Error(`Gemini API error: ${res.status}`);
   }
 
   const data = await res.json();
@@ -166,6 +138,8 @@ Instructions:
 
 export const handler = async (event: any) => {
   try {
+    console.log("Chat request received:", event.httpMethod);
+
     if (event.httpMethod !== "POST") {
       return {
         statusCode: 405,
@@ -173,7 +147,17 @@ export const handler = async (event: any) => {
       };
     }
 
-    const body = event.body ? JSON.parse(event.body) : {};
+    let body = {};
+    try {
+      body = event.body ? JSON.parse(event.body) : {};
+    } catch (parseErr) {
+      console.error("Failed to parse body:", parseErr);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Invalid JSON in request body" }),
+      };
+    }
+
     const userMessage = body.message as string;
     const conversationHistory = (body.conversationHistory || []) as ConversationMessage[];
 
@@ -181,6 +165,16 @@ export const handler = async (event: any) => {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: "Message is required" }),
+      };
+    }
+
+    console.log("User message:", userMessage.substring(0, 50));
+
+    if (!GEMINI_API_KEY) {
+      console.error("GEMINI_API_KEY is not set");
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: "Server configuration error" }),
       };
     }
 
@@ -192,12 +186,14 @@ export const handler = async (event: any) => {
       body: JSON.stringify({ reply }),
     };
   } catch (error: any) {
-    console.error("Chat handler error:", error);
+    console.error("Chat handler error:", error instanceof Error ? error.message : String(error));
+    console.error("Full error:", error);
     return {
       statusCode: 500,
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        error: error.message || "Internal server error",
+        error: error?.message || "Internal server error",
+        details: process.env.NODE_ENV === "development" ? String(error) : undefined,
       }),
     };
   }
