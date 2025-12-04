@@ -2,6 +2,7 @@
   command = "npm run build"
   functions = "netlify/functions"
   publish = "dist/spa"
+  # Force rebuild with updated GEMINI_API_KEY env var (2025-12-03)
 
 [security.headers.Content-Security-Policy]
   enable = true
