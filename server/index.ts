@@ -24,7 +24,7 @@ export function createServer() {
     );
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self'; base-uri 'self' https://window-2.botpenguin.com https://window.botpenguin.com; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.botpenguin.com; style-src 'self' 'unsafe-inline' https://cdn.botpenguin.com; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; frame-src 'self' https://window-2.botpenguin.com https://window.botpenguin.com https://cdn.botpenguin.com; object-src 'none'",
+      "default-src 'self'; base-uri 'self' *; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.botpenguin.com https://window-2.botpenguin.com; style-src 'self' 'unsafe-inline' https://cdn.botpenguin.com; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; frame-src 'self' https://window-2.botpenguin.com https://window.botpenguin.com https://cdn.botpenguin.com; object-src 'none'",
     );
     next();
   });
