@@ -24,7 +24,7 @@ export function createServer() {
     );
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://app.chatwoot.com; style-src 'self' 'unsafe-inline' https://app.chatwoot.com; img-src 'self' data: blob: https:; font-src 'self' data: https://app.chatwoot.com; connect-src 'self' https: wss: https://app.chatwoot.com wss://app.chatwoot.com; frame-src 'self' https://app.chatwoot.com; object-src 'none'",
+      "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.botpenguin.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; frame-src 'self' https://cdn.botpenguin.com; object-src 'none'",
     );
     next();
   });
