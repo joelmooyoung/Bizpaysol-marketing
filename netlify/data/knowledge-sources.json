@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "url": "https://www.bizpaysol.com/",
+      "title": "Homepage"
+    },
+    {
+      "url": "https://www.bizpaysol.com/product",
+      "title": "Product Page"
+    },
+    {
+      "url": "https://www.bizpaysol.com/pricing",
+      "title": "Pricing Page"
+    },
+    {
+      "url": "https://www.bizpaysol.com/docs",
+      "title": "Documentation"
+    },
+    {
+      "url": "https://www.bizpaysol.com/support",
+      "title": "Support & FAQ"
+    }
+  ]
+}
